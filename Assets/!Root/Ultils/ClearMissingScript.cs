@@ -5,7 +5,7 @@ namespace Suhdo
 {
     public class ClearMissingScript : MonoBehaviour
     {
-        [MenuItem("Ultils/ClearMissingScriptsInObjectInScene")]
+        [MenuItem("Ultils/Clear Missing Scripts In Object On Scene")]
         static void RemoveMissingScripts()
         {
             foreach (GameObject gameObject in FindObjectsOfType<GameObject>(true))
