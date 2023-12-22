@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Suhdo
+namespace Suhdo.Ultils
 {
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {

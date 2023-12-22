@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Suhdo
+namespace Suhdo.Ultils
 {
     public class ClearMissingScript : MonoBehaviour
     {
