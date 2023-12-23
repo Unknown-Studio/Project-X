@@ -1,3 +1,4 @@
+using Suhdo.CharacterCore;
 using Suhdo.DataCore;
 using Suhdo.Ultils;
 using UnityEngine;
@@ -6,6 +7,7 @@ namespace Suhdo.StateMachineCore
 {
     public class Entity : MonoBehaviour
     {
+        public Core Core { get; private set; }
         public int FacingDirection { get; private set; }
         public Rigidbody2D RB { get; private set; }
         public Animator Anim { get; private set; }
