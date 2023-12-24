@@ -6,30 +6,28 @@ namespace Suhdo.Player
 {
     public class PlayerController : Entity
     {
-        public StateMachine StateMachine { get; private set; }
+        [SerializeField] private PlayerData playerData;
         
-        public CoreState CoreState { get; private set; }
+        public PlayerIdleState IdleState { get; private set; }
         
-        public Core Core { get; private set; }
-        public Rigidbody2D RB { get; private set; }
-        public Animator Anim { get; private set; }
         public PlayerInputHandler InputHandler { get; private set; }
-        public BoxCollider2D MovementCollider { get; private set; }
 
         private Vector2 _workSpaceVector;
 
-        private void Awake()
+        protected override void Awake()
         {
-            StateMachine = new StateMachine();
+            base.Awake();
+            
             Core = GetComponentInChildren<Core>();
+            IdleState = new PlayerIdleState(StateMachine, this, "idle", playerData);
         }
 
-        private void Start()
+        protected override void Start()
         {
-            Anim = GetComponent<Animator>();
+            base.Start();
+            
             InputHandler = GetComponent<PlayerInputHandler>();
-            RB = GetComponent<Rigidbody2D>();
-            MovementCollider = GetComponent<BoxCollider2D>();
+            StateMachine.Initiallize(IdleState);
         }
     }
 }
