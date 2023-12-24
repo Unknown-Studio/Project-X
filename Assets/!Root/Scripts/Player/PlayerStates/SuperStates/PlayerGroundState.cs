@@ -30,7 +30,8 @@ namespace Suhdo.Player
         public override void Enter()
         {
             base.Enter();
-
+            
+            player.JumpState.ResetAmountOffJumpLeft();
         }
 
         public override void LogicUpdate()
@@ -42,6 +43,16 @@ namespace Suhdo.Player
             xInput = player.InputHandler.NormInputX;
             yInput = player.InputHandler.NormInputY;
             _jumpInput = player.InputHandler.JumpInput;
+            
+            if(_jumpInput && player.JumpState.CanJump())
+            {
+                stateMachine.ChangeState(player.JumpState);
+            }
+            else if (!_isGrounded)
+            {
+                player.InAirState.StartCoyoteTime();
+                stateMachine.ChangeState(player.InAirState);
+            }
         }
     }
 }

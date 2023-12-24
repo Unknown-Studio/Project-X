@@ -29,8 +29,12 @@ namespace Suhdo.Player
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            
-            // Change state here
+
+            if (!isAbilityDone) return;
+            if(isGrounded && core.Movement.CurrentVelocity.y <= 0.01f)
+                stateMachine.ChangeState(player.IdleState);
+            else 
+                stateMachine.ChangeState(player.InAirState);
         }
     }
 }
