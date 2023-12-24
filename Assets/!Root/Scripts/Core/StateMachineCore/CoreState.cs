@@ -9,8 +9,11 @@ namespace Suhdo.StateMachineCore
         
         protected StateMachine stateMachine;
         protected Entity entity;
-        protected string animBoolName;
         protected Core core;
+        
+        protected string animBoolName;
+        protected bool isAnimationFinished;
+        protected bool isExitingState;
 
         protected CoreState(StateMachine stateMachine, Entity entity, string animBoolName)
         {
@@ -22,14 +25,18 @@ namespace Suhdo.StateMachineCore
 
         public virtual void Enter()
         {
-            StartTime = Time.time;
-            entity.Anim.SetBool(animBoolName, true);
             DoChecks();
+            entity.Anim.SetBool(animBoolName, true);
+            StartTime = Time.time;
+            isAnimationFinished = false;
+            isExitingState = false;
+            Debug.Log("State: " + animBoolName);
         }
 
         public virtual void Exit()
         {
-            
+            entity.Anim.SetBool(animBoolName, false);
+            isExitingState = true;
         }
 
         public virtual void LogicUpdate()
@@ -46,5 +53,12 @@ namespace Suhdo.StateMachineCore
         {
             
         }
+        
+        public virtual void AnimationTrigger()
+        {
+
+        }
+        
+        public virtual void AnimationFinishTrigger()=> isAnimationFinished = true;
     }
 }

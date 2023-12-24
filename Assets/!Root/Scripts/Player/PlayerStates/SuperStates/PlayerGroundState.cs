@@ -4,21 +4,18 @@ using UnityEngine.Playables;
 
 namespace Suhdo
 {
-    public class PlayerGroundState : CoreState
+    public class PlayerGroundState : PlayerState
     {
         protected int xInput;
         protected int yInput;
-
-        protected PlayerData data;
 
         private bool _jumpInput;
         private bool _isGrounded;
         private bool _isTouchingWall;
         
-        public PlayerGroundState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data)
-            : base(stateMachine, entity, animBoolName)
+        public PlayerGroundState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data) 
+            : base(stateMachine, entity, animBoolName, data)
         {
-            this.data = data;
         }
 
         public override void DoChecks()
