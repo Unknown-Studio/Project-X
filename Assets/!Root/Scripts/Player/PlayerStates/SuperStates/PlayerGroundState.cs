@@ -2,7 +2,7 @@ using Suhdo.Player;
 using Suhdo.StateMachineCore;
 using UnityEngine.Playables;
 
-namespace Suhdo
+namespace Suhdo.Player
 {
     public class PlayerGroundState : PlayerState
     {
