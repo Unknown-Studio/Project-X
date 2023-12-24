@@ -21,8 +21,8 @@ namespace Suhdo.Player
             base.LogicUpdate();
             if (isExitingState) return;
             
+             if(xInput != 0) stateMachine.ChangeState(player.MoveState);
             /*
-             if(xInput != 0)
                 //Change move state
             else if(yInput == -1)
                 //Change crouch idle state

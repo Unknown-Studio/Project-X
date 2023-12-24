@@ -1,3 +1,4 @@
+using System;
 using Suhdo.CharacterCore;
 using Suhdo.DataCore;
 using Suhdo.Ultils;
@@ -29,6 +30,17 @@ namespace Suhdo.StateMachineCore
             RB = GetComponent<Rigidbody2D>();
             MovementCollider = GetComponent<BoxCollider2D>();
 
+        }
+
+        protected virtual void Update()
+        {
+            Core.LogicUpdate();
+            StateMachine.CurrentCoreState.LogicUpdate();
+        }
+
+        protected virtual void FixedUpdate()
+        {
+            StateMachine.CurrentCoreState.PhysicsUpdate();
         }
     }
 }

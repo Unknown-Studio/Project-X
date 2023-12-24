@@ -9,6 +9,7 @@ namespace Suhdo.Player
         [SerializeField] private PlayerData playerData;
         
         public PlayerIdleState IdleState { get; private set; }
+        public PlayerMoveState MoveState { get; private set; }
         
         public PlayerInputHandler InputHandler { get; private set; }
 
@@ -20,6 +21,7 @@ namespace Suhdo.Player
             
             Core = GetComponentInChildren<Core>();
             IdleState = new PlayerIdleState(StateMachine, this, "idle", playerData);
+            MoveState = new PlayerMoveState(StateMachine, this, "move", playerData);
         }
 
         protected override void Start()

@@ -24,6 +24,7 @@ namespace Suhdo.Player
 
         private void Update()
         {
+            CheckJumpInputHoldTime();
         }
 
         public void OnMoveInput(InputAction.CallbackContext context)
