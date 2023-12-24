@@ -1,3 +1,4 @@
+using Suhdo.CharacterCore;
 using UnityEngine;
 
 namespace Suhdo.StateMachineCore
@@ -6,27 +7,36 @@ namespace Suhdo.StateMachineCore
     {
         public float StartTime { get; private set; }
         
-        protected StateMachine _stateMachine;
-        protected Entity _entity;
-        protected string _animBoolName;
+        protected StateMachine stateMachine;
+        protected Entity entity;
+        protected Core core;
+        
+        protected string animBoolName;
+        protected bool isAnimationFinished;
+        protected bool isExitingState;
 
         protected CoreState(StateMachine stateMachine, Entity entity, string animBoolName)
         {
-            _stateMachine = stateMachine;
-            _entity = entity;
-            _animBoolName = animBoolName;
+            this.stateMachine = stateMachine;
+            this.entity = entity;
+            this.animBoolName = animBoolName;
+            core = entity.Core;
         }
 
         public virtual void Enter()
         {
-            StartTime = Time.time;
-            _entity.Anim.SetBool(_animBoolName, true);
             DoChecks();
+            entity.Anim.SetBool(animBoolName, true);
+            StartTime = Time.time;
+            isAnimationFinished = false;
+            isExitingState = false;
+            Debug.Log("State: " + animBoolName);
         }
 
         public virtual void Exit()
         {
-            
+            entity.Anim.SetBool(animBoolName, false);
+            isExitingState = true;
         }
 
         public virtual void LogicUpdate()
@@ -43,5 +53,12 @@ namespace Suhdo.StateMachineCore
         {
             
         }
+        
+        public virtual void AnimationTrigger()
+        {
+
+        }
+        
+        public virtual void AnimationFinishTrigger()=> isAnimationFinished = true;
     }
 }

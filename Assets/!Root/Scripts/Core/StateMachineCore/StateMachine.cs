@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Suhdo.StateMachineCore
 {
     public class StateMachine
