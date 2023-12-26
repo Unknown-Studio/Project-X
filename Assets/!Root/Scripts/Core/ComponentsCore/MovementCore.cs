@@ -11,6 +11,12 @@ namespace Suhdo
 
         private Vector2 _workSpaceVector;
 
+        protected override void OnValidate()
+        {
+            base.OnValidate();
+            FacingDirection = 1;
+        }
+
         protected override void Awake()
         {
             base.Awake();
