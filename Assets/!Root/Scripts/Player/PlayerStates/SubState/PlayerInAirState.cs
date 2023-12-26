@@ -60,7 +60,7 @@ namespace Suhdo.Player
             if (_jumpInput && player.JumpState.CanJump())
                 stateMachine.ChangeState(player.JumpState);
             else if(_isGrounded && core.Movement.CurrentVelocity.y < 0.01f)
-                stateMachine.ChangeState(player.IdleState);
+                stateMachine.ChangeState(player.LandState);
             else
             {
                 core.Movement.CheckIfShouldFlip(_xInput);
