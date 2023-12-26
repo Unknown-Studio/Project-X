@@ -1,3 +1,4 @@
+using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -42,6 +43,19 @@ namespace Suhdo.CharacterCore
 
         public bool WallBack => Physics2D.Raycast(wallCheck.position, Vector2.right * -_core.Movement.FacingDirection,
             wallCheckDistance, whatIsGround);
+
+        #endregion
+
+        #region Gizmos
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+            Gizmos.DrawLine(wallCheck.position,
+                wallCheck.position + (Vector3)(Vector2.right * _core.Movement.FacingDirection * wallCheckDistance));
+            Gizmos.DrawLine(wallCheck.position,
+                wallCheck.position + (Vector3)(Vector2.right * -_core.Movement.FacingDirection * wallCheckDistance));
+        }
 
         #endregion
     }
