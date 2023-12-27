@@ -32,8 +32,6 @@ namespace Suhdo.Player
             RawMovementInput = context.ReadValue<Vector2>();
             NormInputX = Mathf.RoundToInt(RawMovementInput.x);
             NormInputY = Mathf.RoundToInt(RawMovementInput.y);
-            Debug.Log($"{NormInputX} + {NormInputY}");
-
         }
 
         public void OnJumpInput(InputAction.CallbackContext context)
