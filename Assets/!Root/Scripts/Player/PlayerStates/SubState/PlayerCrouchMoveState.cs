@@ -1,10 +1,8 @@
 using Suhdo.Player;
 using Suhdo.StateMachineCore;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Suhdo
+namespace Suhdo.Player
 {
 	public class PlayerCrouchMoveState : PlayerGroundState
 	{

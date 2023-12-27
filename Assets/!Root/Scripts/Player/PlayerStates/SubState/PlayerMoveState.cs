@@ -1,5 +1,4 @@
 using Suhdo.StateMachineCore;
-using UnityEngine;
 
 namespace Suhdo.Player
 {
