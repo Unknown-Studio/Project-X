@@ -17,7 +17,6 @@ namespace Suhdo.Player
         public PlayerInputHandler InputHandler { get; private set; }
 		public PlayerCrouchIdleState CrouchIdleState { get; private set; }
 		public PlayerCrouchMoveState CrouchMoveState { get; private set; }
-		public PlayerInputHandler InputHandler { get; private set; }
 
         private Vector2 _workSpaceVector;
 
