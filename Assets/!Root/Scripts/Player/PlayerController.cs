@@ -15,6 +15,8 @@ namespace Suhdo.Player
         public PlayerLandState LandState { get; private set; }
         
         public PlayerInputHandler InputHandler { get; private set; }
+		public PlayerCrouchIdleState CrouchIdleState { get; private set; }
+		public PlayerCrouchMoveState CrouchMoveState { get; private set; }
 
         private Vector2 _workSpaceVector;
 
@@ -28,6 +30,8 @@ namespace Suhdo.Player
             JumpState = new PlayerJumpState(StateMachine, this, "inAir", playerData);
             InAirState = new PlayerInAirState(StateMachine, this, "inAir", playerData);
             LandState = new PlayerLandState(StateMachine, this, "land", playerData);
+			CrouchIdleState = new PlayerCrouchIdleState(StateMachine, this, "crouchidle", playerData);
+			CrouchMoveState = new PlayerCrouchMoveState(StateMachine, this, "crouchmove", playerData);
         }
 
         protected override void Start()

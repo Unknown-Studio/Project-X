@@ -1,5 +1,4 @@
 using Suhdo.StateMachineCore;
-using UnityEngine;
 
 namespace Suhdo.Player
 {
@@ -22,6 +21,7 @@ namespace Suhdo.Player
             if (isExitingState) return;
             
             if(xInput != 0) stateMachine.ChangeState(player.MoveState);
+            if(yInput == -1) stateMachine.ChangeState(player.CrouchIdleState);
         }
     }
 }
