@@ -1,6 +1,4 @@
-using System;
 using Suhdo.CharacterCore;
-using Suhdo.DataCore;
 using Suhdo.Ultils;
 using UnityEngine;
 
