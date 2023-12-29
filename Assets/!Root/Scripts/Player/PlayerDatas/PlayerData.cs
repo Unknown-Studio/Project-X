@@ -16,6 +16,9 @@ namespace Suhdo.Player
         public float coyoteTime = 0.2f;
         public float variableJumpHeightMultiplier = 0.5f;
 
+        [Header("Crouch State")]
+        public float crouchMovementVelocity = 5f;
+
         /*[Header("Wall Jump State")]
         public float wallJumpVelocity = 20f;
         public float wallJumpTime = 0.4f;

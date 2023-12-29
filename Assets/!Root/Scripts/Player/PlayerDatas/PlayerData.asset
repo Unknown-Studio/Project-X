@@ -17,3 +17,4 @@ MonoBehaviour:
   amountOfJumps: 2
   coyoteTime: 0.2
   variableJumpHeightMultiplier: 0.5
+  crouchMovementVelocity: 5

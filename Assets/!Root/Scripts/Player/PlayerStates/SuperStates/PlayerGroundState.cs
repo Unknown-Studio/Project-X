@@ -1,7 +1,4 @@
-using Suhdo.Player;
 using Suhdo.StateMachineCore;
-using UnityEngine;
-using UnityEngine.Playables;
 
 namespace Suhdo.Player
 {
@@ -43,8 +40,8 @@ namespace Suhdo.Player
             xInput = player.InputHandler.NormInputX;
             yInput = player.InputHandler.NormInputY;
             _jumpInput = player.InputHandler.JumpInput;
-            
-            if(_jumpInput && player.JumpState.CanJump())
+
+			if (_jumpInput && player.JumpState.CanJump())
             {
                 stateMachine.ChangeState(player.JumpState);
             }
