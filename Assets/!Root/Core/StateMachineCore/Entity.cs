@@ -19,7 +19,6 @@ namespace Suhdo.StateMachineCore
         {
             StateMachine = new StateMachine();
             Core = GetComponentInChildren<Core>();
-
         }
 
         protected virtual void Start()
@@ -27,7 +26,7 @@ namespace Suhdo.StateMachineCore
             Anim = GetComponent<Animator>();
             RB = GetComponent<Rigidbody2D>();
             MovementCollider = GetComponent<BoxCollider2D>();
-
+            AnimToStateMachine = GetComponent<AnimationToStateMachine>();
         }
 
         protected virtual void Update()
