@@ -8,7 +8,6 @@ on:
     branches:
       - develop
 
-### Refer to https://game.ci/docs/github/getting-started
 jobs:
   checklicense:
     name: Check for UNITY_LICENSE in GitHub Secrets
