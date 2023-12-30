@@ -20,8 +20,8 @@ namespace Suhdo.Player
         {
             base.DoChecks();
 
-            _isGrounded = core.CollisionSenses.Ground;
-            _isTouchingWall = core.CollisionSenses.WallFront;
+            _isGrounded = PlayerCore.PlayerCollisionSenses.Ground;
+            _isTouchingWall = PlayerCore.PlayerCollisionSenses.WallFront;
         }
 
         public override void Enter()

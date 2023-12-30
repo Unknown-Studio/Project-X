@@ -1,9 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
 using Suhdo.CharacterCore;
 using UnityEngine;
 
-namespace Suhdo
+namespace Suhdo.CharacterCore
 {
-    public class MovementCore : CoreComponent
+    public class EnemyMovement : EnemyCoreComponent
     {
         public Rigidbody2D RB { get; private set; }
         public int FacingDirection { get; private set; }
@@ -82,3 +84,4 @@ namespace Suhdo
         }
     }
 }
+

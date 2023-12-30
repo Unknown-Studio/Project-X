@@ -14,8 +14,8 @@ namespace Suhdo.Player
 		{
 			base.LogicUpdate();
 
-			core.Movement.CheckIfShouldFlip(xInput);
-			core.Movement.SetVelocityX(playerData.crouchMovementVelocity * xInput);
+			PlayerCore.PlayerMovement.CheckIfShouldFlip(xInput);
+			PlayerCore.PlayerMovement.SetVelocityX(playerData.crouchMovementVelocity * xInput);
 
 
 			if (isExitingState) return;

@@ -9,7 +9,7 @@ namespace Suhdo.StateMachineCore
         
         protected StateMachine stateMachine;
         protected Entity entity;
-        protected Core core;
+        protected PlayerCore PlayerCore;
         
         protected string animBoolName;
         protected bool isAnimationFinished;
@@ -20,7 +20,7 @@ namespace Suhdo.StateMachineCore
             this.stateMachine = stateMachine;
             this.entity = entity;
             this.animBoolName = animBoolName;
-            core = entity.Core;
+            PlayerCore = entity.PlayerCore;
         }
 
         public virtual void Enter()

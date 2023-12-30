@@ -6,7 +6,7 @@ namespace Suhdo.StateMachineCore
 {
     public class Entity : MonoBehaviour
     {
-        public Core Core { get; protected set; }
+        public PlayerCore PlayerCore { get; protected set; }
         public Rigidbody2D RB { get; private set; }
         public Animator Anim { get; private set; }
         public BoxCollider2D MovementCollider { get; private set; }
@@ -18,8 +18,7 @@ namespace Suhdo.StateMachineCore
         protected virtual void Awake()
         {
             StateMachine = new StateMachine();
-            Core = GetComponentInChildren<Core>();
-
+            PlayerCore = GetComponentInChildren<PlayerCore>();
         }
 
         protected virtual void Start()
@@ -27,12 +26,12 @@ namespace Suhdo.StateMachineCore
             Anim = GetComponent<Animator>();
             RB = GetComponent<Rigidbody2D>();
             MovementCollider = GetComponent<BoxCollider2D>();
-
+            AnimToStateMachine = GetComponent<AnimationToStateMachine>();
         }
 
         protected virtual void Update()
         {
-            Core.LogicUpdate();
+            PlayerCore.LogicUpdate();
             StateMachine.CurrentCoreState.LogicUpdate();
         }
 
