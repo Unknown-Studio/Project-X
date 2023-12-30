@@ -7,47 +7,6 @@ on:
   pull_request:
     branches:
       - develop
-env:
-  UNITY_LICENSE: |
-    -----BEGIN LICENSE-----
-    <?xml version="1.0" encoding="UTF-8"?><root><TimeStamp Value="NyTy2SjFZZFHiQ=="/>
-    <License id="Terms">
-        <MachineBindings>
-            <Binding Key="1" Value="00327-35934-19513-AAOEM"/>
-            <Binding Key="2" Value="00000_00_000000_00_1000A7_25_1E2D1F_F3.4"/>
-            <Binding Key="4" Value="OVM3MTdGNjEyMDEzWkw3MDAwMTMy"/>
-            <Binding Key="5" Value="14:85:7f:53:c8:a2"/>
-        </MachineBindings>
-        <MachineID Value="phC8PCLQf+useXZykv6Qu1JDdKw="/>
-        <SerialHash Value="26c3bed3bb49fe1a7c617de16c22d9bb59872d9d"/>
-        <Features>
-            <Feature Value="33"/>
-            <Feature Value="1"/>
-            <Feature Value="12"/>
-            <Feature Value="2"/>
-            <Feature Value="24"/>
-            <Feature Value="3"/>
-            <Feature Value="36"/>
-            <Feature Value="17"/>
-            <Feature Value="19"/>
-            <Feature Value="62"/>
-            <Feature Value="60"/>
-        </Features>
-        <DeveloperData Value="AQAAAEY0LTZHWEctQjVKVS04UVlBLUI0SFUtVEc4Sg=="/>
-        <SerialMasked Value="F4-6GXG-B5JU-8QYA-B4HU-XXXX"/>
-        <StartDate Value="2022-01-10T00:00:00"/>
-        <StopDate Value="2024-01-29T16:12:25"/>
-        <UpdateDate Value="2023-12-30T15:12:25"/>
-        <InitialActivationDate Value="2022-01-10T03:53:00"/>
-        <LicenseVersion Value="6.x"/>
-        <ClientProvidedVersion Value="2017.2.0"/>
-        <AlwaysOnline Value="false"/>
-        <Entitlements>
-            <Entitlement Ns="unity_editor" Tag="UnityPersonal" Type="EDITOR" ValidTo="9999-12-31T00:00:00"/>
-            <Entitlement Ns="unity_editor" Tag="DarkSkin" Type="EDITOR_FEATURE" ValidTo="9999-12-31T00:00:00"/>
-        </Entitlements>
-    </License><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI="#Terms"><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>CkeV/XdgIDXJuEzwSbb37k1WcuA=</DigestValue></Reference></SignedInfo><SignatureValue>Istv9rES/XXzc6joEfxG8gf7wqp8kLixTEmXK0CysKJfDbV+Mpmav4uDeoGLYsg3Phonfb3b3Rbz243FyKAyXieFtXt1Z3HxIXvb7V3RyZKnGWlY8rr47WRfVfu0rrBVhu/colAtfn/Q4izunfQWZVawJ+hetNuMSXi8UIm5s3f9tiHnMa+yg7r1scy0njy8Sprfs8B4ZllmtIHmV0d9OI2BATvol18DxuHNjq4yodu70e8eHw9SEw4w6oH4ntRKUs9yVow0+i4KOtXflDeVNSbDXNCWa6Xux12Q7FGNtIWyv/lCxqs2vDlKajo6Iuk33W+Ubkl+oj6jqeJwqd1V2Q==</SignatureValue></Signature></root>
-    -----END LICENSE-----
 
 jobs:
   checklicense:
@@ -59,7 +18,7 @@ jobs:
       - name: Check whether unity activation requests should be done
         id: checklicense_job
         env:
-          UNITY_LICENSE: ${{ env.UNITY_LICENSE }}
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         run: |
@@ -99,7 +58,7 @@ jobs:
       - uses: game-ci/unity-test-runner@v2
         id: testRunner
         env:
-          UNITY_LICENSE: ${{ env.UNITY_LICENSE }}
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
