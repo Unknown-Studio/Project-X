@@ -1,10 +1,9 @@
-using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Suhdo.CharacterCore
 {
-    public class CollisionSenses : CoreComponent
+    public class PlayerCollisionSenses : PlayerCoreComponent
     {
         [SerializeField] private LayerMask whatIsGround;
 
@@ -38,10 +37,10 @@ namespace Suhdo.CharacterCore
 
         public bool Ground => Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
-        public bool WallFront => Physics2D.Raycast(wallCheck.position, Vector2.right * _core.Movement.FacingDirection,
+        public bool WallFront => Physics2D.Raycast(wallCheck.position, Vector2.right * PlayerCore.PlayerMovement.FacingDirection,
             wallCheckDistance, whatIsGround);
 
-        public bool WallBack => Physics2D.Raycast(wallCheck.position, Vector2.right * -_core.Movement.FacingDirection,
+        public bool WallBack => Physics2D.Raycast(wallCheck.position, Vector2.right * -PlayerCore.PlayerMovement.FacingDirection,
             wallCheckDistance, whatIsGround);
 
         #endregion
@@ -52,9 +51,9 @@ namespace Suhdo.CharacterCore
         {
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
             Gizmos.DrawLine(wallCheck.position,
-                wallCheck.position + (Vector3)(Vector2.right * _core.Movement.FacingDirection * wallCheckDistance));
+                wallCheck.position + (Vector3)(Vector2.right * PlayerCore.PlayerMovement.FacingDirection * wallCheckDistance));
             Gizmos.DrawLine(wallCheck.position,
-                wallCheck.position + (Vector3)(Vector2.right * -_core.Movement.FacingDirection * wallCheckDistance));
+                wallCheck.position + (Vector3)(Vector2.right * -PlayerCore.PlayerMovement.FacingDirection * wallCheckDistance));
         }
 
         #endregion

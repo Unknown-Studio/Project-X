@@ -24,7 +24,7 @@ namespace Suhdo.Player
         {
             base.Awake();
             
-            Core = GetComponentInChildren<Core>();
+            PlayerCore = GetComponentInChildren<PlayerCore>();
             IdleState = new PlayerIdleState(StateMachine, this, "idle", playerData);
             MoveState = new PlayerMoveState(StateMachine, this, "move", playerData);
             JumpState = new PlayerJumpState(StateMachine, this, "inAir", playerData);
