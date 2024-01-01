@@ -6,6 +6,7 @@ namespace Suhdo.Player
     {
         protected int xInput;
         protected int yInput;
+        protected bool _isCelling;
 
         private bool _jumpInput;
         private bool _isGrounded;
@@ -22,6 +23,7 @@ namespace Suhdo.Player
 
             _isGrounded = PlayerCore.PlayerCollisionSenses.Ground;
             _isTouchingWall = PlayerCore.PlayerCollisionSenses.WallFront;
+            _isCelling = PlayerCore.PlayerCollisionSenses.Celling;
         }
 
         public override void Enter()

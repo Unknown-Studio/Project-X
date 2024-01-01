@@ -3,33 +3,40 @@ using UnityEngine;
 
 namespace Suhdo.Player
 {
-    public class PlayerJumpState : PlayerAbilityState
-    {
-        private int amountOffJumpLeft;
-        
-        public PlayerJumpState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data) : base(stateMachine, entity, animBoolName, data)
-        {
-        }
-        
-        public override void Enter()
-        {
-            base.Enter();
-            Debug.Log("Jump");
-            
-            player.InputHandler.UserJumpInput();
-            PlayerCore.PlayerMovement.SetVelocityY(playerData.jumpVelocity);
-            isAbilityDone = true;
-            amountOffJumpLeft--;
-            player.InAirState.SetIsJumping();
-        }
+	public class PlayerJumpState : PlayerAbilityState
+	{
+		private int amountOffJumpLeft;
 
-        public bool CanJump()
-        {
-            return amountOffJumpLeft > 0;
-        }
+		public PlayerJumpState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data) : base(stateMachine, entity, animBoolName, data)
+		{
+		}
 
-        public void ResetAmountOffJumpLeft() => amountOffJumpLeft = playerData.amountOfJumps;
-        public void DecreaseAmountOffJumpLeft() => amountOffJumpLeft--;
+		public override void Enter()
+		{
+			base.Enter();
+			
+			if (!isCelling)
+			{
+				Debug.Log("Jump");
+				player.InputHandler.UserJumpInput();
+				PlayerCore.PlayerMovement.SetVelocityY(playerData.jumpVelocity);
+				isAbilityDone = true;
+				amountOffJumpLeft--;
+				player.InAirState.SetIsJumping();
+			}
+			else
+			{
+				stateMachine.ChangeState(player.CrouchIdleState);
+			}
+		}
 
-    }
+		public bool CanJump()
+		{
+			return amountOffJumpLeft > 0;
+		}
+
+		public void ResetAmountOffJumpLeft() => amountOffJumpLeft = playerData.amountOfJumps;
+		public void DecreaseAmountOffJumpLeft() => amountOffJumpLeft--;
+
+	}
 }

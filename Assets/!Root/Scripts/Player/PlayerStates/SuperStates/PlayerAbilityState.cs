@@ -8,6 +8,7 @@ namespace Suhdo.Player
         protected bool isAbilityDone;
 
         private bool isGrounded;
+        protected bool isCelling;
         
         public PlayerAbilityState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data) : base(stateMachine, entity, animBoolName, data)
         {
@@ -18,6 +19,7 @@ namespace Suhdo.Player
             base.DoChecks();
 
             isGrounded = PlayerCore.PlayerCollisionSenses.Ground;
+            isCelling = PlayerCore.PlayerCollisionSenses.Celling;
         }
 
         public override void Enter()

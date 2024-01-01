@@ -6,6 +6,7 @@ namespace Suhdo.CharacterCore
     public class PlayerCollisionSenses : PlayerCoreComponent
     {
         [SerializeField] private LayerMask whatIsGround;
+        [SerializeField] private LayerMask whatIsCelling;
 
         [FoldoutGroup("Ground Check", expanded: false)] [SerializeField]
         private Transform groundCheck;
@@ -19,9 +20,18 @@ namespace Suhdo.CharacterCore
         [FoldoutGroup("Wall Check")] [SerializeField]
         private float wallCheckDistance;
 
+        [FoldoutGroup("Celling Check", expanded: false)]
+        [SerializeField]
+        private Transform cellingCheck;
+
+        [FoldoutGroup("Celling Check")]
+        [SerializeField]
+        private float cellingCheckRadius;
+
         #region Public variables
 
         public LayerMask WhatIsGround => whatIsGround;
+        public LayerMask WhatIsCelling => whatIsCelling;
 
         public Transform GroundCheck
         {
@@ -35,7 +45,16 @@ namespace Suhdo.CharacterCore
             private set => wallCheck = value;
         }
 
+        public Transform CellingCheck
+        {
+            get => cellingCheck;
+            private set => cellingCheck = value;
+        }
+
         public bool Ground => Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+
+        public bool Celling => Physics2D.OverlapCircle(cellingCheck.position, cellingCheckRadius, whatIsCelling);
+
 
         public bool WallFront => Physics2D.Raycast(wallCheck.position, Vector2.right * PlayerCore.PlayerMovement.FacingDirection,
             wallCheckDistance, whatIsGround);

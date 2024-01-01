@@ -18,12 +18,14 @@ namespace Suhdo.Player
 		public override void LogicUpdate()
 		{
 			base.LogicUpdate();
+
 			if (isExitingState) return;
 
-			if (xInput != 0f && yInput == -1f) { stateMachine.ChangeState(player.CrouchMoveState); Debug.Log("CrouchIdle"); }
-			else if (xInput == 0f && yInput == 0f) { stateMachine.ChangeState(player.IdleState); Debug.Log("CrouchIdle"); }
-			else if (xInput != 0f && yInput == 0f) { stateMachine.ChangeState(player.MoveState); Debug.Log("CrouchIdle"); }
-
+			if (xInput != 0f && yInput == -1f) { stateMachine.ChangeState(player.CrouchMoveState); }
+			else if (xInput == 0f && yInput == 0f) { stateMachine.ChangeState(player.IdleState); }
+			else if (xInput != 0f && yInput == 0f) { stateMachine.ChangeState(player.MoveState); }
+			if (yInput != -1f && _isCelling && xInput == 0f) stateMachine.ChangeState(player.CrouchIdleState);
+			else if (yInput != -1f && _isCelling && xInput != 0f) stateMachine.ChangeState(player.CrouchMoveState);
 		}
 	}
 }
