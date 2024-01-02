@@ -11,9 +11,9 @@ namespace Suhdo.Enemies
         public GameObject aliveGO { get; private set; }
         public EnemyCore EnemyCore { get; private set; }
 
-        private float _currentHealth;
-        private float _currentStunResistance;
-        private float _lastDamageTime;
+        protected float currentHealth;
+        protected float currentStunResistance;
+        protected float lastDamageTime;
 
         private Vector2 _velocityWorkspace;
 
@@ -30,8 +30,8 @@ namespace Suhdo.Enemies
         {
             base.Start();
 
-            _currentHealth = entityData.maxHealth;
-            _currentStunResistance = entityData.stunResistance;
+            currentHealth = entityData.maxHealth;
+            currentStunResistance = entityData.stunResistance;
         }
 
         protected override void Update()

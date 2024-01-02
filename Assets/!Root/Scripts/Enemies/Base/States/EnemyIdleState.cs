@@ -24,5 +24,44 @@ namespace Suhdo.Enemies
             base.DoChecks();
             isPlayerInMinAgroRange = enemy.EnemyCore.EnemyCollisionSenses.PlayerInMinAgroRange;
         }
+
+        public override void Enter()
+        {
+            base.Enter();
+            
+            enemyCore.EnemyMovement.SetVelocityZero();
+            isIdleTimeOver = false;
+            RandomIdleTime();
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+
+            if (flipAfterIdle)
+            {
+                enemyCore.EnemyMovement.Flip();
+            }
+        }
+
+        public override void LogicUpdate()
+        {
+            base.LogicUpdate();
+
+            if (Time.time >= StartTime + idleTime)
+            {
+                isIdleTimeOver = true;
+            }
+        }
+
+        public void SetFlipAfterIdle(bool isFlip)
+        {
+            flipAfterIdle = isFlip;
+        }
+
+        private void RandomIdleTime()
+        {
+            idleTime = Random.Range(stateData.minIdleTime, stateData.maxIdleTime);
+        }
     }
 }

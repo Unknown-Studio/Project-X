@@ -74,7 +74,7 @@ namespace Suhdo.CharacterCore
                 Flip();
         }
 
-        private void Flip()
+        public void Flip()
         {
             FacingDirection *= -1;
             RB.transform.Rotate(0, 180, 0);
