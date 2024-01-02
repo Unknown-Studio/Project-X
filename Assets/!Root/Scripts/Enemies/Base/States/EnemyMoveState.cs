@@ -4,7 +4,7 @@ namespace Suhdo.Enemies
 {
     public class EnemyMoveState : EnemyState
     {
-        protected D_EnemyMoveState StateData;
+        protected D_EnemyMoveState stateData;
 
         protected bool isDetectingWall;
         protected bool isDetectingLedge;
@@ -13,7 +13,23 @@ namespace Suhdo.Enemies
         public EnemyMoveState(StateMachine stateMachine, Entity entity, string animBoolName, D_EnemyMoveState data)
             : base(stateMachine, entity, animBoolName)
         {
-            StateData = data;
+            stateData = data;
+        }
+
+        public override void DoChecks()
+        {
+            base.DoChecks();
+
+            isDetectingLedge = enemyCore.EnemyCollisionSenses.Ledge;
+            isDetectingWall = enemyCore.EnemyCollisionSenses.WallFront;
+            isPlayerInMinAgroRange = enemyCore.EnemyCollisionSenses.PlayerInMinAgroRange;
+        }
+
+        public override void Enter()
+        {
+            base.Enter();
+            
+            enemyCore.EnemyMovement.SetVelocityX(stateData.MovementSpeed * enemyCore.EnemyMovement.FacingDirection);
         }
     }
 }

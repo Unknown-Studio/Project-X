@@ -21,7 +21,7 @@ namespace Suhdo.Enemies.Skeleton
             }
             else if (isIdleTimeOver)
             {
-                //Change to Move state
+                stateMachine.ChangeState(_skeleton.MoveState);
             }
         }
     }
