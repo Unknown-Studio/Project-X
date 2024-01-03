@@ -30,7 +30,6 @@ namespace Suhdo.CharacterCore
         #region Public variables
 
         public LayerMask WhatIsGround => whatIsGround;
-        public LayerMask WhatIsCeiling => whatIsGround;
 
         public Transform GroundCheck
         {
