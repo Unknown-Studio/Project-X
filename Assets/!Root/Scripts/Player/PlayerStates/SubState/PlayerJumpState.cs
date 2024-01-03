@@ -15,19 +15,12 @@ namespace Suhdo.Player
 		{
 			base.Enter();
 			
-			if (!isCelling)
-			{
 				Debug.Log("Jump");
 				player.InputHandler.UserJumpInput();
 				PlayerCore.PlayerMovement.SetVelocityY(playerData.jumpVelocity);
 				isAbilityDone = true;
 				amountOffJumpLeft--;
 				player.InAirState.SetIsJumping();
-			}
-			else
-			{
-				stateMachine.ChangeState(player.CrouchIdleState);
-			}
 		}
 
 		public bool CanJump()

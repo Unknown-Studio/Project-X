@@ -10,7 +10,7 @@ namespace Suhdo.Player
         private bool _jumpInputStop;
 
         private bool _isGrounded;
-        private bool _isCelling;
+        private bool _isCeiling;
         private bool _isTouchingWall;
         private bool _isTouchingWallBack;
         private bool _oldIsTouchingWall;
@@ -30,7 +30,7 @@ namespace Suhdo.Player
 
             _oldIsTouchingWall = _isTouchingWall;
             _oldIsTouchingWallBack = _isTouchingWallBack;
-            _isCelling = PlayerCore.PlayerCollisionSenses.Celling;
+            _isCeiling = PlayerCore.PlayerCollisionSenses.Ceiling;
             _isGrounded = PlayerCore.PlayerCollisionSenses.Ground;
             _isTouchingWall = PlayerCore.PlayerCollisionSenses.WallFront;
             _isTouchingWallBack = PlayerCore.PlayerCollisionSenses.WallBack;
@@ -50,7 +50,7 @@ namespace Suhdo.Player
         {
             base.LogicUpdate();
 
-			if (!_isCelling)
+			if (!_isCeiling)
 			{
                 CheckCoyoteTime();
 
@@ -73,10 +73,6 @@ namespace Suhdo.Player
                     player.Anim.SetFloat("xVelocity", Mathf.Abs(PlayerCore.PlayerMovement.CurrentVelocity.x));
                 }
             }
-			else
-			{
-                stateMachine.ChangeState(player.CrouchIdleState);
-			}
         }
 
         public void StartCoyoteTime() => _coyoteTime = true;

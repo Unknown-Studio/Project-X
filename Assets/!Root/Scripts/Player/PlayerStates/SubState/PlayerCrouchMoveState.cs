@@ -21,11 +21,9 @@ namespace Suhdo.Player
 			if (isExitingState) return;
 
 
-			if (xInput == 0f && yInput == -1f) stateMachine.ChangeState(player.CrouchIdleState);
-			else if (xInput != 0f && yInput == 0f) stateMachine.ChangeState(player.MoveState);
-			else if (xInput == 0f && yInput == 0f) stateMachine.ChangeState(player.MoveState);
-			if (yInput != -1f && _isCelling && xInput == 0f) stateMachine.ChangeState(player.CrouchIdleState);
-			else if (yInput != -1f && _isCelling && xInput != 0f) stateMachine.ChangeState(player.CrouchMoveState);
+			if (xInput == 0f && (yInput == -1f || _isCeiling)) stateMachine.ChangeState(player.CrouchIdleState);
+			else if (xInput != 0f && yInput == 0f && !_isCeiling) stateMachine.ChangeState(player.MoveState);
+			else if (xInput == 0f && yInput == 0f && !_isCeiling) stateMachine.ChangeState(player.IdleState);
 		}
 
 	}

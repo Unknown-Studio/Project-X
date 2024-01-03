@@ -6,7 +6,7 @@ namespace Suhdo.Player
     {
         protected int xInput;
         protected int yInput;
-        protected bool _isCelling;
+        protected bool _isCeiling;
 
         private bool _jumpInput;
         private bool _isGrounded;
@@ -23,7 +23,7 @@ namespace Suhdo.Player
 
             _isGrounded = PlayerCore.PlayerCollisionSenses.Ground;
             _isTouchingWall = PlayerCore.PlayerCollisionSenses.WallFront;
-            _isCelling = PlayerCore.PlayerCollisionSenses.Celling;
+            _isCeiling = PlayerCore.PlayerCollisionSenses.Ceiling;
         }
 
         public override void Enter()
@@ -43,7 +43,7 @@ namespace Suhdo.Player
             yInput = player.InputHandler.NormInputY;
             _jumpInput = player.InputHandler.JumpInput;
 
-			if (_jumpInput && player.JumpState.CanJump())
+			if (_jumpInput && player.JumpState.CanJump()&& !_isCeiling)
             {
                 stateMachine.ChangeState(player.JumpState);
             }

@@ -6,7 +6,6 @@ namespace Suhdo.CharacterCore
     public class PlayerCollisionSenses : PlayerCoreComponent
     {
         [SerializeField] private LayerMask whatIsGround;
-        [SerializeField] private LayerMask whatIsCelling;
 
         [FoldoutGroup("Ground Check", expanded: false)] [SerializeField]
         private Transform groundCheck;
@@ -20,18 +19,18 @@ namespace Suhdo.CharacterCore
         [FoldoutGroup("Wall Check")] [SerializeField]
         private float wallCheckDistance;
 
-        [FoldoutGroup("Celling Check", expanded: false)]
+        [FoldoutGroup("Ceiling Check", expanded: false)]
         [SerializeField]
-        private Transform cellingCheck;
+        private Transform ceilingCheck;
 
-        [FoldoutGroup("Celling Check")]
+        [FoldoutGroup("Ceiling Check")]
         [SerializeField]
-        private float cellingCheckRadius;
+        private float ceilingCheckRadius;
 
         #region Public variables
 
         public LayerMask WhatIsGround => whatIsGround;
-        public LayerMask WhatIsCelling => whatIsCelling;
+        public LayerMask WhatIsCeiling => whatIsGround;
 
         public Transform GroundCheck
         {
@@ -45,15 +44,15 @@ namespace Suhdo.CharacterCore
             private set => wallCheck = value;
         }
 
-        public Transform CellingCheck
+        public Transform CeilingCheck
         {
-            get => cellingCheck;
-            private set => cellingCheck = value;
+            get => ceilingCheck;
+            private set => ceilingCheck = value;
         }
 
         public bool Ground => Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
-        public bool Celling => Physics2D.OverlapCircle(cellingCheck.position, cellingCheckRadius, whatIsCelling);
+        public bool Ceiling => Physics2D.OverlapCircle(ceilingCheck.position, ceilingCheckRadius, whatIsGround);
 
 
         public bool WallFront => Physics2D.Raycast(wallCheck.position, Vector2.right * PlayerCore.PlayerMovement.FacingDirection,
@@ -69,6 +68,7 @@ namespace Suhdo.CharacterCore
         private void OnDrawGizmos()
         {
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+            Gizmos.DrawWireSphere(ceilingCheck.position, ceilingCheckRadius);
             Gizmos.DrawLine(wallCheck.position,
                 wallCheck.position + (Vector3)(Vector2.right * PlayerCore.PlayerMovement.FacingDirection * wallCheckDistance));
             Gizmos.DrawLine(wallCheck.position,

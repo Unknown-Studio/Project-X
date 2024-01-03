@@ -17799,9 +17799,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7490412835703873919, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
+      propertyPath: ceilingCheck
+      value: 
+      objectReference: {fileID: 230895844}
+    - target: {fileID: 7490412835703873919, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
       propertyPath: cellingCheck
       value: 
       objectReference: {fileID: 230895844}
+    - target: {fileID: 7490412835703873919, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
+      propertyPath: ceilingCheckRadius
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 7490412835703873919, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
       propertyPath: cellingCheckRadius
       value: 0.4
