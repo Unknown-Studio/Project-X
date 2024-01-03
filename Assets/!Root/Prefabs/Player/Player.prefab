@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6222986764601026719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1421151296965108353}
+  m_Layer: 0
+  m_Name: CellingCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1421151296965108353
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222986764601026719}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.003524597, z: -0, w: 0.9999938}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
+  m_LocalScale: {x: 1.0972, y: 1.0972, z: 1.0972}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4955132888959656962}
+  m_LocalEulerAnglesHint: {x: 0, y: -0.404, z: 0}
 --- !u!1 &7060496598666213500
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +352,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 493359724698257225, guid: a35f5b9a366043f43887a279bcd4b4b6, type: 3}
+      propertyPath: ceilingCheck
+      value: 
+      objectReference: {fileID: 1421151296965108353}
+    - target: {fileID: 493359724698257225, guid: a35f5b9a366043f43887a279bcd4b4b6, type: 3}
       propertyPath: groundCheckRadius
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 493359724698257225, guid: a35f5b9a366043f43887a279bcd4b4b6, type: 3}
+      propertyPath: ceilingCheckRadius
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4484149639910007982, guid: a35f5b9a366043f43887a279bcd4b4b6, type: 3}
@@ -330,9 +369,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2733585864917746228, guid: a35f5b9a366043f43887a279bcd4b4b6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1421151296965108353}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a35f5b9a366043f43887a279bcd4b4b6, type: 3}
+--- !u!4 &4955132888959656962 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2733585864917746228, guid: a35f5b9a366043f43887a279bcd4b4b6, type: 3}
+  m_PrefabInstance: {fileID: 7001847033245476406}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7168272685520270356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 167016644209152546, guid: a35f5b9a366043f43887a279bcd4b4b6, type: 3}

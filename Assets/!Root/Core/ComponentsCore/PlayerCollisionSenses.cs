@@ -19,6 +19,14 @@ namespace Suhdo.CharacterCore
         [FoldoutGroup("Wall Check")] [SerializeField]
         private float wallCheckDistance;
 
+        [FoldoutGroup("Ceiling Check", expanded: false)]
+        [SerializeField]
+        private Transform ceilingCheck;
+
+        [FoldoutGroup("Ceiling Check")]
+        [SerializeField]
+        private float ceilingCheckRadius;
+
         #region Public variables
 
         public LayerMask WhatIsGround => whatIsGround;
@@ -35,7 +43,16 @@ namespace Suhdo.CharacterCore
             private set => wallCheck = value;
         }
 
+        public Transform CeilingCheck
+        {
+            get => ceilingCheck;
+            private set => ceilingCheck = value;
+        }
+
         public bool Ground => Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+
+        public bool Ceiling => Physics2D.OverlapCircle(ceilingCheck.position, ceilingCheckRadius, whatIsGround);
+
 
         public bool WallFront => Physics2D.Raycast(wallCheck.position, Vector2.right * PlayerCore.PlayerMovement.FacingDirection,
             wallCheckDistance, whatIsGround);
@@ -50,6 +67,7 @@ namespace Suhdo.CharacterCore
         private void OnDrawGizmos()
         {
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+            Gizmos.DrawWireSphere(ceilingCheck.position, ceilingCheckRadius);
             Gizmos.DrawLine(wallCheck.position,
                 wallCheck.position + (Vector3)(Vector2.right * PlayerCore.PlayerMovement.FacingDirection * wallCheckDistance));
             Gizmos.DrawLine(wallCheck.position,
