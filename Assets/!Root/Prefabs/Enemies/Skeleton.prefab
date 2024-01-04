@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4520115478966046195}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8239913892243702614}
   - component: {fileID: 5342944659530918816}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,11 +84,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3695476663388669022}
+  - component: {fileID: 644111407093825644}
   - component: {fileID: 678711163349406651}
   - component: {fileID: 8104069407771176852}
   - component: {fileID: 4491783057761852894}
   - component: {fileID: 3836597247795887842}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,6 +112,21 @@ Transform:
   - {fileID: 1171683818203904367}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &644111407093825644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2280647491335151771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ddac7a9cdab3fd469dbe1bff493a744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityData: {fileID: 11400000, guid: 900940c7a989e134b85e4fcc64712aba, type: 2}
+  _idleStateData: {fileID: 11400000, guid: 176521e6ace7db740a06da0a4682a4af, type: 2}
+  _moveStateData: {fileID: 11400000, guid: 708da6abc82608346b6d0907b197c80c, type: 2}
 --- !u!212 &678711163349406651
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -265,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2945836560564596476}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -297,7 +313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1171683818203904367}
   - component: {fileID: 3352086203097603967}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4034188586139281785}
   - component: {fileID: 1400489302130706860}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CollisionSenses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   groundCheck: {fileID: 4520115478966046195}
   groundCheckRadius: 0.4
   wallCheck: {fileID: 2945836560564596476}
@@ -406,7 +422,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8342358702123144695}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LedgeCheck
   m_TagString: Untagged
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
@@ -437,7 +453,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8007730965269484316}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerCheck
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}

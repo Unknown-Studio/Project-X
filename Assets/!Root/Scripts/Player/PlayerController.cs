@@ -7,6 +7,8 @@ namespace Suhdo.Player
     public class PlayerController : Entity
     {
         [SerializeField] private PlayerData playerData;
+
+        public PlayerCore PlayerCore { get; private set; }
         
         public PlayerIdleState IdleState { get; private set; }
         public PlayerMoveState MoveState { get; private set; }
@@ -41,6 +43,12 @@ namespace Suhdo.Player
             
             InputHandler = GetComponent<PlayerInputHandler>();
             StateMachine.Initiallize(IdleState);
+        }
+
+        protected override void Update()
+        {
+            PlayerCore.LogicUpdate();
+            base.Update();
         }
 
         public void AnimationFinishedTrigger() => StateMachine.CurrentCoreState.AnimationFinishTrigger();
