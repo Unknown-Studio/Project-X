@@ -6,6 +6,7 @@ namespace Suhdo.Player
 	public class PlayerInAirState : PlayerState
 	{
 		private int _xInput;
+		private int _yInput;
 		private bool _jumpInput;
 		private bool _jumpInputStop;
 
@@ -55,6 +56,7 @@ namespace Suhdo.Player
 			CheckCoyoteTime();
 
 			_xInput = player.InputHandler.NormInputX;
+			_yInput = player.InputHandler.NormInputY;
 			_jumpInput = player.InputHandler.JumpInput;
 			_jumpInputStop = player.InputHandler.JumpInputStop;
 
@@ -62,6 +64,8 @@ namespace Suhdo.Player
 
 			if (_jumpInput && player.JumpState.CanJump())
 				stateMachine.ChangeState(player.JumpState);
+			else if(_isGrounded && PlayerCore.PlayerMovement.CurrentVelocity.y < 0.01f && _yInput == -1)
+				stateMachine.ChangeState(player.CrouchIdleState);
 			else if (_isGrounded && PlayerCore.PlayerMovement.CurrentVelocity.y < 0.01f)
 				stateMachine.ChangeState(player.LandState);
 			else

@@ -24,9 +24,9 @@ namespace Suhdo
             {
                 // Change to Detected state
             }
-            else if (isDetectingWall || !isDetectingLedge)
+            else if (isDetectingWall || !isDetectingLedge || isTimeOut)
             {
-                _skeleton.IdleState.SetFlipAfterIdle(true);
+                _skeleton.IdleState.SetFlipAfterIdle(!isTimeOut);
                 stateMachine.ChangeState(_skeleton.IdleState);
             }
         }

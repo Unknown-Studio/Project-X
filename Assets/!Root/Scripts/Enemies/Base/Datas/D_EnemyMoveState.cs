@@ -6,5 +6,8 @@ namespace Suhdo.Enemies
     public class D_EnemyMoveState : ScriptableObject
     {
         public float MovementSpeed = 3f;
+
+        public float MinMoveTime = 5f;
+        public float MaxMoveTime = 20f;
     }
 }
