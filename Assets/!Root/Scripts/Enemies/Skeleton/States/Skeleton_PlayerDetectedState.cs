@@ -21,7 +21,7 @@ namespace Suhdo.Enemies.Skeleton
             }
             else if (performLongRangeAction)
             {
-                // Change to charge state
+                stateMachine.ChangeState(_skeleton.ChargeState);
             }
             else if (!isPlayerInMaxAgroRange)
             {

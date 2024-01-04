@@ -54,7 +54,7 @@ namespace Suhdo.CharacterCore
 
         public void SetVelocityX(float velocity)
         {
-            _workSpaceVector.Set(velocity, CurrentVelocity.y);
+            _workSpaceVector.Set(velocity * FacingDirection, CurrentVelocity.y);
             RB.velocity = _workSpaceVector;
             CurrentVelocity = _workSpaceVector;
         }
