@@ -24,6 +24,8 @@ namespace Suhdo
             {
                 // Change to Detected state
             }
+            else if(!isDetectingGround)
+                stateMachine.ChangeState(_skeleton.FallState);
             else if (isDetectingWall || !isDetectingLedge || isTimeOut)
             {
                 _skeleton.IdleState.SetFlipAfterIdle(!isTimeOut);

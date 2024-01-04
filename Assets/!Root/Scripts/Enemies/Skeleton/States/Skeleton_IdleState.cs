@@ -19,10 +19,10 @@ namespace Suhdo.Enemies.Skeleton
             {
                 //Change to Detected state
             }
+            else if(!isDetectingGround)
+                stateMachine.ChangeState(_skeleton.FallState);
             else if (isIdleTimeOver)
-            {
                 stateMachine.ChangeState(_skeleton.MoveState);
-            }
         }
     }
 }

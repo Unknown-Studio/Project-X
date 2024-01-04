@@ -8,10 +8,7 @@ namespace Suhdo.Enemies
     public class EnemyMoveState : EnemyState
     {
         protected D_EnemyMoveState stateData;
-
-        protected bool isDetectingWall;
-        protected bool isDetectingLedge;
-        protected bool isPlayerInMinAgroRange;
+        
         protected bool isTimeOut;
 
         protected float moveTime;
@@ -26,9 +23,6 @@ namespace Suhdo.Enemies
         {
             base.DoChecks();
 
-            isDetectingLedge = enemyCore.EnemyCollisionSenses.Ledge;
-            isDetectingWall = enemyCore.EnemyCollisionSenses.WallFront;
-            isPlayerInMinAgroRange = enemyCore.EnemyCollisionSenses.PlayerInMinAgroRange;
             isTimeOut = Time.time >= StartTime + moveTime;
         }
 
