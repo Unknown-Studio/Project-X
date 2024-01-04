@@ -127,6 +127,9 @@ MonoBehaviour:
   entityData: {fileID: 11400000, guid: 900940c7a989e134b85e4fcc64712aba, type: 2}
   _idleStateData: {fileID: 11400000, guid: 176521e6ace7db740a06da0a4682a4af, type: 2}
   _moveStateData: {fileID: 11400000, guid: 708da6abc82608346b6d0907b197c80c, type: 2}
+  _playerDetectedData: {fileID: 11400000, guid: 3dc74291b3a865f40b75f778b01cd793, type: 2}
+  _chargeStateData: {fileID: 11400000, guid: 19ecc997b91b5fb4bb0c19d4e345ec0d, type: 2}
+  _lookingForPlayerData: {fileID: 11400000, guid: 8eb45a72d0e2e1842aa979ea609c0ee1, type: 2}
 --- !u!212 &678711163349406651
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -412,7 +415,7 @@ MonoBehaviour:
   closeRangeActionDistance: 1.7
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 128
 --- !u!1 &4639540788786258499
 GameObject:
   m_ObjectHideFlags: 0
