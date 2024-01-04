@@ -13,6 +13,8 @@ namespace Suhdo.Enemies
         protected bool isDetectingWall;
         protected bool isDetectingLedge;
         protected bool isPlayerInMinAgroRange;
+        protected bool isPlayerInMaxAgroRange;
+        protected bool performCloseRangeAction;
         
         public EnemyState(StateMachine stateMachine, Entity entity, string animBoolName)
             : base(stateMachine, entity, animBoolName)
@@ -28,6 +30,8 @@ namespace Suhdo.Enemies
             isDetectingLedge = enemyCore.EnemyCollisionSenses.Ledge;
             isDetectingWall = enemyCore.EnemyCollisionSenses.WallFront;
             isPlayerInMinAgroRange = enemyCore.EnemyCollisionSenses.PlayerInMinAgroRange;
+            isPlayerInMaxAgroRange = enemyCore.EnemyCollisionSenses.PlayerInMaxAgroRange;
+            performCloseRangeAction = enemyCore.EnemyCollisionSenses.PlayerInCloseRangeAction;
         }
     }
 }

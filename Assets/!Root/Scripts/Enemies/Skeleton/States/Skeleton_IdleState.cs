@@ -16,9 +16,7 @@ namespace Suhdo.Enemies.Skeleton
             base.LogicUpdate();
 
             if (isPlayerInMinAgroRange)
-            {
-                //Change to Detected state
-            }
+                stateMachine.ChangeState(_skeleton.PlayerDetectedState);
             else if(!isDetectingGround)
                 stateMachine.ChangeState(_skeleton.FallState);
             else if (isIdleTimeOver)
