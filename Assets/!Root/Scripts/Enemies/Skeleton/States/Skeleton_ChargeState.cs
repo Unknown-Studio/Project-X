@@ -21,7 +21,7 @@ namespace Suhdo.Enemies.Skeleton
             }
             else if (!isDetectingLedge || isDetectingWall)
             {
-                // Change to looking for player state
+                stateMachine.ChangeState(_skeleton.LookingForPlayer);
             }
             else if (isChargeTimeOver)
             {
@@ -31,7 +31,7 @@ namespace Suhdo.Enemies.Skeleton
                 }
                 else
                 {
-                    // Change to looking for player state
+                    stateMachine.ChangeState(_skeleton.LookingForPlayer);
                 }
             }
         }

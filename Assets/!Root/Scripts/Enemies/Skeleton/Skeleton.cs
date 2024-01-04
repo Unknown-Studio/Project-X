@@ -8,12 +8,14 @@ namespace Suhdo.Enemies.Skeleton
         [SerializeField] private D_EnemyMoveState _moveStateData;
         [SerializeField] private D_EnemyPlayerDetectedState _playerDetectedData;
         [SerializeField] private D_EnemyChargeState _chargeStateData;
+        [SerializeField] private D_EnemyLookingForPlayer _lookingForPlayerData;
         
         public Skeleton_IdleState IdleState { get; private set; }
         public Skeleton_MoveState MoveState { get; private set; }
         public Skeleton_FallState FallState { get; private set; }
         public Skeleton_PlayerDetectedState PlayerDetectedState { get; private set; }
         public Skeleton_ChargeState ChargeState { get; private set; }
+        public Skeleton_LookingForPlayer LookingForPlayer {get; private set; }
 
         protected override void Start()
         {
@@ -25,6 +27,8 @@ namespace Suhdo.Enemies.Skeleton
             PlayerDetectedState =
                 new Skeleton_PlayerDetectedState(StateMachine, this, "playerDetected", _playerDetectedData);
             ChargeState = new Skeleton_ChargeState(StateMachine, this, "charge", _chargeStateData);
+            LookingForPlayer =
+                new Skeleton_LookingForPlayer(StateMachine, this, "lookingForPlayer", _lookingForPlayerData);
             
             StateMachine.Initiallize(IdleState);
         }
