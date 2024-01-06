@@ -1,6 +1,7 @@
 using Sirenix.OdinInspector;
 using Suhdo.CharacterCore;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyCollisionSenses : EnemyCoreComponent
 {
@@ -22,6 +23,10 @@ public class EnemyCollisionSenses : EnemyCoreComponent
 	private float ledgeCheckDistance;
 	
 	[FoldoutGroup("Player Check", expanded: false)] [SerializeField]
+	private Transform attackPlayerPostion;
+	[FoldoutGroup("Player Check")] [SerializeField]
+	private float attackRadius;
+	[FoldoutGroup("Player Check")] [Space(10)][SerializeField]
 	private Transform playerCheck;
 	[FoldoutGroup("Player Check")] [SerializeField]
 	private float maxAgroDistance;
@@ -35,6 +40,8 @@ public class EnemyCollisionSenses : EnemyCoreComponent
 	#region Public variables
 
 	public LayerMask WhatIsGround => whatIsGround;
+	
+	public LayerMask WhatIsPlayer => whatIsPlayer;
 
 	public Transform GroundCheck
 	{
@@ -47,6 +54,9 @@ public class EnemyCollisionSenses : EnemyCoreComponent
 		get => wallCheck;
 		private set => wallCheck = value;
 	}
+
+	public Transform AttackPlayerPosition => attackPlayerPostion;
+	public float AttackRadius => attackRadius;
 
 	public bool Ground => Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
@@ -86,6 +96,7 @@ public class EnemyCollisionSenses : EnemyCoreComponent
 		Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * EnemyCore.EnemyMovement.FacingDirection * closeRangeActionDistance), .2f);
 		Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * EnemyCore.EnemyMovement.FacingDirection * minAgroDistance), .2f);
 		Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * EnemyCore.EnemyMovement.FacingDirection * maxAgroDistance), .2f);
+		Gizmos.DrawWireSphere(attackPlayerPostion.position, attackRadius);
 	}
 
 	#endregion

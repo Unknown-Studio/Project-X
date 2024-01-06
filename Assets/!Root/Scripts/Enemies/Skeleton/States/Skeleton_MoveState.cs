@@ -21,12 +21,12 @@ namespace Suhdo
             base.LogicUpdate();
 
             if (isPlayerInMinAgroRange)
+                stateMachine.ChangeState(_skeleton.PlayerDetectedState);
+            else if(!isDetectingGround)
+                stateMachine.ChangeState(_skeleton.FallState);
+            else if (isDetectingWall || !isDetectingLedge || isTimeOut)
             {
-                // Change to Detected state
-            }
-            else if (isDetectingWall || !isDetectingLedge)
-            {
-                _skeleton.IdleState.SetFlipAfterIdle(true);
+                _skeleton.IdleState.SetFlipAfterIdle(!isTimeOut);
                 stateMachine.ChangeState(_skeleton.IdleState);
             }
         }

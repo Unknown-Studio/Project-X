@@ -16,6 +16,8 @@ namespace Suhdo.Player
                 stateMachine.ChangeState(player.MoveState);
             else if(isAnimationFinished)
                 stateMachine.ChangeState(player.IdleState);
+            else if(yInput == -1)
+                stateMachine.ChangeState(player.CrouchIdleState);
         }
     }
 }
