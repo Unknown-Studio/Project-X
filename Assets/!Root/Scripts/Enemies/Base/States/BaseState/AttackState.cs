@@ -5,15 +5,12 @@ namespace Suhdo.Enemies
 {
     public class AttackState : EnemyState, IAttackState
     {
-        protected Transform attackPosition;
-
         protected bool isAnimationFinished;
         protected bool isPlayerInMinAgroRange;
         
-        public AttackState(StateMachine stateMachine, Entity entity, string animBoolName, Transform attackPosition)
+        public AttackState(StateMachine stateMachine, Entity entity, string animBoolName)
             : base(stateMachine, entity, animBoolName)
         {
-            this.attackPosition = attackPosition;
         }
 
         public override void DoChecks()
@@ -34,7 +31,7 @@ namespace Suhdo.Enemies
 
         public virtual void TriggerAttack()
         {
-
+            
         }
 
         public virtual void FinishAttack()

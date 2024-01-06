@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Suhdo.Player
 {
-    public class PlayerController : Entity
+    public class PlayerController : Entity, IDamageable
     {
         [SerializeField] private PlayerData playerData;
 
@@ -52,5 +52,10 @@ namespace Suhdo.Player
         }
 
         public void AnimationFinishedTrigger() => StateMachine.CurrentCoreState.AnimationFinishTrigger();
+
+        public void Damage(float amount)
+        {
+            Debug.Log($"Received {amount} damage");
+        }
     }
 }

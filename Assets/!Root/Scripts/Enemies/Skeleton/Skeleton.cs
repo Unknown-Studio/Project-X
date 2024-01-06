@@ -1,14 +1,16 @@
+using Suhdo.CharacterCore;
 using UnityEngine;
 
 namespace Suhdo.Enemies.Skeleton
 {
-    public class Skeleton : Enemy
+    public class Skeleton : Enemy, IDamageable
     {
         [SerializeField] private D_EnemyIdleState _idleStateData;
         [SerializeField] private D_EnemyMoveState _moveStateData;
         [SerializeField] private D_EnemyPlayerDetectedState _playerDetectedData;
         [SerializeField] private D_EnemyChargeState _chargeStateData;
         [SerializeField] private D_EnemyLookingForPlayer _lookingForPlayerData;
+        [SerializeField] private D_EnemyMeleeAttack _meleeAttackData;
         
         public Skeleton_IdleState IdleState { get; private set; }
         public Skeleton_MoveState MoveState { get; private set; }
@@ -16,6 +18,7 @@ namespace Suhdo.Enemies.Skeleton
         public Skeleton_PlayerDetectedState PlayerDetectedState { get; private set; }
         public Skeleton_ChargeState ChargeState { get; private set; }
         public Skeleton_LookingForPlayer LookingForPlayer {get; private set; }
+        public Skeleton_MeleeAttackState MeleeAttackState { get; private set; }
 
         protected override void Start()
         {
@@ -29,8 +32,14 @@ namespace Suhdo.Enemies.Skeleton
             ChargeState = new Skeleton_ChargeState(StateMachine, this, "charge", _chargeStateData);
             LookingForPlayer =
                 new Skeleton_LookingForPlayer(StateMachine, this, "lookingForPlayer", _lookingForPlayerData);
+            MeleeAttackState = new Skeleton_MeleeAttackState(StateMachine, this, "meleeAttack", _meleeAttackData);
             
             StateMachine.Initiallize(IdleState);
+        }
+
+        public void Damage(float amount)
+        {
+            
         }
     }
 }

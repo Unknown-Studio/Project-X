@@ -17,7 +17,7 @@ namespace Suhdo.Enemies.Skeleton
             
             if (performCloseRangeAction)
             {
-                // Change to melee attack state
+                stateMachine.ChangeState(_skeleton.MeleeAttackState);
             }
             else if (performLongRangeAction)
             {
@@ -25,8 +25,7 @@ namespace Suhdo.Enemies.Skeleton
             }
             else if (!isPlayerInMaxAgroRange)
             {
-                // Change to Looking for player state
-                stateMachine.ChangeState(_skeleton.IdleState);
+                stateMachine.ChangeState(_skeleton.LookingForPlayer);
             }
             else if (!isDetectingLedge)
             {

@@ -17,7 +17,7 @@ namespace Suhdo.Enemies.Skeleton
             
             if (performCloseRangeAction)
             {
-                // Change to Melee attack state
+                stateMachine.ChangeState(_skeleton.MeleeAttackState);
             }
             else if (!isDetectingLedge || isDetectingWall)
             {

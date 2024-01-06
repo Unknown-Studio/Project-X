@@ -75,6 +75,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e096879c227914b8a77c771a26ed3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2201118532326538057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8363110957070436146}
+  m_Layer: 8
+  m_Name: AttackCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8363110957070436146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2201118532326538057}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5, y: -0.56, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4034188586139281785}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2280647491335151771
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,6 +120,7 @@ GameObject:
   - component: {fileID: 8104069407771176852}
   - component: {fileID: 4491783057761852894}
   - component: {fileID: 3836597247795887842}
+  - component: {fileID: 7910388823912199790}
   m_Layer: 8
   m_Name: Skeleton
   m_TagString: Untagged
@@ -130,6 +162,7 @@ MonoBehaviour:
   _playerDetectedData: {fileID: 11400000, guid: 3dc74291b3a865f40b75f778b01cd793, type: 2}
   _chargeStateData: {fileID: 11400000, guid: 19ecc997b91b5fb4bb0c19d4e345ec0d, type: 2}
   _lookingForPlayerData: {fileID: 11400000, guid: 8eb45a72d0e2e1842aa979ea609c0ee1, type: 2}
+  _meleeAttackData: {fileID: 11400000, guid: 9d85070b007818c4bbd2d44fd1d36b3d, type: 2}
 --- !u!212 &678711163349406651
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -275,6 +308,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &7910388823912199790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2280647491335151771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7fe969648b4274bac688b13e5cca37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3085698024136373592
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +431,7 @@ Transform:
   - {fileID: 2945836560564596476}
   - {fileID: 8342358702123144695}
   - {fileID: 8007730965269484316}
+  - {fileID: 8363110957070436146}
   m_Father: {fileID: 1171683818203904367}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1400489302130706860
@@ -409,6 +455,8 @@ MonoBehaviour:
   wallCheckDistance: 0.6
   ledgeCheck: {fileID: 8342358702123144695}
   ledgeCheckDistance: 0.25
+  attackPlayerPostion: {fileID: 8363110957070436146}
+  attackRadius: 1.17
   playerCheck: {fileID: 8007730965269484316}
   maxAgroDistance: 6
   minAgroDistance: 4
