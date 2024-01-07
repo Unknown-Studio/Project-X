@@ -9,6 +9,7 @@ namespace Suhdo.Player
         protected bool _isCeiling;
 
         private bool _jumpInput;
+        protected bool _rollInput;
         private bool _isGrounded;
         private bool _isTouchingWall;
         
@@ -42,7 +43,7 @@ namespace Suhdo.Player
             xInput = player.InputHandler.NormInputX;
             yInput = player.InputHandler.NormInputY;
             _jumpInput = player.InputHandler.JumpInput;
-
+            _rollInput = player.InputHandler.RollInput;
 			if (_jumpInput && player.JumpState.CanJump()&& !_isCeiling)
             {
                 stateMachine.ChangeState(player.JumpState);
@@ -51,6 +52,10 @@ namespace Suhdo.Player
             {
                 player.InAirState.StartCoyoteTime();
                 stateMachine.ChangeState(player.InAirState);
+            }
+            else if (_rollInput)
+            {
+                stateMachine.ChangeState(player.RollState);
             }
         }
     }

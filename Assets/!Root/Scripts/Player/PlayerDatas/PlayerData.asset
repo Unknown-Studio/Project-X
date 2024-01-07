@@ -18,3 +18,4 @@ MonoBehaviour:
   coyoteTime: 0.2
   variableJumpHeightMultiplier: 0.5
   crouchMovementVelocity: 5
+  RollVelocity: 10

@@ -14,8 +14,7 @@ namespace Suhdo.Player
 		public override void Enter()
 		{
 			base.Enter();
-			
-				Debug.Log("Jump");
+			Debug.Log("Jump");
 				player.InputHandler.UserJumpInput();
 				PlayerCore.PlayerMovement.SetVelocityY(playerData.jumpVelocity);
 				isAbilityDone = true;
