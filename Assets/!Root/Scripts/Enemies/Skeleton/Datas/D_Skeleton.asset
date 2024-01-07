@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 271669475cc711d4a980684bca1ea181, type: 3}
-  m_Name: D_EnemyData
+  m_Name: D_Skeleton
   m_EditorClassIdentifier: 
   maxHealth: 30
   damageHopSpeed: 3
