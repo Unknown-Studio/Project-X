@@ -458,9 +458,9 @@ MonoBehaviour:
   attackPlayerPostion: {fileID: 8363110957070436146}
   attackRadius: 1.17
   playerCheck: {fileID: 8007730965269484316}
-  maxAgroDistance: 6
-  minAgroDistance: 4
-  closeRangeActionDistance: 1.7
+  maxAgroDistance: 10
+  minAgroDistance: 6
+  closeRangeActionDistance: 2.8
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
