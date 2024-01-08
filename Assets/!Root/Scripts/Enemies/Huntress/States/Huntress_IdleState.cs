@@ -18,11 +18,11 @@ namespace Suhdo
         {
             base.LogicUpdate();
             
-            /*if (isPlayerInMinAgroRange)
-                //TODO: change to player detected state
-            if(!isDetectingGround)*/
-                //TODO: change to fall state
-            if(isIdleTimeOver)
+            if (isPlayerInMinAgroRange)
+                stateMachine.ChangeState(_huntress.PlayerDetectedState);
+            /*else if(!isDetectingGround)
+                //TODO: change to fall state*/
+            else if(isIdleTimeOver)
                 stateMachine.ChangeState(_huntress.MoveState);
         }
 

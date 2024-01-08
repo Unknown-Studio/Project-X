@@ -2,10 +2,11 @@ using Suhdo.StateMachineCore;
 
 namespace Suhdo.Enemies.Huntress
 {
-    public class Huntress_MoveState : EnemyMoveState
+    public class Huntress_LookingForPlayer : EnemyLookingForPlayer
     {
         private Huntress _huntress;
-        public Huntress_MoveState(StateMachine stateMachine, Entity entity, string animBoolName, D_EnemyMoveState data) 
+        
+        public Huntress_LookingForPlayer(StateMachine stateMachine, Entity entity, string animBoolName, D_EnemyLookingForPlayer data) 
             : base(stateMachine, entity, animBoolName, data)
         {
             _huntress = (Huntress)enemy;
@@ -16,13 +17,12 @@ namespace Suhdo.Enemies.Huntress
             base.LogicUpdate();
             
             if (isPlayerInMinAgroRange)
-                stateMachine.ChangeState(_huntress.PlayerDetectedState);
-             /*if(!isDetectingGround)
-                //TODO: change to fall state*/
-            else if (isDetectingWall || !isDetectingLedge || isTimeOut)
             {
-                _huntress.IdleState.SetFlipAfterIdle(!isTimeOut);
-                stateMachine.ChangeState(_huntress.IdleState);
+                stateMachine.ChangeState(_huntress.PlayerDetectedState);
+            }
+            else if (isAllTurnsTimeDone)
+            {
+                stateMachine.ChangeState(_huntress.MoveState);
             }
         }
     }

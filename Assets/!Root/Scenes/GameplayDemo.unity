@@ -17695,7 +17695,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &740994271
 BoxCollider2D:
@@ -17706,7 +17706,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 740994269}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 600190c7c439a72489bba5a8d6f85c3d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -17846,6 +17846,8 @@ MonoBehaviour:
   entityData: {fileID: 11400000, guid: 80423f8f41229b248acd8d9758d0212a, type: 2}
   _idleStateData: {fileID: 11400000, guid: b24169a8f917de941949aa5ea7297f7d, type: 2}
   _moveStateData: {fileID: 11400000, guid: a32e2ee088787884ea8dd9514d8c1393, type: 2}
+  _playerDetectedStateData: {fileID: 11400000, guid: 82cffd592c2507749a1df1c526e1d297, type: 2}
+  _lookingForPlayerData: {fileID: 11400000, guid: a80ce3d5bb2d5e243829eff8ac3dd625, type: 2}
 --- !u!1 &873939782
 GameObject:
   m_ObjectHideFlags: 0
