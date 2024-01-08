@@ -15,17 +15,16 @@ namespace Suhdo.Enemies.Skeleton
         public override void LogicUpdate()
         {
             base.LogicUpdate();
+
+            if (isAnimationFinished) return;
             
-            if (isAnimationFinished)
+            if (isPlayerInMinAgroRange)
             {
-                if (isPlayerInMinAgroRange)
-                {
-                    stateMachine.ChangeState(_skeleton.PlayerDetectedState);
-                }
-                else
-                {
-                    stateMachine.ChangeState(_skeleton.LookingForPlayer);
-                }
+                stateMachine.ChangeState(_skeleton.PlayerDetectedState);
+            }
+            else
+            {
+                stateMachine.ChangeState(_skeleton.LookingForPlayer);
             }
         }
     }
