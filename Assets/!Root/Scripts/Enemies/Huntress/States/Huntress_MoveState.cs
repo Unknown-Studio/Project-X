@@ -17,8 +17,8 @@ namespace Suhdo.Enemies.Huntress
             
             if (isPlayerInMinAgroRange)
                 stateMachine.ChangeState(_huntress.PlayerDetectedState);
-             /*if(!isDetectingGround)
-                //TODO: change to fall state*/
+            else if(!isDetectingGround)
+                stateMachine.ChangeState(_huntress.FallState);
             else if (isDetectingWall || !isDetectingLedge || isTimeOut)
             {
                 _huntress.IdleState.SetFlipAfterIdle(!isTimeOut);

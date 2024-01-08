@@ -14,6 +14,7 @@ namespace Suhdo.Enemies.Huntress
         public Huntress_MoveState MoveState { get; private set; }
         public Huntress_PlayerDetectedState PlayerDetectedState { get; private set; }
         public Huntress_LookingForPlayer LookingForPlayer { get; private set; }
+        public Huntress_FallState FallState { get; private set; }
 
         protected override void Start()
         {
@@ -25,6 +26,7 @@ namespace Suhdo.Enemies.Huntress
                 new Huntress_PlayerDetectedState(StateMachine, this, "playerDetected", _playerDetectedStateData);
             LookingForPlayer =
                 new Huntress_LookingForPlayer(StateMachine, this, "lookingForPlayer", _lookingForPlayerData);
+            FallState = new Huntress_FallState(StateMachine, this, "fall");
             
             StateMachine.Initiallize(IdleState);
         }

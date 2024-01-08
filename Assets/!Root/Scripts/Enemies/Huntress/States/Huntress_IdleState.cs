@@ -20,8 +20,8 @@ namespace Suhdo
             
             if (isPlayerInMinAgroRange)
                 stateMachine.ChangeState(_huntress.PlayerDetectedState);
-            /*else if(!isDetectingGround)
-                //TODO: change to fall state*/
+            else if(!isDetectingGround)
+                stateMachine.ChangeState(_huntress.FallState);
             else if(isIdleTimeOver)
                 stateMachine.ChangeState(_huntress.MoveState);
         }
