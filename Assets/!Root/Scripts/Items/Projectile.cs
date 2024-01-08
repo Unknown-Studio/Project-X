@@ -55,7 +55,7 @@ namespace Suhdo.Items
             Collider2D groundHit = Physics2D.OverlapCircle(damagePos.position, damgageRadius, whatIsGround);
 
             // Touched player
-            if (damageHit && damageHit is IDamageable damageable)
+            if (damageHit && damageHit.TryGetComponent<IDamageable>(out var damageable))
             {
                 damageable.Damage(20f);
                 Destroy(gameObject);

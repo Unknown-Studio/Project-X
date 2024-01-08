@@ -9,12 +9,14 @@ namespace Suhdo.Enemies.Huntress
         [SerializeField] private D_EnemyMoveState _moveStateData;
         [SerializeField] private D_EnemyPlayerDetectedState _playerDetectedStateData;
         [SerializeField] private D_EnemyLookingForPlayer _lookingForPlayerData;
+        [SerializeField] private D_EnemyRangeAttackState _rangeAttackData;
         
         public Huntress_IdleState IdleState { get; private set; }
         public Huntress_MoveState MoveState { get; private set; }
         public Huntress_PlayerDetectedState PlayerDetectedState { get; private set; }
         public Huntress_LookingForPlayer LookingForPlayer { get; private set; }
         public Huntress_FallState FallState { get; private set; }
+        public Huntress_RangeAttackState RangeAttackState { get; private set; }
 
         protected override void Start()
         {
@@ -27,6 +29,7 @@ namespace Suhdo.Enemies.Huntress
             LookingForPlayer =
                 new Huntress_LookingForPlayer(StateMachine, this, "lookingForPlayer", _lookingForPlayerData);
             FallState = new Huntress_FallState(StateMachine, this, "fall");
+            RangeAttackState = new Huntress_RangeAttackState(StateMachine, this, "rangeAttack", _rangeAttackData);
             
             StateMachine.Initiallize(IdleState);
         }

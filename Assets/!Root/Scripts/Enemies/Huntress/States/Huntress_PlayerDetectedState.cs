@@ -16,20 +16,18 @@ namespace Suhdo.Enemies.Huntress
         {
             base.LogicUpdate();
             
-            /*if (performCloseRangeAction)
-            {
-                //TODO: change to attack state
-            }
-            else if (performLongRangeAction)
+            if(isPlayerInMinAgroRange)
+                stateMachine.ChangeState(_huntress.RangeAttackState);
+            /*else if (performCloseRangeAction)
             {
                 //TODO: change to charge state
-            }
-            else*/ if (!isPlayerInMaxAgroRange)
-            {
-                //TODO: change to looking for player
+            }*/
+            else if (isPlayerInMaxAgroRange)
+                stateMachine.ChangeState(_huntress.MoveState);
+            else if (!isPlayerInMaxAgroRange)
                 stateMachine.ChangeState(_huntress.LookingForPlayer);
-            }
-            else if (!isDetectingLedge)
+            
+            if (!isDetectingLedge)
             {
                 _huntress.EnemyCore.EnemyMovement.Flip();
                 stateMachine.ChangeState(_huntress.MoveState);
