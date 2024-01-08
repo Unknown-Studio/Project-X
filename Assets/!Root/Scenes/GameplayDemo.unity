@@ -17850,6 +17850,7 @@ MonoBehaviour:
   _playerDetectedStateData: {fileID: 11400000, guid: 82cffd592c2507749a1df1c526e1d297, type: 2}
   _lookingForPlayerData: {fileID: 11400000, guid: a80ce3d5bb2d5e243829eff8ac3dd625, type: 2}
   _rangeAttackData: {fileID: 11400000, guid: 5876d0173edb78747bc98b335e9204a4, type: 2}
+  _dodgeData: {fileID: 11400000, guid: 8997d1ce09bc10f4b85bffc06da6cbba, type: 2}
 --- !u!114 &740994276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18411,10 +18412,6 @@ PrefabInstance:
     - target: {fileID: 2280647491335151771, guid: 5caf55f158a912e4a97d01f9f74f25f9, type: 3}
       propertyPath: m_Name
       value: Skeleton
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280647491335151771, guid: 5caf55f158a912e4a97d01f9f74f25f9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3695476663388669022, guid: 5caf55f158a912e4a97d01f9f74f25f9, type: 3}
       propertyPath: m_LocalPosition.x

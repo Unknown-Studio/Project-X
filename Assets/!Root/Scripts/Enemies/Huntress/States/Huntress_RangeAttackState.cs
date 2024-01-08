@@ -17,14 +17,12 @@ namespace Suhdo.Enemies.Huntress
 
             if (!isAnimationFinished) return;
             
-            if (isPlayerInMinAgroRange || isPlayerInMaxAgroRange)
-            {
+            if(performCloseRangeAction)
+                stateMachine.ChangeState(_huntress.DodgeState);
+            else if (isPlayerInMinAgroRange || isPlayerInMaxAgroRange)
                 stateMachine.ChangeState(_huntress.PlayerDetectedState);
-            }
             else if(!isPlayerInMaxAgroRange)
-            {
                 stateMachine.ChangeState(_huntress.LookingForPlayer);
-            }
         }
     }
 }
