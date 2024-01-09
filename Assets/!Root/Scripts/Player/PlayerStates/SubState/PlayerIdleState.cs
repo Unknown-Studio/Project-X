@@ -12,16 +12,27 @@ namespace Suhdo.Player
 		public override void Enter()
 		{
 			base.Enter();
-			PlayerCore.PlayerMovement.SetVelocityX(0f);
 		}
 
 		public override void LogicUpdate()
 		{
 			base.LogicUpdate();
 			if (isExitingState) return;
-
-			if (xInput != 0f) stateMachine.ChangeState(player.MoveState);
-			if (yInput == -1f) stateMachine.ChangeState(player.CrouchIdleState);
+            if (_isCeiling)
+            {
+				if (xInput == 0f) stateMachine.ChangeState(player.CrouchIdleState);
+				if (xInput != 0f) stateMachine.ChangeState(player.CrouchMoveState);
+			}
+            else
+            {
+				if (xInput != 0f) stateMachine.ChangeState(player.MoveState);
+				if (yInput == -1f) stateMachine.ChangeState(player.CrouchIdleState);
+			}
+		}
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+			PlayerCore.PlayerMovement.SetVelocityX(0f);
 		}
 	}
 }

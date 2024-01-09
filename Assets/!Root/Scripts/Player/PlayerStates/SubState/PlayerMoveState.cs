@@ -13,12 +13,24 @@ namespace Suhdo.Player
 			base.LogicUpdate();
 
 			PlayerCore.PlayerMovement.CheckIfShouldFlip(xInput);
-			PlayerCore.PlayerMovement.SetVelocityX(playerData.movementVelocity * xInput);
 
 			if (isExitingState) return;
 
-			if (xInput == 0f) stateMachine.ChangeState(player.IdleState);
-			if (yInput == -1f) stateMachine.ChangeState(player.CrouchMoveState);
+            if (_isCeiling)
+            {
+				if (xInput != 0f) stateMachine.ChangeState(player.CrouchMoveState);
+				if (xInput == 0f) stateMachine.ChangeState(player.CrouchIdleState);
+			}
+			else
+            {
+				if (xInput == 0f) stateMachine.ChangeState(player.IdleState);
+				if (yInput == -1f) stateMachine.ChangeState(player.CrouchMoveState);
+			}
+		}
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+			PlayerCore.PlayerMovement.SetVelocityX(playerData.movementVelocity * xInput);
 		}
 	}
 }

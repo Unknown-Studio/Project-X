@@ -12,7 +12,6 @@ namespace Suhdo.Player
         public override void Enter()
         {
             base.Enter();
-            PlayerCore.PlayerMovement.SetVelocityX(0f);
         }
 
         public override void LogicUpdate()
@@ -24,6 +23,11 @@ namespace Suhdo.Player
             if (xInput != 0f &&( yInput == -1f || _isCeiling)) stateMachine.ChangeState(player.CrouchMoveState);
             else if (xInput == 0f && yInput == 0f && !_isCeiling) stateMachine.ChangeState(player.IdleState);
             else if (xInput != 0f && yInput == 0f && !_isCeiling) stateMachine.ChangeState(player.MoveState);
+        }
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+            PlayerCore.PlayerMovement.SetVelocityX(0f);
         }
     }
 }

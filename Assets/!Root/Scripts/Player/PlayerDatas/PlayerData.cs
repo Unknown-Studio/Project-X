@@ -20,7 +20,7 @@ namespace Suhdo.Player
         public float crouchMovementVelocity = 5f;
 
         [Header("Roll State")]
-        public float RollVelocity = 15f;
+        public float RollVelocity = 20f;
 
         /*[Header("Wall Jump State")]
         public float wallJumpVelocity = 20f;

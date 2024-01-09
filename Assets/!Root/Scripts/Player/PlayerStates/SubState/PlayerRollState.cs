@@ -16,17 +16,27 @@ namespace Suhdo
         {
             base.Enter();
             player.InputHandler.UserRollInput();
-            PlayerCore.PlayerMovement.SetVelocityX(playerData.RollVelocity * PlayerCore.PlayerMovement.FacingDirection);
         }
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            if (yInput == 1f)
-                stateMachine.ChangeState(player.JumpState);
             if (isAnimationFinished)
             {
-                stateMachine.ChangeState(player.IdleState);
+                if (!_isCeiling)
+                {
+                    stateMachine.ChangeState(player.IdleState);
+                }
+                else
+                {
+                    stateMachine.ChangeState(player.CrouchIdleState);
+
+                }
             }
+        }
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+            PlayerCore.PlayerMovement.SetVelocityX(playerData.RollVelocity * PlayerCore.PlayerMovement.FacingDirection);
         }
     }
 }
