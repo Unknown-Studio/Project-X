@@ -6,13 +6,13 @@ namespace Suhdo.Enemies
 {
     public class EnemyDodgeState : EnemyState
     {
-        protected D_EnemyDodgeState stateData;
+        public D_EnemyDodgeState StateData { get; private set; }
         protected bool isDodgeOver;
         
         public EnemyDodgeState(StateMachine stateMachine, Entity entity, string animBoolName, D_EnemyDodgeState data)
             : base(stateMachine, entity, animBoolName)
         {
-            stateData = data;
+            StateData = data;
         }
 
         public override void Enter()
@@ -21,7 +21,7 @@ namespace Suhdo.Enemies
 
             isDodgeOver = false;
             enemy.EnemyCore.EnemyMovement.Flip();
-            enemy.EnemyCore.EnemyMovement.SetVelocity(stateData.dodgeSpeed, stateData.dodgeAngle,
+            enemy.EnemyCore.EnemyMovement.SetVelocity(StateData.dodgeSpeed, StateData.dodgeAngle,
                 enemy.EnemyCore.EnemyMovement.FacingDirection);
         }
 
@@ -29,7 +29,7 @@ namespace Suhdo.Enemies
         {
             base.LogicUpdate();
 
-            if (Time.time >= StartTime + stateData.dodgeTime && isDetectingGround)
+            if (Time.time >= StartTime + StateData.dodgeTime && isDetectingGround)
             {
                 isDodgeOver = true;
             }

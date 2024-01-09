@@ -1,4 +1,5 @@
 using Suhdo.StateMachineCore;
+using UnityEngine;
 
 namespace Suhdo.Enemies.Huntress
 {
@@ -23,7 +24,8 @@ namespace Suhdo.Enemies.Huntress
                 return;
             }
             
-            if (performCloseRangeAction)
+            if (performCloseRangeAction &&
+                Time.time >= _huntress.DodgeState.StartTime + _huntress.DodgeState.StateData.dogeCooldown)
                 stateMachine.ChangeState(_huntress.DodgeState);
             else if(isPlayerInMinAgroRange)
                 stateMachine.ChangeState(_huntress.RangeAttackState);
