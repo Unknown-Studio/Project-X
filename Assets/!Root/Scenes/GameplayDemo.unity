@@ -17851,6 +17851,7 @@ MonoBehaviour:
   _lookingForPlayerData: {fileID: 11400000, guid: a80ce3d5bb2d5e243829eff8ac3dd625, type: 2}
   _rangeAttackData: {fileID: 11400000, guid: 5876d0173edb78747bc98b335e9204a4, type: 2}
   _dodgeData: {fileID: 11400000, guid: 8997d1ce09bc10f4b85bffc06da6cbba, type: 2}
+  _teleStateData: {fileID: 0}
 --- !u!114 &740994276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18409,9 +18410,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1400489302130706860, guid: 5caf55f158a912e4a97d01f9f74f25f9, type: 3}
+      propertyPath: wallBackCheckDistance
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400489302130706860, guid: 5caf55f158a912e4a97d01f9f74f25f9, type: 3}
+      propertyPath: wallFrontCheckDistance
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2280647491335151771, guid: 5caf55f158a912e4a97d01f9f74f25f9, type: 3}
       propertyPath: m_Name
       value: Skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280647491335151771, guid: 5caf55f158a912e4a97d01f9f74f25f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3695476663388669022, guid: 5caf55f158a912e4a97d01f9f74f25f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18513,7 +18526,8 @@ MonoBehaviour:
   groundCheck: {fileID: 593671424}
   groundCheckRadius: 0.4
   wallCheck: {fileID: 1561716179}
-  wallCheckDistance: 0.7
+  wallFrontCheckDistance: 0.8
+  wallBackCheckDistance: 2
   ledgeCheck: {fileID: 1345089184}
   ledgeCheckDistance: 0.25
   attackPlayerPostion: {fileID: 1729311581}

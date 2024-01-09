@@ -11,6 +11,7 @@ namespace Suhdo.Enemies
 
         protected bool isDetectingGround;
         protected bool isDetectingWall;
+        protected bool isDetectingWallBack;
         protected bool isDetectingLedge;
         protected bool isPlayerInMinAgroRange;
         protected bool isPlayerInMaxAgroRange;
@@ -29,6 +30,7 @@ namespace Suhdo.Enemies
             isDetectingGround = enemyCore.EnemyCollisionSenses.Ground;
             isDetectingLedge = enemyCore.EnemyCollisionSenses.Ledge;
             isDetectingWall = enemyCore.EnemyCollisionSenses.WallFront;
+            isDetectingWallBack = enemyCore.EnemyCollisionSenses.WallBack;
             isPlayerInMinAgroRange = enemyCore.EnemyCollisionSenses.PlayerInMinAgroRange;
             isPlayerInMaxAgroRange = enemyCore.EnemyCollisionSenses.PlayerInMaxAgroRange;
             performCloseRangeAction = enemyCore.EnemyCollisionSenses.PlayerInCloseRangeAction;

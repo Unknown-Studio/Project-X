@@ -18,7 +18,10 @@ namespace Suhdo.Enemies.Huntress
             if (!isAnimationFinished) return;
             
             if(performCloseRangeAction)
-                stateMachine.ChangeState(_huntress.DodgeState);
+                if(isDetectingWallBack)
+                    stateMachine.ChangeState(_huntress.TeleState);
+                else
+                    stateMachine.ChangeState(_huntress.DodgeState);
             else if (isPlayerInMinAgroRange || isPlayerInMaxAgroRange)
                 stateMachine.ChangeState(_huntress.PlayerDetectedState);
             else if(!isPlayerInMaxAgroRange)

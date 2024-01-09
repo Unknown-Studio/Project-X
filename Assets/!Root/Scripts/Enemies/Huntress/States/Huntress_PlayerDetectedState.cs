@@ -23,10 +23,14 @@ namespace Suhdo.Enemies.Huntress
                 stateMachine.ChangeState(_huntress.MoveState);
                 return;
             }
-            
-            if (performCloseRangeAction &&
-                Time.time >= _huntress.DodgeState.StartTime + _huntress.DodgeState.StateData.dogeCooldown)
-                stateMachine.ChangeState(_huntress.DodgeState);
+
+            if (performCloseRangeAction)
+            {
+                if(!isDetectingWallBack && Time.time >= _huntress.DodgeState.StartTime + _huntress.DodgeState.StateData.dogeCooldown)
+                    stateMachine.ChangeState(_huntress.DodgeState);
+                else if(isDetectingWallBack)
+                    stateMachine.ChangeState(_huntress.TeleState);
+            }
             else if(isPlayerInMinAgroRange)
                 stateMachine.ChangeState(_huntress.RangeAttackState);
             else if (isPlayerInMaxAgroRange)
