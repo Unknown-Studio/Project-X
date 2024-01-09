@@ -16,16 +16,8 @@ namespace Suhdo.Player
 
 			if (isExitingState) return;
 
-            if (_isCeiling)
-            {
-				if (xInput != 0f) stateMachine.ChangeState(player.CrouchMoveState);
-				if (xInput == 0f) stateMachine.ChangeState(player.CrouchIdleState);
-			}
-			else
-            {
-				if (xInput == 0f) stateMachine.ChangeState(player.IdleState);
-				if (yInput == -1f) stateMachine.ChangeState(player.CrouchMoveState);
-			}
+			if (xInput == 0f) stateMachine.ChangeState(player.IdleState);
+			if (yInput == -1f) stateMachine.ChangeState(player.CrouchIdleState);
 		}
         public override void PhysicsUpdate()
         {

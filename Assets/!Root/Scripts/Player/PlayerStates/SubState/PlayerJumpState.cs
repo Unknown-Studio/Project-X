@@ -15,10 +15,11 @@ namespace Suhdo.Player
 		{
 			base.Enter();
 			Debug.Log("Jump");
-				player.InputHandler.UserJumpInput();
-				isAbilityDone = true;
-				amountOffJumpLeft--;
-				player.InAirState.SetIsJumping();
+			player.InputHandler.UserJumpInput();
+			PlayerCore.PlayerMovement.SetVelocityY(playerData.jumpVelocity);
+			isAbilityDone = true;
+			amountOffJumpLeft--;
+			player.InAirState.SetIsJumping();
 		}
 
 		public bool CanJump()
@@ -28,10 +29,5 @@ namespace Suhdo.Player
 
 		public void ResetAmountOffJumpLeft() => amountOffJumpLeft = playerData.amountOfJumps;
 		public void DecreaseAmountOffJumpLeft() => amountOffJumpLeft--;
-        public override void PhysicsUpdate()
-        {
-            base.PhysicsUpdate();
-			PlayerCore.PlayerMovement.SetVelocityY(playerData.jumpVelocity);
-		}
 	}
 }

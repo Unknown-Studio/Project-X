@@ -20,17 +20,15 @@ namespace Suhdo
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            if (isAnimationFinished)
+            if (!isAnimationFinished) return;
+            if (!_isCeiling)
             {
-                if (!_isCeiling)
-                {
-                    stateMachine.ChangeState(player.IdleState);
-                }
-                else
-                {
-                    stateMachine.ChangeState(player.CrouchIdleState);
+                stateMachine.ChangeState(player.IdleState);
+            }
+            else
+            {
+                stateMachine.ChangeState(player.CrouchIdleState);
 
-                }
             }
         }
         public override void PhysicsUpdate()
