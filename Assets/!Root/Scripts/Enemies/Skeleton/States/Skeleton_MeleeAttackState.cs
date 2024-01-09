@@ -16,7 +16,7 @@ namespace Suhdo.Enemies.Skeleton
         {
             base.LogicUpdate();
 
-            if (isAnimationFinished) return;
+            if (!isAnimationFinished) return;
             
             if (isPlayerInMinAgroRange)
             {
