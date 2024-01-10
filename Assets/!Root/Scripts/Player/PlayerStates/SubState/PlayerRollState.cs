@@ -21,15 +21,7 @@ namespace Suhdo
         {
             base.LogicUpdate();
             if (!isAnimationFinished) return;
-            if (!_isCeiling)
-            {
-                stateMachine.ChangeState(player.IdleState);
-            }
-            else
-            {
-                stateMachine.ChangeState(player.CrouchIdleState);
-
-            }
+            if (!_isCeiling) stateMachine.ChangeState(player.IdleState);
         }
         public override void PhysicsUpdate()
         {
