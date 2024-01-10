@@ -19,7 +19,6 @@ namespace Suhdo.Player
 		{
 			base.LogicUpdate();
 			if (isExitingState) return;
-
 			if (xInput != 0f) stateMachine.ChangeState(player.MoveState);
 			if (yInput == -1f) stateMachine.ChangeState(player.CrouchIdleState);
 		}
