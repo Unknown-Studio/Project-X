@@ -452,7 +452,8 @@ MonoBehaviour:
   groundCheck: {fileID: 4520115478966046195}
   groundCheckRadius: 0.4
   wallCheck: {fileID: 2945836560564596476}
-  wallCheckDistance: 0.6
+  wallFrontCheckDistance: 0.8
+  wallBackCheckDistance: 0.8
   ledgeCheck: {fileID: 8342358702123144695}
   ledgeCheckDistance: 0.25
   attackPlayerPostion: {fileID: 8363110957070436146}

@@ -6,7 +6,7 @@ namespace Suhdo.Enemies
     public class D_EnemyTeleState : ScriptableObject
     {
         public float Speed = .5f;
-        public float DistanceTele = 8f;
+        public float DistanceTele = 1f;
         public float chargeTime = 1f;
     }
 }

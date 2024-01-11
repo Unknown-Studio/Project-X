@@ -21,6 +21,7 @@ namespace Suhdo.Enemies
             base.Enter();
 
             teleDone = false;
+            startPos = enemy.transform.position;
         }
 
         public override void LogicUpdate()
@@ -29,13 +30,18 @@ namespace Suhdo.Enemies
 
             if (Time.time >= StartTime + stateData.chargeTime)
             {
-                enemy
-                    .transform
-                    .DOMove(enemy.transform.position +
-                            (Vector3.right * stateData.DistanceTele * enemy.EnemyCore.EnemyMovement.FacingDirection),
-                        stateData.Speed)
-                    .OnComplete(() => teleDone = true);
+                enemy.EnemyCore.EnemyMovement.SetVelocityX(stateData.Speed);
+                if (IsPosWantToMove() || isDetectingWall || !isDetectingLedge)
+                {
+                    enemy.EnemyCore.EnemyMovement.SetVelocityX(0f);
+                    teleDone = true;
+                }
             }
+        }
+
+        private bool IsPosWantToMove()
+        {
+            return Vector3.Distance(startPos, enemy.transform.position) >= stateData.DistanceTele;
         }
     }
 }

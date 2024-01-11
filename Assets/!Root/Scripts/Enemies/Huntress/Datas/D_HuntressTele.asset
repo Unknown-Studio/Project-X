@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063ed61c4151760429a1006f2afef6b0, type: 3}
   m_Name: D_HuntressTele
   m_EditorClassIdentifier: 
-  Speed: 0.5
-  DistanceTele: 8
+  Speed: 80
+  DistanceTele: 5
   chargeTime: 1
