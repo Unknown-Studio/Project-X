@@ -29,7 +29,7 @@ namespace Suhdo.Enemies.Skeleton
                 {
                     stateMachine.ChangeState(_skeleton.PlayerDetectedState);
                 }
-                else
+                else if(!isPlayerInMaxAgroRange)
                 {
                     stateMachine.ChangeState(_skeleton.LookingForPlayer);
                 }
