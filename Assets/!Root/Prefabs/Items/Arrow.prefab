@@ -108,6 +108,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   damagePos: {fileID: 756296018502859147}
+  delayBeforeReturnPool: 3
 --- !u!50 &1277645782587211523
 Rigidbody2D:
   serializedVersion: 4
