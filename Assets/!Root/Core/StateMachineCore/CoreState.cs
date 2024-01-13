@@ -28,7 +28,6 @@ namespace Suhdo.StateMachineCore
             StartTime = Time.time;
             isAnimationFinished = false;
             isExitingState = false;
-            Debug.Log("State: " + animBoolName);
         }
 
         public virtual void Exit()

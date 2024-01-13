@@ -452,15 +452,16 @@ MonoBehaviour:
   groundCheck: {fileID: 4520115478966046195}
   groundCheckRadius: 0.4
   wallCheck: {fileID: 2945836560564596476}
-  wallCheckDistance: 0.6
+  wallFrontCheckDistance: 0.8
+  wallBackCheckDistance: 0.8
   ledgeCheck: {fileID: 8342358702123144695}
   ledgeCheckDistance: 0.25
   attackPlayerPostion: {fileID: 8363110957070436146}
   attackRadius: 1.17
   playerCheck: {fileID: 8007730965269484316}
-  maxAgroDistance: 6
-  minAgroDistance: 4
-  closeRangeActionDistance: 1.7
+  maxAgroDistance: 10
+  minAgroDistance: 6
+  closeRangeActionDistance: 2.8
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128

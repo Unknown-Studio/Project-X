@@ -15,7 +15,9 @@ public class EnemyCollisionSenses : EnemyCoreComponent
 	[FoldoutGroup("Wall Check", expanded: false)] [SerializeField]
 	private Transform wallCheck;
 	[FoldoutGroup("Wall Check")] [SerializeField]
-	private float wallCheckDistance;
+	private float wallFrontCheckDistance;
+	[FoldoutGroup("Wall Check")] [SerializeField]
+	private float wallBackCheckDistance;
 	
 	[FoldoutGroup("Ledge Check", expanded: false)] [SerializeField]
 	private Transform ledgeCheck;
@@ -61,10 +63,10 @@ public class EnemyCollisionSenses : EnemyCoreComponent
 	public bool Ground => Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
 	public bool WallFront => Physics2D.Raycast(wallCheck.position, Vector2.right * EnemyCore.EnemyMovement.FacingDirection,
-		wallCheckDistance, whatIsGround);
+		wallFrontCheckDistance, whatIsGround);
 
 	public bool WallBack => Physics2D.Raycast(wallCheck.position, Vector2.right * -EnemyCore.EnemyMovement.FacingDirection,
-		wallCheckDistance, whatIsGround);
+		wallBackCheckDistance, whatIsGround);
 
 	public bool Ledge => Physics2D.Raycast(ledgeCheck.position, Vector2.down,
 		ledgeCheckDistance, whatIsGround);
@@ -89,9 +91,9 @@ public class EnemyCollisionSenses : EnemyCoreComponent
 	{
 		Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
 		Gizmos.DrawLine(wallCheck.position,
-			wallCheck.position + (Vector3)(Vector2.right * EnemyCore.EnemyMovement.FacingDirection * wallCheckDistance));
+			wallCheck.position + (Vector3)(Vector2.right * EnemyCore.EnemyMovement.FacingDirection * wallFrontCheckDistance));
 		Gizmos.DrawLine(wallCheck.position,
-			wallCheck.position + (Vector3)(Vector2.right * -EnemyCore.EnemyMovement.FacingDirection * wallCheckDistance));
+			wallCheck.position + (Vector3)(Vector2.right * -EnemyCore.EnemyMovement.FacingDirection * wallBackCheckDistance));
 		Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down * ledgeCheckDistance));
 		Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * EnemyCore.EnemyMovement.FacingDirection * closeRangeActionDistance), .2f);
 		Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * EnemyCore.EnemyMovement.FacingDirection * minAgroDistance), .2f);

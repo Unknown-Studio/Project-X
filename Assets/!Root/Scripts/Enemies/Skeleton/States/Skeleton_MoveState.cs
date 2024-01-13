@@ -1,11 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Suhdo.Enemies;
-using Suhdo.Enemies.Skeleton;
 using Suhdo.StateMachineCore;
-using UnityEngine;
 
-namespace Suhdo
+namespace Suhdo.Enemies.Skeleton
 {
     public class Skeleton_MoveState : EnemyMoveState
     {
