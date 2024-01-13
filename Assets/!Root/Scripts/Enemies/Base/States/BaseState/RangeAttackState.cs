@@ -1,5 +1,6 @@
 using Suhdo.Items;
 using Suhdo.StateMachineCore;
+using Suhdo.Ultils;
 using UnityEngine;
 
 namespace Suhdo.Enemies
@@ -8,7 +9,7 @@ namespace Suhdo.Enemies
     {
         protected D_EnemyRangeAttackState stateData;
 
-        protected GameObject projectile;
+        protected PoolableMonoBehaviour projectile;
         protected Projectile projectileScript;
         
         public RangeAttackState(StateMachine stateMachine, Entity entity, string animBoolName, D_EnemyRangeAttackState data)
@@ -20,10 +21,14 @@ namespace Suhdo.Enemies
         public override void TriggerAttack()
         {
             base.TriggerAttack();
-
-            projectile = GameObject.Instantiate(stateData.projectile,
+            /*projectile = GameObject.Instantiate(stateData.projectile,
                 enemy.EnemyCore.EnemyCollisionSenses.AttackPlayerPosition.position,
-                enemy.EnemyCore.EnemyCollisionSenses.AttackPlayerPosition.rotation);
+                enemy.EnemyCore.EnemyCollisionSenses.AttackPlayerPosition.rotation);*/
+            projectile = stateData.pool.Get();
+            projectile.transform.SetPositionAndRotation(
+                enemy.EnemyCore.EnemyCollisionSenses.AttackPlayerPosition.position,
+                enemy.EnemyCore.EnemyCollisionSenses.AttackPlayerPosition.rotation
+                );
             projectileScript = projectile.GetComponent<Projectile>();
             projectileScript.FireProjectile(stateData.projectileSpeed, stateData.projectileTravelDistance, stateData.projectileDamage);
         }
