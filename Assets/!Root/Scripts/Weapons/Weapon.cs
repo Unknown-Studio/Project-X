@@ -6,15 +6,18 @@ namespace Suhdo.Weapons
 {
     public class Weapon : MonoBehaviour
     {
+        [SerializeField] protected D_Weapon weaponData;
+        
         protected PlayerAttackState state;
         protected Animator anim;
+        protected int attackCounter;
         
         public void InitializeWeapon(PlayerAttackState state)
         {
             this.state = state;
         }
         
-        private void Awake()
+        protected virtual void Awake()
         {
             anim = transform.Find("Base").GetComponent<Animator>();
             
@@ -24,45 +27,50 @@ namespace Suhdo.Weapons
         public virtual void EnterWeapon()
         {
             gameObject.SetActive(true);
+            if (attackCounter >= weaponData.MovementSpeed.Length) attackCounter = 0;
+            
             anim.SetBool("attack", true);
+            anim.SetInteger("attackCounter", attackCounter);
         }
 
         public virtual void ExitWeapon()
         {
             anim.SetBool("attack", false);
+
+            attackCounter++;
+            
             gameObject.SetActive(false);
         }
 
         #region Animation Trigger
 
-        public void AnimationFinishTrigger()
+        public virtual void AnimationFinishTrigger()
         {
             state.AnimationFinishTrigger();
         }
 
-        public void AnimationStartMovementTrigger()
+        public virtual void AnimationStartMovementTrigger()
         {
-            throw new NotImplementedException();
+            state.SetPlayerVelocity(weaponData.MovementSpeed[attackCounter]);
         }
 
-        public void AnimationStopMovementTrigger()
+        public virtual void AnimationStopMovementTrigger()
         {
-            throw new NotImplementedException();
+            state.SetPlayerVelocity(0f);
         }
 
-        public void AnimationTurnOffFlip()
+        public virtual void AnimationTurnOffFlip()
         {
-            throw new NotImplementedException();
+            state.SetFlipCheck(false);
         }
 
-        public void AnimationTurnOnFlip()
+        public virtual void AnimationTurnOnFlip()
         {
-            throw new NotImplementedException();
+            state.SetFlipCheck(true);
         }
 
-        public void AnimationActionTrigger()
+        public virtual void AnimationActionTrigger()
         {
-            throw new NotImplementedException();
         }
 
         #endregion
