@@ -28,7 +28,12 @@ namespace Suhdo.Player
             _isTouchingWall = PlayerCore.PlayerCollisionSenses.WallFront;
             _isCeiling = PlayerCore.PlayerCollisionSenses.Ceiling;
             
-            
+            xInput = player.InputHandler.NormInputX;
+            yInput = player.InputHandler.NormInputY;
+            _jumpInput = player.InputHandler.JumpInput;
+            _rollInput = player.InputHandler.RollInput;
+            primaryAttackInput = player.InputHandler.AttackInputs[(int)CombatInputs.Primary];
+            secondaryAttackInput = player.InputHandler.AttackInputs[(int)CombatInputs.Secondary];
         }
 
         public override void Enter()
@@ -41,13 +46,6 @@ namespace Suhdo.Player
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-
-            xInput = player.InputHandler.NormInputX;
-            yInput = player.InputHandler.NormInputY;
-            _jumpInput = player.InputHandler.JumpInput;
-            _rollInput = player.InputHandler.RollInput;
-            primaryAttackInput = player.InputHandler.AttackInputs[(int)CombatInputs.Primary];
-            secondaryAttackInput = player.InputHandler.AttackInputs[(int)CombatInputs.Secondary];
 
             if (primaryAttackInput && !_isCeiling)
             {
@@ -65,7 +63,7 @@ namespace Suhdo.Player
                 player.InAirState.StartCoyoteTime();
                 stateMachine.ChangeState(player.InAirState);
             }
-            else if (_rollInput)
+            else if (_rollInput && player.RollState.CheckCanRoll())
             {
                 stateMachine.ChangeState(player.RollState);
             }

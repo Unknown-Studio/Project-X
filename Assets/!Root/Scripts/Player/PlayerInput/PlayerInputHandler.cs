@@ -18,10 +18,9 @@ namespace Suhdo.Player
         public bool JumpInput { get; private set; }
         public bool JumpInputStop { get; private set; }
         public bool RollInput { get; private set; }
-        public bool RollInputStop { get; private set; } 
         public bool[] AttackInputs { get; private set; }
 
-        private void Start()
+        private void Awake()
         {
             _playerInput = GetComponent<PlayerInput>();
 
@@ -32,7 +31,6 @@ namespace Suhdo.Player
         private void Update()
         {
             CheckJumpInputHoldTime();
-            CheckRollInputHoldTime();
         }
 
         public void OnPrimaryAttackInput(InputAction.CallbackContext context)
@@ -87,28 +85,19 @@ namespace Suhdo.Player
             if (context.started)
             {
                 RollInput = true;
-                RollInputStop = false;
             }
-            else
+            else if(context.canceled)
             {
-                RollInputStop = true;
+                RollInput = false;
             }
         }
 		
 		public void UserJumpInput() => JumpInput = false;
 
-		public void UserRollInput() => RollInput = false;
-
         public void CheckJumpInputHoldTime()
         {
             if (Time.time >= _jumpInputStartTime + inputHoldTime)
                 JumpInput = false;
-        }
-
-        public void CheckRollInputHoldTime()
-        {
-            if (Time.time >= _jumpInputStartTime + inputHoldTime)
-                RollInput = false;
         }
     }
     
