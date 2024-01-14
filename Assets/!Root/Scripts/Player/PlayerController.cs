@@ -19,8 +19,11 @@ namespace Suhdo.Player
 		public PlayerCrouchMoveState CrouchMoveState { get; private set; }
         public PlayerRollState RollState { get; private set; }
         public PlayerWallSlideState WallSlideState { get; private set; }
-
+        public PlayerAttackState PrimaryAttackState { get; private set; }
+        public PlayerAttackState SecondaryAttackState { get; private set; }
+        
         public PlayerInputHandler InputHandler { get; private set; }
+        public PlayerInventory Inventory {get; private set; }
 
         private Vector2 _workSpaceVector;
 
@@ -38,7 +41,8 @@ namespace Suhdo.Player
 			CrouchMoveState = new PlayerCrouchMoveState(StateMachine, this, "crouchmove", playerData);
 			RollState = new PlayerRollState(StateMachine, this, "roll", playerData);
 			WallSlideState = new PlayerWallSlideState(StateMachine, this, "wallslide", playerData);
-
+            PrimaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData);
+            SecondaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData);
         }
 
         protected override void Start()
@@ -46,6 +50,9 @@ namespace Suhdo.Player
             base.Start();
             
             InputHandler = GetComponent<PlayerInputHandler>();
+            Inventory = GetComponent<PlayerInventory>();
+            
+            PrimaryAttackState.SetWeapon(Inventory.weapons[(int)CombatInputs.Primary]);
             StateMachine.Initiallize(IdleState);
         }
 
