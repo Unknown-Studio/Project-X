@@ -20,9 +20,9 @@ namespace Suhdo.Enemies.Skeleton
         public Skeleton_LookingForPlayer LookingForPlayer {get; private set; }
         public Skeleton_MeleeAttackState MeleeAttackState { get; private set; }
 
-        protected override void Start()
+        protected override void Awake()
         {
-            base.Start();
+            base.Awake();
 
             IdleState = new Skeleton_IdleState(StateMachine, this, "idle", _idleStateData);
             MoveState = new Skeleton_MoveState(StateMachine, this, "move", _moveStateData);
@@ -34,12 +34,18 @@ namespace Suhdo.Enemies.Skeleton
                 new Skeleton_LookingForPlayer(StateMachine, this, "lookingForPlayer", _lookingForPlayerData);
             MeleeAttackState = new Skeleton_MeleeAttackState(StateMachine, this, "meleeAttack", _meleeAttackData);
             
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+            
             StateMachine.Initiallize(IdleState);
         }
 
         public void Damage(float amount)
         {
-            
+            Debug.Log("Skeleton damage: " + amount);
         }
     }
 }

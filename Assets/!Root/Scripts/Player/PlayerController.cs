@@ -32,6 +32,9 @@ namespace Suhdo.Player
             base.Awake();
             
             PlayerCore = GetComponentInChildren<PlayerCore>();
+            InputHandler = GetComponent<PlayerInputHandler>();
+            Inventory = GetComponent<PlayerInventory>();
+            
             IdleState = new PlayerIdleState(StateMachine, this, "idle", playerData);
             MoveState = new PlayerMoveState(StateMachine, this, "move", playerData);
             JumpState = new PlayerJumpState(StateMachine, this, "inAir", playerData);
@@ -49,8 +52,6 @@ namespace Suhdo.Player
         {
             base.Start();
             
-            InputHandler = GetComponent<PlayerInputHandler>();
-            Inventory = GetComponent<PlayerInventory>();
             
             PrimaryAttackState.SetWeapon(Inventory.weapons[(int)CombatInputs.Primary]);
             StateMachine.Initiallize(IdleState);
