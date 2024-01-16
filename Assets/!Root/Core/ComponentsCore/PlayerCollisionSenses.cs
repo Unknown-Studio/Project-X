@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using Suhdo.Generics;
 using UnityEngine;
 
 namespace Suhdo.CharacterCore
@@ -33,19 +34,19 @@ namespace Suhdo.CharacterCore
 
         public Transform GroundCheck
         {
-            get => groundCheck;
+            get => GenericNotImplementedError<Transform>.TryGet(groundCheck, PlayerCore.transform.parent.name);
             private set => groundCheck = value;
         }
 
         public Transform WallCheck
         {
-            get => wallCheck;
+            get => GenericNotImplementedError<Transform>.TryGet(wallCheck, PlayerCore.transform.parent.name);
             private set => wallCheck = value;
         }
 
         public Transform CeilingCheck
         {
-            get => ceilingCheck;
+            get => GenericNotImplementedError<Transform>.TryGet(ceilingCheck, PlayerCore.transform.parent.name);
             private set => ceilingCheck = value;
         }
 

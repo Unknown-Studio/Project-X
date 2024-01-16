@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Suhdo.Enemies.Skeleton
 {
-    public class Skeleton : Enemy, IDamageable
+    public class Skeleton : Enemy
     {
         [SerializeField] private D_EnemyIdleState _idleStateData;
         [SerializeField] private D_EnemyMoveState _moveStateData;
@@ -43,9 +43,5 @@ namespace Suhdo.Enemies.Skeleton
             StateMachine.Initiallize(IdleState);
         }
 
-        public void Damage(float amount)
-        {
-            Debug.Log("Skeleton damage: " + amount);
-        }
     }
 }
