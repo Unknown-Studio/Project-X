@@ -10,6 +10,7 @@ namespace Suhdo.Player
         protected bool grabInput;
         protected bool jumpInput;
         protected bool isTouchingLedge;
+        protected bool iswall;
 
         protected int xInput;
         protected int yInput;
@@ -24,6 +25,7 @@ namespace Suhdo.Player
 
             isGrounded = PlayerCore.PlayerCollisionSenses.Ground;
             isTouchingWall = PlayerCore.PlayerCollisionSenses.WallFront;
+            iswall = PlayerCore.PlayerCollisionSenses.WallFront;
         }
 
         public override void LogicUpdate()

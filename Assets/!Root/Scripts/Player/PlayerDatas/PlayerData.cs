@@ -22,6 +22,9 @@ namespace Suhdo.Player
         [Header("Roll State")]
         public float RollVelocity = 20f;
 
+        [Header("Wall Slide State")]
+        public float WallSlideVelocity = 20f;
+
         /*[Header("Wall Jump State")]
         public float wallJumpVelocity = 20f;
         public float wallJumpTime = 0.4f;
