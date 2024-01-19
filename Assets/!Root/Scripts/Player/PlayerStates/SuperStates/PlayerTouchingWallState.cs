@@ -6,7 +6,8 @@ namespace Suhdo.Player
     public class PlayerTouchingWallState : PlayerState
     {
         protected bool isGrounded;
-        protected bool isTouchingWall;
+        protected bool isTouchingWallFront;
+        protected bool isTouchingWallBack;
         protected bool grabInput;
         protected bool jumpInput;
         protected bool isTouchingLedge;
@@ -23,7 +24,8 @@ namespace Suhdo.Player
             base.DoChecks();
 
             isGrounded = PlayerCore.PlayerCollisionSenses.Ground;
-            isTouchingWall = PlayerCore.PlayerCollisionSenses.WallFront;
+            isTouchingWallFront = PlayerCore.PlayerCollisionSenses.WallFront;
+            isTouchingWallBack = PlayerCore.PlayerCollisionSenses.WallFront;
         }
 
         public override void LogicUpdate()

@@ -7,7 +7,7 @@ namespace Suhdo.Player
     {
         protected bool isAbilityDone;
 
-        private bool isGrounded;
+        protected bool isGrounded;
         protected bool isCeiling;
         
         public PlayerAbilityState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data) : base(stateMachine, entity, animBoolName, data)
