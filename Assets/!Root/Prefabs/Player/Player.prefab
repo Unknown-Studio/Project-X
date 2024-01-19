@@ -112,8 +112,8 @@ Transform:
   m_GameObject: {fileID: 6479237578742183971}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.42, y: 0, z: 0}
+  m_LocalScale: {x: 0.55806, y: 0.55806, z: 0.55806}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4955132888959656962}
@@ -405,6 +405,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 22d329af-b8ff-49a2-8401-e2705f2a98d8
     m_ActionName: Gameplay/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4715545223970000097}
+        m_TargetAssemblyTypeName: Suhdo.Player.PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnRollInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1e6124f0-e71b-49c4-8f17-25c3d847fe6d
+    m_ActionName: Gameplay/Roll[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Gameplay

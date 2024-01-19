@@ -1,15 +1,11 @@
-using Suhdo.Player;
 using Suhdo.StateMachineCore;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace Suhdo
+namespace Suhdo.Player
 {
     public class PlayerWallSlideState : PlayerTouchingWallState
     {
-        private int _xinput;
-        private int _yinput;
+        private int _xInput;
+        private int _yInput;
         public PlayerWallSlideState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data) : base(stateMachine, entity, animBoolName, data)
         {
         }
@@ -17,9 +13,9 @@ namespace Suhdo
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            _xinput = player.InputHandler.NormInputX;
-            _yinput = player.InputHandler.NormInputY;
-            if ((iswall && _xinput == 1f || iswall && _xinput == -1f) && !isGrounded)
+            _xInput = player.InputHandler.NormInputX;
+            _yInput = player.InputHandler.NormInputY;
+            if ((isTouchingWallBack && _xInput == 1f || isTouchingWallBack && _xInput == -1f) && !isGrounded)
             {
                 stateMachine.ChangeState(player.WallSlideState);
             }
