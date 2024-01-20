@@ -40,11 +40,11 @@ namespace Suhdo.Player
                 _xInput = player.InputHandler.NormInputX;
             }
 
-            PlayerCore.PlayerMovement.CheckIfShouldFlip(_xInput);
+            Core.Movement.CheckIfShouldFlip(_xInput);
 
             if (_setVelocity)
             {
-                PlayerCore.PlayerMovement.SetVelocityX(_velocityToSet * PlayerCore.PlayerMovement.FacingDirection);
+                Core.Movement.SetVelocityX(_velocityToSet);
             }
         }
 
@@ -64,7 +64,7 @@ namespace Suhdo.Player
 
         public void SetPlayerVelocity(float velocity)
         {
-            PlayerCore.PlayerMovement.SetVelocityX(velocity * PlayerCore.PlayerMovement.FacingDirection);
+            Core.Movement.SetVelocityX(velocity);
 
             _velocityToSet= velocity;
             _setVelocity = true;

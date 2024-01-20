@@ -29,8 +29,8 @@ namespace Suhdo.Enemies
             base.TriggerAttack();
             
             Collider2D[] detectedObjects = 
-                Physics2D.OverlapCircleAll(enemy.EnemyCore.EnemyCollisionSenses.AttackPlayerPosition.position,
-                    enemy.EnemyCore.EnemyCollisionSenses.AttackRadius, enemy.EnemyCore.EnemyCollisionSenses.WhatIsPlayer);
+                Physics2D.OverlapCircleAll(enemy.Core.CollisionSenses.AttackPlayerPosition.position,
+                    enemy.Core.CollisionSenses.AttackRadius, enemy.Core.CollisionSenses.WhatIsPlayer);
 
             foreach (Collider2D collider in detectedObjects)
             {

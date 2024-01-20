@@ -20,7 +20,7 @@ namespace Suhdo.Enemies
             base.Enter();
 
             isChargeTimeOver = false;
-            enemy.EnemyCore.EnemyMovement.SetVelocityX(stateData.ChargeSpeed);
+            enemy.Core.Movement.SetVelocityX(stateData.ChargeSpeed);
         }
 
         public override void LogicUpdate()

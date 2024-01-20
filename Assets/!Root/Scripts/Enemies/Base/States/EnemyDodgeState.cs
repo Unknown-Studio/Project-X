@@ -20,9 +20,9 @@ namespace Suhdo.Enemies
             base.Enter();
 
             isDodgeOver = false;
-            enemy.EnemyCore.EnemyMovement.Flip();
-            enemy.EnemyCore.EnemyMovement.SetVelocity(StateData.dodgeSpeed, StateData.dodgeAngle,
-                enemy.EnemyCore.EnemyMovement.FacingDirection);
+            enemy.Core.Movement.Flip();
+            enemy.Core.Movement.SetVelocity(StateData.dodgeSpeed, StateData.dodgeAngle,
+                enemy.Core.Movement.FacingDirection);
         }
 
         public override void LogicUpdate()
@@ -38,7 +38,7 @@ namespace Suhdo.Enemies
         public override void Exit()
         {
             base.Exit();
-            enemy.EnemyCore.EnemyMovement.Flip();
+            enemy.Core.Movement.Flip();
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Suhdo.Enemies
     public class EnemyState : CoreState
     {
         protected Enemy enemy;
-        protected EnemyCore enemyCore;
+        protected Core core;
 
         protected bool isDetectingGround;
         protected bool isDetectingWall;
@@ -21,19 +21,19 @@ namespace Suhdo.Enemies
             : base(stateMachine, entity, animBoolName)
         {
             enemy = (Enemy)entity;
-            enemyCore = enemy.EnemyCore;
+            core = enemy.Core;
         }
 
         public override void DoChecks()
         {
             base.DoChecks();
-            isDetectingGround = enemyCore.EnemyCollisionSenses.Ground;
-            isDetectingLedge = enemyCore.EnemyCollisionSenses.Ledge;
-            isDetectingWall = enemyCore.EnemyCollisionSenses.WallFront;
-            isDetectingWallBack = enemyCore.EnemyCollisionSenses.WallBack;
-            isPlayerInMinAgroRange = enemyCore.EnemyCollisionSenses.PlayerInMinAgroRange;
-            isPlayerInMaxAgroRange = enemyCore.EnemyCollisionSenses.PlayerInMaxAgroRange;
-            performCloseRangeAction = enemyCore.EnemyCollisionSenses.PlayerInCloseRangeAction;
+            isDetectingGround = core.CollisionSenses.Ground;
+            isDetectingLedge = core.CollisionSenses.Ledge;
+            isDetectingWall = core.CollisionSenses.WallFront;
+            isDetectingWallBack = core.CollisionSenses.WallBack;
+            isPlayerInMinAgroRange = core.CollisionSenses.PlayerInMinAgroRange;
+            isPlayerInMaxAgroRange = core.CollisionSenses.PlayerInMaxAgroRange;
+            performCloseRangeAction = core.CollisionSenses.PlayerInCloseRangeAction;
         }
     }
 }

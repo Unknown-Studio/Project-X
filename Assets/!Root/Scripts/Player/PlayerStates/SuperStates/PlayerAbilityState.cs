@@ -18,8 +18,8 @@ namespace Suhdo.Player
         {
             base.DoChecks();
 
-            isGrounded = PlayerCore.PlayerCollisionSenses.Ground;
-            isCeiling = PlayerCore.PlayerCollisionSenses.Ceiling;
+            isGrounded = Core.CollisionSenses.Ground;
+            isCeiling = Core.CollisionSenses.Ceiling;
         }
 
         public override void Enter()
@@ -33,7 +33,7 @@ namespace Suhdo.Player
             base.LogicUpdate();
 
             if (!isAbilityDone) return;
-            if(isGrounded && PlayerCore.PlayerMovement.CurrentVelocity.y <= 0.01f)
+            if(isGrounded && Core.Movement.CurrentVelocity.y <= 0.01f)
                 stateMachine.ChangeState(player.IdleState);
             else 
                 stateMachine.ChangeState(player.InAirState);

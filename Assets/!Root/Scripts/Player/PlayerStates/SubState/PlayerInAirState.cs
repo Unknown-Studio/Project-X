@@ -34,10 +34,10 @@ namespace Suhdo.Player
 
 			_oldIsTouchingWall = _isTouchingWall;
 			_oldIsTouchingWallBack = _isTouchingWallBack;
-			_isCeiling = PlayerCore.PlayerCollisionSenses.Ceiling;
-			_isGrounded = PlayerCore.PlayerCollisionSenses.Ground;
-			_isTouchingWall = PlayerCore.PlayerCollisionSenses.WallFront;
-			_isTouchingWallBack = PlayerCore.PlayerCollisionSenses.WallBack;
+			_isCeiling = Core.CollisionSenses.Ceiling;
+			_isGrounded = Core.CollisionSenses.Ground;
+			_isTouchingWall = Core.CollisionSenses.WallFront;
+			_isTouchingWallBack = Core.CollisionSenses.WallBack;
 			
 			CheckCoyoteTime();
 
@@ -72,9 +72,9 @@ namespace Suhdo.Player
 			}
 			else if (_jumpInput && player.JumpState.CanJump())
 				stateMachine.ChangeState(player.JumpState);
-			else if(_isGrounded && PlayerCore.PlayerMovement.CurrentVelocity.y < 0.01f && _yInput == -1)
+			else if(_isGrounded && Core.Movement.CurrentVelocity.y < 0.01f && _yInput == -1)
 				stateMachine.ChangeState(player.CrouchIdleState);
-			else if (_isGrounded && PlayerCore.PlayerMovement.CurrentVelocity.y < 0.01f)
+			else if (_isGrounded && Core.Movement.CurrentVelocity.y < 0.01f)
 				stateMachine.ChangeState(player.LandState);
 			else
 			{

@@ -24,9 +24,9 @@ namespace Suhdo.Player
         {
             base.DoChecks();
 
-            _isGrounded = PlayerCore.PlayerCollisionSenses.Ground;
-            _isTouchingWall = PlayerCore.PlayerCollisionSenses.WallFront;
-            _isCeiling = PlayerCore.PlayerCollisionSenses.Ceiling;
+            _isGrounded = Core.CollisionSenses.Ground;
+            _isTouchingWall = Core.CollisionSenses.WallFront;
+            _isCeiling = Core.CollisionSenses.Ceiling;
             
             xInput = player.InputHandler.NormInputX;
             yInput = player.InputHandler.NormInputY;

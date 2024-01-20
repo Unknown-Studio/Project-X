@@ -8,7 +8,7 @@ namespace Suhdo.Player
     {
         [SerializeField] private PlayerData playerData;
 
-        public PlayerCore PlayerCore { get; private set; }
+        public Core Core { get; private set; }
         
         public PlayerIdleState IdleState { get; private set; }
         public PlayerMoveState MoveState { get; private set; }
@@ -31,7 +31,7 @@ namespace Suhdo.Player
         {
             base.Awake();
             
-            PlayerCore = GetComponentInChildren<PlayerCore>();
+            Core = GetComponentInChildren<Core>();
             InputHandler = GetComponent<PlayerInputHandler>();
             Inventory = GetComponent<PlayerInventory>();
             
@@ -59,7 +59,7 @@ namespace Suhdo.Player
 
         protected override void Update()
         {
-            PlayerCore.LogicUpdate();
+            Core.LogicUpdate();
             base.Update();
         }
 

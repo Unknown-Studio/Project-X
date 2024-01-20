@@ -22,12 +22,12 @@ namespace Suhdo.Enemies
         {
             base.TriggerAttack();
             /*projectile = GameObject.Instantiate(stateData.projectile,
-                enemy.EnemyCore.EnemyCollisionSenses.AttackPlayerPosition.position,
-                enemy.EnemyCore.EnemyCollisionSenses.AttackPlayerPosition.rotation);*/
+                enemy.Core.CollisionSenses.AttackPlayerPosition.position,
+                enemy.Core.CollisionSenses.AttackPlayerPosition.rotation);*/
             projectile = stateData.pool.Get();
             projectile.transform.SetPositionAndRotation(
-                enemy.EnemyCore.EnemyCollisionSenses.AttackPlayerPosition.position,
-                enemy.EnemyCore.EnemyCollisionSenses.AttackPlayerPosition.rotation
+                enemy.Core.CollisionSenses.AttackPlayerPosition.position,
+                enemy.Core.CollisionSenses.AttackPlayerPosition.rotation
                 );
             projectileScript = projectile.GetComponent<Projectile>();
             projectileScript.FireProjectile(stateData.projectileSpeed, stateData.projectileTravelDistance, stateData.projectileDamage);

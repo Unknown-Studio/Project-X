@@ -2,7 +2,7 @@ using Suhdo.CharacterCore;
 
 namespace Suhdo.Player
 {
-    public class PlayerCombat : PlayerCoreComponent, IDamageable
+    public class Combat : CoreComponent, IDamageable
     {
         public void Damage(float amount)
         {

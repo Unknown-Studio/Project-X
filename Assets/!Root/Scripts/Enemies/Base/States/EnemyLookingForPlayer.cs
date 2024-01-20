@@ -27,7 +27,7 @@ namespace Suhdo.Enemies
 
             lastTurnTime = StartTime;
             amountOfTurnsDone = 0;
-            enemy.EnemyCore.EnemyMovement.SetVelocityZero();
+            enemy.Core.Movement.SetVelocityZero();
         }
 
         public override void LogicUpdate()
@@ -36,14 +36,14 @@ namespace Suhdo.Enemies
             
             if (turnImmediately)
             {
-                enemy.EnemyCore.EnemyMovement.Flip();
+                enemy.Core.Movement.Flip();
                 lastTurnTime = Time.time;
                 amountOfTurnsDone++;
                 turnImmediately = false;
             }
             else if(Time.time >= lastTurnTime + stateData.TimeBetweenTurns && !isAllTurnsIsDone)
             {
-                enemy.EnemyCore.EnemyMovement.Flip();
+                enemy.Core.Movement.Flip();
                 lastTurnTime = Time.time;
                 amountOfTurnsDone++;
             }

@@ -30,10 +30,10 @@ namespace Suhdo.Enemies
 
             if (Time.time >= StartTime + stateData.chargeTime)
             {
-                enemy.EnemyCore.EnemyMovement.SetVelocityX(stateData.Speed);
+                enemy.Core.Movement.SetVelocityX(stateData.Speed);
                 if (IsPosWantToMove() || isDetectingWall || !isDetectingLedge)
                 {
-                    enemy.EnemyCore.EnemyMovement.SetVelocityX(0f);
+                    enemy.Core.Movement.SetVelocityX(0f);
                     teleDone = true;
                 }
             }

@@ -16,7 +16,7 @@ namespace Suhdo.Player
 			base.Enter();
 			Debug.Log("Jump");
 			player.InputHandler.UserJumpInput();
-			PlayerCore.PlayerMovement.SetVelocityY(playerData.jumpVelocity);
+			Core.Movement.SetVelocityY(playerData.jumpVelocity);
 			isAbilityDone = true;
 			amountOffJumpLeft--;
 			player.InAirState.SetIsJumping();

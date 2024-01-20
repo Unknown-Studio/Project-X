@@ -20,7 +20,7 @@ namespace Suhdo.Enemies
             base.Enter();
             
             performLongRangeAction = false;
-            enemy.EnemyCore.EnemyMovement.SetVelocityZero();
+            enemy.Core.Movement.SetVelocityZero();
         }
 
         public override void LogicUpdate()

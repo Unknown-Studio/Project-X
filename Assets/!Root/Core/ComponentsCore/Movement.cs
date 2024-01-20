@@ -1,8 +1,9 @@
+using Suhdo.CharacterCore;
 using UnityEngine;
 
-namespace Suhdo.CharacterCore
+namespace Suhdo
 {
-    public class EnemyMovement : EnemyCoreComponent
+    public class Movement : CoreComponent
     {
         public Rigidbody2D RB { get; private set; }
         public int FacingDirection { get; private set; }
@@ -52,6 +53,13 @@ namespace Suhdo.CharacterCore
             CurrentVelocity = _workSpaceVector;
         }
 
+        public void SetVelocityX(float velocity, int direction)
+        {
+            _workSpaceVector.Set(velocity * direction, CurrentVelocity.y);
+            RB.velocity = _workSpaceVector;
+            CurrentVelocity = _workSpaceVector;
+        }
+        
         public void SetVelocityX(float velocity)
         {
             _workSpaceVector.Set(velocity * FacingDirection, CurrentVelocity.y);
@@ -81,4 +89,3 @@ namespace Suhdo.CharacterCore
         }
     }
 }
-
