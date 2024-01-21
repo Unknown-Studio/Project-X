@@ -7,21 +7,11 @@ namespace Suhdo.Enemies
     public class MeleeAttackState : AttackState
     {
         protected D_EnemyMeleeAttack stateData;
-
-        protected AttackDetails attackDetails;
         
         public MeleeAttackState(StateMachine stateMachine, Entity entity, string animBoolName, D_EnemyMeleeAttack data)
             : base(stateMachine, entity, animBoolName)
         {
             stateData = data;
-        }
-
-        public override void Enter()
-        {
-            base.Enter();
-            
-            attackDetails.damageAmount = stateData.attackDamage;
-            attackDetails.position = enemy.transform.position;
         }
 
         public override void TriggerAttack()
@@ -36,8 +26,12 @@ namespace Suhdo.Enemies
             {
                 if (collider.TryGetComponent<IDamageable>(out var damageableTarget))
                 {
-                    // Gọi phương thức TakeDamage của giao diện
-                    damageableTarget.Damage(10f);
+                    damageableTarget.Damage(stateData.AttackDamage);
+                }
+                
+                if (collider.TryGetComponent<IKnockbackable>(out var knockbackable))
+                {
+                    knockbackable.Knockback(stateData.KnockbackAngle, stateData.KnockbackStrength, enemy.Core.Movement.FacingDirection);
                 }
             }
         }
