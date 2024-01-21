@@ -4,8 +4,6 @@ namespace Suhdo.Player
 {
     public class PlayerWallSlideState : PlayerTouchingWallState
     {
-        private int _xInput;
-        private int _yInput;
         public PlayerWallSlideState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data) : base(stateMachine, entity, animBoolName, data)
         {
         }
@@ -13,21 +11,20 @@ namespace Suhdo.Player
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            _xInput = player.InputHandler.NormInputX;
-            _yInput = player.InputHandler.NormInputY;
-            if ((isTouchingWallBack && _xInput == 1f || isTouchingWallBack && _xInput == -1f) && !isGrounded)
+            
+            if (xInput == 0 || !isTouchingWallFront)
             {
-                stateMachine.ChangeState(player.WallSlideState);
+                stateMachine.ChangeState(player.InAirState);
             }
-            else
+            else if(isGrounded)
             {
-                stateMachine.ChangeState(player.IdleState);
+                stateMachine.ChangeState(player.LandState);
             }
         }
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
-            PlayerCore.PlayerMovement.SetVelocityY(-3f);
+            Core.Movement.SetVelocityY(-3f);
         }
     }
 }

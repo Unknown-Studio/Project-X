@@ -388,8 +388,8 @@ MonoBehaviour:
   groundCheck: {fileID: 5585263065815564424}
   groundCheckRadius: 0.4
   wallCheck: {fileID: 6618545980516098951}
-  wallFrontCheckDistance: 0
-  wallBackCheckDistance: 0
+  wallFrontCheckDistance: 0.55
+  wallBackCheckDistance: 0.7
   ceilingCheck: {fileID: 1421151296965108353}
   ceilingCheckRadius: 0.4
   ledgeCheck: {fileID: 1125000154348831381}
@@ -459,7 +459,7 @@ Transform:
   m_GameObject: {fileID: 6479237578742183971}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.42, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 0.55806, y: 0.55806, z: 0.55806}
   m_ConstrainProportionsScale: 0
   m_Children: []

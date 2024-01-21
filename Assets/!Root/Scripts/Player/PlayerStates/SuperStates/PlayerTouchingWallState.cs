@@ -25,7 +25,7 @@ namespace Suhdo.Player
 
             isGrounded = Core.CollisionSenses.Ground;
             isTouchingWallFront = Core.CollisionSenses.WallFront;
-			isTouchingWallBack = PlayerCore.PlayerCollisionSenses.WallBack;
+			isTouchingWallBack = Core.CollisionSenses.WallBack;
         }
 
         public override void LogicUpdate()
