@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Suhdo.CharacterCore;
+using Suhdo.Combat;
 using UnityEngine;
 
 namespace Suhdo.Weapons
@@ -9,6 +9,7 @@ namespace Suhdo.Weapons
         protected D_AggressiveWeapon aggressiveWeaponData;
 
         private List<IDamageable> detectedDamageable = new List<IDamageable>();
+        private List<IKnockbackable> detectedKnockbackable = new List<IKnockbackable>();
 
         protected override void Awake()
         {
@@ -37,25 +38,42 @@ namespace Suhdo.Weapons
             {
                 item.Damage(details.DamageAmount);
             }
+
+            foreach (var item in detectedKnockbackable)
+            {
+                item.Knockback(details.KnockbackAngle, details.KnockbackStrength, core.Movement.FacingDirection);
+            }
         }
         
         public void AddToDetected(Collider2D collision)
         {
-            IDamageable damageable = collision.GetComponent<IDamageable>();
+            var damageable = collision.GetComponent<IDamageable>();
+            var knockbackable = collision.GetComponent<IKnockbackable>();
 
             if (damageable != null)
             {
                 detectedDamageable.Add(damageable);
             }
+
+            if (knockbackable != null)
+            {
+                detectedKnockbackable.Add(knockbackable);
+            }
         }
 
         public void RemoveFromDetected(Collider2D collision)
         {
-            IDamageable damageable = collision.GetComponent<IDamageable>();
+            var damageable = collision.GetComponent<IDamageable>();
+            var knockbackable = collision.GetComponent<IKnockbackable>();
 
             if (damageable != null)
             {
                 detectedDamageable.Remove(damageable);
+            }
+            
+            if (knockbackable != null)
+            {
+                detectedKnockbackable.Remove(knockbackable);
             }
         }
     }

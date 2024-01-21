@@ -30,5 +30,12 @@ namespace Suhdo.Enemies
             if (Time.time >= StartTime + stateData.ChargeTime)
                 isChargeTimeOver = true;
         }
+
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+            
+            enemy.Core.Movement.SetVelocityX(stateData.ChargeSpeed);
+        }
     }
 }

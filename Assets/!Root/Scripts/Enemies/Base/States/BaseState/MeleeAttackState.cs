@@ -1,4 +1,4 @@
-using Suhdo.CharacterCore;
+using Suhdo.Combat;
 using Suhdo.StateMachineCore;
 using UnityEngine;
 

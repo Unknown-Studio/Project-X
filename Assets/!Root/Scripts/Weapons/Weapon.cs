@@ -1,4 +1,5 @@
 using System;
+using Suhdo.CharacterCore;
 using Suhdo.Player;
 using UnityEngine;
 
@@ -7,14 +8,16 @@ namespace Suhdo.Weapons
     public class Weapon : MonoBehaviour
     {
         [SerializeField] protected D_Weapon weaponData;
-        
+
+        protected Core core;
         protected PlayerAttackState state;
         protected Animator anim;
         protected int attackCounter;
         
-        public void InitializeWeapon(PlayerAttackState state)
+        public void InitializeWeapon(PlayerAttackState state, Core core)
         {
             this.state = state;
+            this.core = core;
         }
         
         protected virtual void Awake()

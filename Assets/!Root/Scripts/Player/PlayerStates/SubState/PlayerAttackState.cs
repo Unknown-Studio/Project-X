@@ -51,7 +51,7 @@ namespace Suhdo.Player
         public void SetWeapon(Weapon weapon)
         {
             _weapon = weapon;
-            _weapon.InitializeWeapon(this);
+            _weapon.InitializeWeapon(this, Core);
         }
 
         #region Animation Trigger

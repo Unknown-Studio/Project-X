@@ -12,7 +12,7 @@ namespace Suhdo.Weapons
         public WeaponAttackDetails[] AttackDetails
         {
             get => _attackDetails;
-            set => _attackDetails = value;
+            private set => _attackDetails = value;
         }
 
         private void OnEnable()

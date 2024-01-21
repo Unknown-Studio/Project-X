@@ -29,6 +29,13 @@ namespace Suhdo.Enemies
             enemy.Core.Movement.SetVelocityZero();
         }
 
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+            
+            enemy.Core.Movement.SetVelocityZero();
+        }
+
         public virtual void TriggerAttack()
         {
             

@@ -1,5 +1,4 @@
 using Suhdo.Generics;
-using Suhdo.Player;
 using UnityEngine;
 
 namespace Suhdo.CharacterCore
@@ -8,7 +7,7 @@ namespace Suhdo.CharacterCore
     {
         private Movement _movement;
         private CollisionSenses _collisionSenses;
-        private Combat _combat;
+        private Combat.Combat _combat;
 
         public Movement Movement
         {
@@ -22,9 +21,9 @@ namespace Suhdo.CharacterCore
             private set => _collisionSenses = value;
         }
 
-        public Combat Combat
+        public Combat.Combat Combat
         {
-            get => GenericNotImplementedError<Combat>.TryGet(_combat, transform.parent.name);
+            get => GenericNotImplementedError<Combat.Combat>.TryGet(_combat, transform.parent.name);
             private set => _combat = value;
         }
 
@@ -32,6 +31,7 @@ namespace Suhdo.CharacterCore
         {
             Movement = GetComponentInChildren<Movement>();
             CollisionSenses = GetComponentInChildren<CollisionSenses>();
+            Combat = GetComponentInChildren<Combat.Combat>();
 
             if (!Movement || !CollisionSenses)
                 Debug.LogError("Missing core component!");
@@ -49,6 +49,7 @@ namespace Suhdo.CharacterCore
         public virtual void LogicUpdate()
         {
             Movement.LogicUpdate();
+            Combat.LogicUpdate();
         }
     }
 }

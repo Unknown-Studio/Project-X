@@ -58,5 +58,12 @@ namespace Suhdo.Enemies
                 isAllTurnsTimeDone = true;
             }
         }
+
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+
+            enemy.Core.Movement.SetVelocityZero();
+        }
     }
 }

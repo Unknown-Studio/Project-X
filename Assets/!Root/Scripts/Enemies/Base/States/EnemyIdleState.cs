@@ -54,6 +54,13 @@ namespace Suhdo.Enemies
             }
         }
 
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+            
+            core.Movement.SetVelocityZero();
+        }
+
         public void SetFlipAfterIdle(bool isFlip)
         {
             flipAfterIdle = isFlip;
