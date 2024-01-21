@@ -17,8 +17,10 @@ namespace Suhdo.Player
         private bool _oldIsTouchingWall;
         private bool _oldIsTouchingWallBack;
 
-        private bool _coyoteTime;
-        private bool _isJumping;
+		private bool _coyoteTime;
+		private bool _isJumping;
+		private bool _primaryAttackInput;
+		private bool _secondaryAttackInput;
 
 
         public PlayerInAirState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data)
@@ -30,13 +32,22 @@ namespace Suhdo.Player
         {
             base.DoChecks();
 
-            _oldIsTouchingWall = _isTouchingWall;
-            _oldIsTouchingWallBack = _isTouchingWallBack;
-            _isCeiling = PlayerCore.PlayerCollisionSenses.Ceiling;
-            _isGrounded = PlayerCore.PlayerCollisionSenses.Ground;
-            _isTouchingWall = PlayerCore.PlayerCollisionSenses.WallFront;
-            _isTouchingWallBack = PlayerCore.PlayerCollisionSenses.WallBack;
-        }
+			_oldIsTouchingWall = _isTouchingWall;
+			_oldIsTouchingWallBack = _isTouchingWallBack;
+			_isCeiling = Core.CollisionSenses.Ceiling;
+			_isGrounded = Core.CollisionSenses.Ground;
+			_isTouchingWall = Core.CollisionSenses.WallFront;
+			_isTouchingWallBack = Core.CollisionSenses.WallBack;
+			
+			CheckCoyoteTime();
+
+			_xInput = player.InputHandler.NormInputX;
+			_yInput = player.InputHandler.NormInputY;
+			_jumpInput = player.InputHandler.JumpInput;
+			_jumpInputStop = player.InputHandler.JumpInputStop;
+
+			CheckJumpMultiplier();
+		}
 
         public override void Exit()
         {
@@ -52,39 +63,30 @@ namespace Suhdo.Player
         {
             base.LogicUpdate();
 
+			if (_primaryAttackInput && !_isCeiling)
+			{
+				stateMachine.ChangeState(player.PrimaryAttackState);
+			}else if (_secondaryAttackInput && !_isCeiling)
+			{
+				stateMachine.ChangeState(player.SecondaryAttackState);
+			}
+			else if (_jumpInput && player.JumpState.CanJump())
+				stateMachine.ChangeState(player.JumpState);
+			else if(_isGrounded && Core.Movement.CurrentVelocity.y < 0.01f && _yInput == -1)
+				stateMachine.ChangeState(player.CrouchIdleState);
+			else if (_isGrounded && Core.Movement.CurrentVelocity.y < 0.01f)
+				stateMachine.ChangeState(player.LandState);
+			else if ((_isTouchingWall && _xInput > 0) || (_isTouchingWall && _xInput < 0))
+			{
+				stateMachine.ChangeState(player.WallSlideState);
+			}
+			else
+			{
+                Core.Movement.CheckIfShouldFlip(_xInput);
+                Core.Movement.SetVelocityX(playerData.movementVelocity, _xInput);
 
-            CheckCoyoteTime();
-
-            _xInput = player.InputHandler.NormInputX;
-            _yInput = player.InputHandler.NormInputY;
-            _jumpInput = player.InputHandler.JumpInput;
-            _jumpInputStop = player.InputHandler.JumpInputStop;
-
-            CheckJumpMultiplier();
-
-            if (_jumpInput && player.JumpState.CanJump())
-                stateMachine.ChangeState(player.JumpState);
-            else if (_isGrounded && PlayerCore.PlayerMovement.CurrentVelocity.y < 0.01f && _yInput == -1)
-                stateMachine.ChangeState(player.CrouchIdleState);
-            else if (_isGrounded && PlayerCore.PlayerMovement.CurrentVelocity.y < 0.01f)
-                stateMachine.ChangeState(player.LandState);
-            else
-            {
-                if (_isTouchingWall || _isTouchingWallBack)
-                {
-                    if (_xInput != 0f)
-                    {
-                        stateMachine.ChangeState(player.WallSlideState);
-                    }
-                }
-                else
-                {
-                    PlayerCore.PlayerMovement.CheckIfShouldFlip(_xInput);
-                    PlayerCore.PlayerMovement.SetVelocityX(playerData.movementVelocity * _xInput);
-
-                    player.Anim.SetFloat("yVelocity", PlayerCore.PlayerMovement.CurrentVelocity.y);
-                    player.Anim.SetFloat("xVelocity", Mathf.Abs(PlayerCore.PlayerMovement.CurrentVelocity.x));
-                }
+                player.Anim.SetFloat("yVelocity", Core.Movement.CurrentVelocity.y);
+                player.Anim.SetFloat("xVelocity", Mathf.Abs(Core.Movement.CurrentVelocity.x));
             }
         }
 
@@ -105,11 +107,11 @@ namespace Suhdo.Player
             if (!_isJumping) return;
             if (_jumpInputStop)
             {
-                PlayerCore.PlayerMovement.SetVelocityY(PlayerCore.PlayerMovement.CurrentVelocity.y *
-                                                       playerData.variableJumpHeightMultiplier);
+	            Core.Movement.SetVelocityY(Core.Movement.CurrentVelocity.y *
+	                                       playerData.variableJumpHeightMultiplier);
                 _isJumping = false;
             }
-            else if (PlayerCore.PlayerMovement.CurrentVelocity.y <= 0f)
+            else if (Core.Movement.CurrentVelocity.y <= 0f)
                 _isJumping = false;
         }
     }

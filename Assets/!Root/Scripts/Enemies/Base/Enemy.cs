@@ -9,7 +9,7 @@ namespace Suhdo.Enemies
     {
         public D_Entity entityData;
         public GameObject aliveGO { get; private set; }
-        public EnemyCore EnemyCore { get; private set; }
+        public Core Core { get; private set; }
 
         protected float currentHealth;
         protected float currentStunResistance;
@@ -23,7 +23,7 @@ namespace Suhdo.Enemies
         protected override void Awake()
         {
             base.Awake();
-            EnemyCore = GetComponentInChildren<EnemyCore>();
+            Core = GetComponentInChildren<Core>();
         }
 
         protected override void Start()
@@ -36,7 +36,7 @@ namespace Suhdo.Enemies
 
         protected override void Update()
         {
-            EnemyCore.LogicUpdate();
+            Core.LogicUpdate();
             base.Update();
         }
     }

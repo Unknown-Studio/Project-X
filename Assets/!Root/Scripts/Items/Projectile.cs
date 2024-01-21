@@ -1,6 +1,4 @@
-using System;
-using DG.Tweening;
-using Suhdo.CharacterCore;
+using Suhdo.Combat;
 using Suhdo.Enemies;
 using Suhdo.Ultils;
 using UnityEngine;
@@ -16,8 +14,6 @@ namespace Suhdo.Items
         [SerializeField] private Transform damagePos;
         [SerializeField] private float delayBeforeReturnPool;
         
-        private AttackDetails attackDetails;
-
         private float speed;
         private float travelDistance;
         private float xStartPos;
@@ -47,7 +43,6 @@ namespace Suhdo.Items
         private void Update()
         {
             if (hasHitGround) return;
-            attackDetails.position = transform.position;
             if (isGravityOn)
             {
                 float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
@@ -105,7 +100,6 @@ namespace Suhdo.Items
         {
             this.speed = speed;
             this.travelDistance = travelDistance;
-            attackDetails.damageAmount = damage;
             
             xStartPos = transform.position.x;
             rb.velocity = transform.right * speed;

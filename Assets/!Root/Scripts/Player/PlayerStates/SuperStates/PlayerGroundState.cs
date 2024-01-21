@@ -9,6 +9,8 @@ namespace Suhdo.Player
         protected bool _isCeiling;
 
         private bool _jumpInput;
+        protected bool primaryAttackInput;
+        protected bool secondaryAttackInput;
         protected bool _rollInput;
         private bool _isGrounded;
         private bool _isTouchingWall;
@@ -22,9 +24,16 @@ namespace Suhdo.Player
         {
             base.DoChecks();
 
-            _isGrounded = PlayerCore.PlayerCollisionSenses.Ground;
-            _isTouchingWall = PlayerCore.PlayerCollisionSenses.WallFront;
-            _isCeiling = PlayerCore.PlayerCollisionSenses.Ceiling;
+            _isGrounded = Core.CollisionSenses.Ground;
+            _isTouchingWall = Core.CollisionSenses.WallFront;
+            _isCeiling = Core.CollisionSenses.Ceiling;
+            
+            xInput = player.InputHandler.NormInputX;
+            yInput = player.InputHandler.NormInputY;
+            _jumpInput = player.InputHandler.JumpInput;
+            _rollInput = player.InputHandler.RollInput;
+            primaryAttackInput = player.InputHandler.AttackInputs[(int)CombatInputs.Primary];
+            secondaryAttackInput = player.InputHandler.AttackInputs[(int)CombatInputs.Secondary];
         }
 
         public override void Enter()
@@ -38,13 +47,14 @@ namespace Suhdo.Player
         {
             base.LogicUpdate();
 
-            if (entity is not PlayerController player) return;
-            
-            xInput = player.InputHandler.NormInputX;
-            yInput = player.InputHandler.NormInputY;
-            _jumpInput = player.InputHandler.JumpInput;
-            _rollInput = player.InputHandler.RollInput;
-			if (_jumpInput && player.JumpState.CanJump()&& !_isCeiling)
+            if (primaryAttackInput && !_isCeiling)
+            {
+                stateMachine.ChangeState(player.PrimaryAttackState);
+            }else if (secondaryAttackInput && !_isCeiling)
+            {
+                stateMachine.ChangeState(player.SecondaryAttackState);
+            }
+            else if (_jumpInput && player.JumpState.CanJump()&& !_isCeiling)
             {
                 stateMachine.ChangeState(player.JumpState);
             }
@@ -53,7 +63,7 @@ namespace Suhdo.Player
                 player.InAirState.StartCoyoteTime();
                 stateMachine.ChangeState(player.InAirState);
             }
-            else if (_rollInput)
+            else if (_rollInput && player.RollState.CheckCanRoll())
             {
                 stateMachine.ChangeState(player.RollState);
             }

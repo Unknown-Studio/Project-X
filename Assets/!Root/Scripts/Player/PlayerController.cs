@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Suhdo.Player
 {
-    public class PlayerController : Entity, IDamageable
+    public class PlayerController : Entity
     {
         [SerializeField] private PlayerData playerData;
 
-        public PlayerCore PlayerCore { get; private set; }
+        public Core Core { get; private set; }
         
         public PlayerIdleState IdleState { get; private set; }
         public PlayerMoveState MoveState { get; private set; }
@@ -19,8 +19,11 @@ namespace Suhdo.Player
 		public PlayerCrouchMoveState CrouchMoveState { get; private set; }
         public PlayerRollState RollState { get; private set; }
         public PlayerWallSlideState WallSlideState { get; private set; }
-
+        public PlayerAttackState PrimaryAttackState { get; private set; }
+        public PlayerAttackState SecondaryAttackState { get; private set; }
+        
         public PlayerInputHandler InputHandler { get; private set; }
+        public PlayerInventory Inventory {get; private set; }
 
         private Vector2 _workSpaceVector;
 
@@ -28,7 +31,10 @@ namespace Suhdo.Player
         {
             base.Awake();
             
-            PlayerCore = GetComponentInChildren<PlayerCore>();
+            Core = GetComponentInChildren<Core>();
+            InputHandler = GetComponent<PlayerInputHandler>();
+            Inventory = GetComponent<PlayerInventory>();
+            
             IdleState = new PlayerIdleState(StateMachine, this, "idle", playerData);
             MoveState = new PlayerMoveState(StateMachine, this, "move", playerData);
             JumpState = new PlayerJumpState(StateMachine, this, "inAir", playerData);
@@ -38,28 +44,26 @@ namespace Suhdo.Player
 			CrouchMoveState = new PlayerCrouchMoveState(StateMachine, this, "crouchmove", playerData);
 			RollState = new PlayerRollState(StateMachine, this, "roll", playerData);
 			WallSlideState = new PlayerWallSlideState(StateMachine, this, "wallslide", playerData);
-
+            PrimaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData);
+            SecondaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData);
         }
 
         protected override void Start()
         {
             base.Start();
             
-            InputHandler = GetComponent<PlayerInputHandler>();
+            
+            PrimaryAttackState.SetWeapon(Inventory.weapons[(int)CombatInputs.Primary]);
             StateMachine.Initiallize(IdleState);
         }
 
         protected override void Update()
         {
-            PlayerCore.LogicUpdate();
+            Core.LogicUpdate();
             base.Update();
         }
 
         public void AnimationFinishedTrigger() => StateMachine.CurrentCoreState.AnimationFinishTrigger();
 
-        public void Damage(float amount)
-        {
-            Debug.Log($"Received {amount} damage");
-        }
     }
 }

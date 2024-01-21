@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Suhdo.CharacterCore
+namespace Suhdo.Combat
 {
     public interface IDamageable
     {

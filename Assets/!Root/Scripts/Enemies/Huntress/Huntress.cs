@@ -22,9 +22,9 @@ namespace Suhdo.Enemies.Huntress
         public Huntress_DodgeState DodgeState { get; private set; }
         public Huntress_TeleState TeleState { get; private set; }
 
-        protected override void Start()
+        protected override void Awake()
         {
-            base.Start();
+            base.Awake();
 
             IdleState = new Huntress_IdleState(StateMachine, this, "idle", _idleStateData);
             MoveState = new Huntress_MoveState(StateMachine, this, "move", _moveStateData);
@@ -36,6 +36,11 @@ namespace Suhdo.Enemies.Huntress
             RangeAttackState = new Huntress_RangeAttackState(StateMachine, this, "rangeAttack", _rangeAttackData);
             DodgeState = new Huntress_DodgeState(StateMachine, this, "jump", _dodgeData);
             TeleState = new Huntress_TeleState(StateMachine, this, "tele", _teleStateData);
+        }
+
+        protected override void Start()
+        {
+            base.Start();
             
             StateMachine.Initiallize(IdleState);
         }

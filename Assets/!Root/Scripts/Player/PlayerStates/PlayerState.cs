@@ -9,14 +9,14 @@ namespace Suhdo
     {
         protected PlayerData playerData;
         protected PlayerController player;
-        protected readonly PlayerCore PlayerCore;
+        protected readonly Core Core;
             
         public PlayerState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data)
             : base(stateMachine, entity, animBoolName)
         {
             player = (PlayerController)entity;
             playerData = data;
-            PlayerCore = player.PlayerCore;
+            Core = player.Core;
         }
     }
 }

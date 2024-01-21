@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,17 +18,45 @@ namespace Suhdo.Player
         public bool JumpInput { get; private set; }
         public bool JumpInputStop { get; private set; }
         public bool RollInput { get; private set; }
-        public bool RollInputStop { get; private set; } 
+        public bool[] AttackInputs { get; private set; }
 
-        private void Start()
+        private void Awake()
         {
             _playerInput = GetComponent<PlayerInput>();
+
+            int count = Enum.GetValues(typeof(CombatInputs)).Length;
+            AttackInputs = new bool[count];
         }
 
         private void Update()
         {
             CheckJumpInputHoldTime();
-            CheckRollInputHoldTime();
+        }
+
+        public void OnPrimaryAttackInput(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                AttackInputs[(int)CombatInputs.Primary] = true;
+            }
+
+            if (context.canceled)
+            {
+                AttackInputs[(int)CombatInputs.Primary] = false;
+            }
+        }
+        
+        public void OnSecondaryAttackInput(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                AttackInputs[(int)CombatInputs.Secondary] = true;
+            }
+
+            if (context.canceled)
+            {
+                AttackInputs[(int)CombatInputs.Secondary] = false;
+            }
         }
 
         public void OnMoveInput(InputAction.CallbackContext context)
@@ -56,28 +85,25 @@ namespace Suhdo.Player
             if (context.started)
             {
                 RollInput = true;
-                RollInputStop = false;
             }
-            else
+            else if(context.canceled)
             {
-                RollInputStop = true;
+                RollInput = false;
             }
         }
 		
 		public void UserJumpInput() => JumpInput = false;
-
-		public void UserRollInput() => RollInput = false;
 
         public void CheckJumpInputHoldTime()
         {
             if (Time.time >= _jumpInputStartTime + inputHoldTime)
                 JumpInput = false;
         }
-
-        public void CheckRollInputHoldTime()
-        {
-            if (Time.time >= _jumpInputStartTime + inputHoldTime)
-                RollInput = false;
-        }
+    }
+    
+    public enum CombatInputs
+    {
+        Primary,
+        Secondary
     }
 }
