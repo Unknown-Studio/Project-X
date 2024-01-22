@@ -10,6 +10,8 @@ namespace Suhdo.CharacterCore
         private Movement _movement;
         private CollisionSenses _collisionSenses;
         private Combat.Combat _combat;
+        private Stats _stats;
+        
         private List<ILogicUpdate> _components = new List<ILogicUpdate>();
 
         public Movement Movement
@@ -29,6 +31,12 @@ namespace Suhdo.CharacterCore
             get => GenericNotImplementedError<Combat.Combat>.TryGet(_combat, transform.parent.name);
             private set => _combat = value;
         }
+
+        public Stats Stats
+        {
+            get => GenericNotImplementedError<Stats>.TryGet(_stats, transform.parent.name);
+            private set => _stats = value;
+        }
         
 
         private void Awake()
@@ -36,6 +44,7 @@ namespace Suhdo.CharacterCore
             Movement = GetComponentInChildren<Movement>();
             CollisionSenses = GetComponentInChildren<CollisionSenses>();
             Combat = GetComponentInChildren<Combat.Combat>();
+            Stats = GetComponentInChildren<Stats>();
 
             if (!Movement || !CollisionSenses)
                 Debug.LogError("Missing core component!");

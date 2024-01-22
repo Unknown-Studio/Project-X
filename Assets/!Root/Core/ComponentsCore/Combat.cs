@@ -18,6 +18,7 @@ namespace Suhdo.Combat
         public void Damage(float amount)
         {
             UnityEngine.Debug.Log("Damage!!!!");
+            Core.Stats.DecreaseHealth(amount);
         }
 
         public void Knockback(Vector2 angle, float strength, int direction)
