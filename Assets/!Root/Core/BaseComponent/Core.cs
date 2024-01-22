@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Suhdo.Combat;
 using Suhdo.Generics;
 using UnityEngine;
 
@@ -8,6 +10,7 @@ namespace Suhdo.CharacterCore
         private Movement _movement;
         private CollisionSenses _collisionSenses;
         private Combat.Combat _combat;
+        private List<ILogicUpdate> _components = new List<ILogicUpdate>();
 
         public Movement Movement
         {
@@ -26,6 +29,7 @@ namespace Suhdo.CharacterCore
             get => GenericNotImplementedError<Combat.Combat>.TryGet(_combat, transform.parent.name);
             private set => _combat = value;
         }
+        
 
         private void Awake()
         {
@@ -48,8 +52,16 @@ namespace Suhdo.CharacterCore
 
         public virtual void LogicUpdate()
         {
-            Movement.LogicUpdate();
-            Combat.LogicUpdate();
+            foreach (var component in _components)
+            {
+                component.LogicUpdate();
+            }
+        }
+
+        public void AddComponent(ILogicUpdate component)
+        {
+            if (_components.Contains(component)) return;
+                _components.Add(component);
         }
     }
 }

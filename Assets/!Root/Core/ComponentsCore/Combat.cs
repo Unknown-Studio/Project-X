@@ -10,7 +10,7 @@ namespace Suhdo.Combat
         private bool _isKnockbackActive;
         private float _knockbackStartTime;
 
-        public void LogicUpdate()
+        public override void LogicUpdate()
         {
             CheckKnockback();
         }

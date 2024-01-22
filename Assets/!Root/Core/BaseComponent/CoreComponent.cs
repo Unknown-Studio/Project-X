@@ -1,8 +1,9 @@
+using Suhdo.Combat;
 using UnityEngine;
 
 namespace Suhdo.CharacterCore
 {
-    public class CoreComponent : MonoBehaviour
+    public class CoreComponent : MonoBehaviour, ILogicUpdate
     {
         protected Core Core;
 
@@ -10,12 +11,16 @@ namespace Suhdo.CharacterCore
         {
             Core = transform.parent.GetComponent<Core>();
             if(Core == null) Debug.LogError("There are no Core on the parent!");
+            Core.AddComponent(this);
         }
 
         protected virtual void OnValidate()
         {
             Core = transform.parent.GetComponent<Core>();
-            if(Core == null) Debug.LogError("There are no Core on the parent!");
+            if (Core == null) Debug.LogError("There are no Core on the parent!");
+            Core.AddComponent(this);
         }
+
+        public virtual void LogicUpdate() { }
     }
 }
