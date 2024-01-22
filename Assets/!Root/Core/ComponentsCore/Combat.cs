@@ -5,6 +5,8 @@ namespace Suhdo.Combat
 {
     public class Combat : CoreComponent, IDamageable, IKnockbackable
     {
+        [SerializeField] private float maxKnockbackTime = 0.2f;
+        
         private bool _isKnockbackActive;
         private float _knockbackStartTime;
 
@@ -28,7 +30,7 @@ namespace Suhdo.Combat
 
         private void CheckKnockback()
         {
-            if (_isKnockbackActive && Core.Movement.CurrentVelocity.y <= 0.01f && Core.CollisionSenses.Ground)
+            if (_isKnockbackActive && ((Core.Movement.CurrentVelocity.y <= 0.01f && Core.CollisionSenses.Ground) || Time.time >= _knockbackStartTime + maxKnockbackTime))
             {
                 _isKnockbackActive = false;
                 Core.Movement.CanSetVelocity = true;
