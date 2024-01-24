@@ -1,3 +1,4 @@
+using Suhdo.CharacterCore;
 using Suhdo.StateMachineCore;
 using UnityEngine;
 
@@ -14,6 +15,10 @@ namespace Suhdo.Player
 
         protected int xInput;
         protected int yInput;
+
+        private CollisionSenses _collisionSenses;
+            
+        private CollisionSenses CollisionSenses => _collisionSenses ??= Core.GetComponent<CollisionSenses>();
         
         public PlayerTouchingWallState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data) : base(stateMachine, entity, animBoolName, data)
         {
@@ -23,9 +28,9 @@ namespace Suhdo.Player
         {
             base.DoChecks();
 
-            isGrounded = Core.CollisionSenses.Ground;
-            isTouchingWallFront = Core.CollisionSenses.WallFront;
-			isTouchingWallBack = Core.CollisionSenses.WallBack;
+            isGrounded = CollisionSenses.Ground;
+            isTouchingWallFront = CollisionSenses.WallFront;
+			isTouchingWallBack = CollisionSenses.WallBack;
         }
 
         public override void LogicUpdate()

@@ -1,5 +1,5 @@
+using Suhdo.CharacterCore;
 using Suhdo.StateMachineCore;
-using UnityEngine;
 
 namespace Suhdo.Player
 {
@@ -10,6 +10,12 @@ namespace Suhdo.Player
         protected bool isGrounded;
         protected bool isCeiling;
         
+        private CollisionSenses collisionSenses;
+        private Movement movement;
+        
+        private CollisionSenses CollisionSenses => collisionSenses ??= Core.GetComponent<CollisionSenses>();
+        private Movement Movement => movement ??= Core.GetComponent<Movement>();
+        
         public PlayerAbilityState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data) : base(stateMachine, entity, animBoolName, data)
         {
         }
@@ -18,8 +24,8 @@ namespace Suhdo.Player
         {
             base.DoChecks();
 
-            isGrounded = Core.CollisionSenses.Ground;
-            isCeiling = Core.CollisionSenses.Ceiling;
+            isGrounded = CollisionSenses.Ground;
+            isCeiling = CollisionSenses.Ceiling;
         }
 
         public override void Enter()
@@ -33,7 +39,7 @@ namespace Suhdo.Player
             base.LogicUpdate();
 
             if (!isAbilityDone) return;
-            if(isGrounded && Core.Movement.CurrentVelocity.y <= 0.01f)
+            if(isGrounded && Movement.CurrentVelocity.y <= 0.01f)
                 stateMachine.ChangeState(player.IdleState);
             else 
                 stateMachine.ChangeState(player.InAirState);

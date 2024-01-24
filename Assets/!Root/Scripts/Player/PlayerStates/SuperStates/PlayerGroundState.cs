@@ -1,3 +1,4 @@
+using Suhdo.CharacterCore;
 using Suhdo.StateMachineCore;
 
 namespace Suhdo.Player
@@ -7,6 +8,9 @@ namespace Suhdo.Player
         protected int xInput;
         protected int yInput;
         protected bool _isCeiling;
+
+        private CollisionSenses CollisionSenses => collisionSenses ??= Core.GetComponent<CollisionSenses>();
+        private CollisionSenses collisionSenses;
 
         private bool _jumpInput;
         protected bool primaryAttackInput;
@@ -24,9 +28,9 @@ namespace Suhdo.Player
         {
             base.DoChecks();
 
-            _isGrounded = Core.CollisionSenses.Ground;
-            _isTouchingWall = Core.CollisionSenses.WallFront;
-            _isCeiling = Core.CollisionSenses.Ceiling;
+            _isGrounded = CollisionSenses.Ground;
+            _isTouchingWall = CollisionSenses.WallFront;
+            _isCeiling = CollisionSenses.Ceiling;
             
             xInput = player.InputHandler.NormInputX;
             yInput = player.InputHandler.NormInputY;
