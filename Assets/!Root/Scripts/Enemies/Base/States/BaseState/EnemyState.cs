@@ -7,7 +7,6 @@ namespace Suhdo.Enemies
     public class EnemyState : CoreState
     {
         protected Enemy enemy;
-        protected Core core;
 
         protected bool isDetectingGround;
         protected bool isDetectingWall;
@@ -21,19 +20,18 @@ namespace Suhdo.Enemies
             : base(stateMachine, entity, animBoolName)
         {
             enemy = (Enemy)entity;
-            core = enemy.Core;
         }
 
         public override void DoChecks()
         {
             base.DoChecks();
-            isDetectingGround = core.CollisionSenses.Ground;
-            isDetectingLedge = core.CollisionSenses.Ledge;
-            isDetectingWall = core.CollisionSenses.WallFront;
-            isDetectingWallBack = core.CollisionSenses.WallBack;
-            isPlayerInMinAgroRange = core.CollisionSenses.PlayerInMinAgroRange;
-            isPlayerInMaxAgroRange = core.CollisionSenses.PlayerInMaxAgroRange;
-            performCloseRangeAction = core.CollisionSenses.PlayerInCloseRangeAction;
+            isDetectingGround = CollisionSenses.Ground;
+            isDetectingLedge = CollisionSenses.Ledge;
+            isDetectingWall = CollisionSenses.WallFront;
+            isDetectingWallBack = CollisionSenses.WallBack;
+            isPlayerInMinAgroRange = CollisionSenses.PlayerInMinAgroRange;
+            isPlayerInMaxAgroRange = CollisionSenses.PlayerInMaxAgroRange;
+            performCloseRangeAction = CollisionSenses.PlayerInCloseRangeAction;
         }
     }
 }

@@ -1,3 +1,4 @@
+using Suhdo.CharacterCore;
 using Suhdo.StateMachineCore;
 using UnityEngine;
 
@@ -23,9 +24,9 @@ namespace Suhdo.Player
         {
             base.DoChecks();
 
-            isGrounded = Core.CollisionSenses.Ground;
-            isTouchingWallFront = Core.CollisionSenses.WallFront;
-			isTouchingWallBack = Core.CollisionSenses.WallBack;
+            isGrounded = CollisionSenses.Ground;
+            isTouchingWallFront = CollisionSenses.WallFront;
+			isTouchingWallBack = CollisionSenses.WallBack;
         }
 
         public override void LogicUpdate()

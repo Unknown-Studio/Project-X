@@ -9,7 +9,6 @@ namespace Suhdo.Enemies
     {
         public D_Entity entityData;
         public GameObject aliveGO { get; private set; }
-        public Core Core { get; private set; }
 
         protected float currentHealth;
         protected float currentStunResistance;
@@ -20,24 +19,12 @@ namespace Suhdo.Enemies
         protected bool isStunned;
         protected bool isDead;
 
-        protected override void Awake()
-        {
-            base.Awake();
-            Core = GetComponentInChildren<Core>();
-        }
-
         protected override void Start()
         {
             base.Start();
 
             currentHealth = entityData.maxHealth;
             currentStunResistance = entityData.stunResistance;
-        }
-
-        protected override void Update()
-        {
-            Core.LogicUpdate();
-            base.Update();
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Suhdo.Enemies.Skeleton
             }
             else if (!isDetectingLedge)
             {
-                _skeleton.Core.Movement.Flip();
+                Movement.Flip();
                 stateMachine.ChangeState(_skeleton.MoveState);
             }
         }

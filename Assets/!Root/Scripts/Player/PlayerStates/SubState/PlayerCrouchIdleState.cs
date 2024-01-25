@@ -12,7 +12,7 @@ namespace Suhdo.Player
         public override void Enter()
         {
             base.Enter();
-            Core.Movement.SetVelocityX(0f);
+            Movement.SetVelocityX(0f);
         }
 
         public override void LogicUpdate()

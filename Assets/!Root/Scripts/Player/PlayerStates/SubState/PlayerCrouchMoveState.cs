@@ -14,7 +14,7 @@ namespace Suhdo.Player
 		{
 			base.LogicUpdate();
 
-			Core.Movement.CheckIfShouldFlip(xInput);
+			Movement.CheckIfShouldFlip(xInput);
 
 
 			if (isExitingState) return;
@@ -26,7 +26,7 @@ namespace Suhdo.Player
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
-			Core.Movement.SetVelocityX(playerData.crouchMovementVelocity);
+			Movement.SetVelocityX(playerData.crouchMovementVelocity);
 		}
 
 	}

@@ -22,14 +22,14 @@ namespace Suhdo.Enemies
         public override void DoChecks()
         {
             base.DoChecks();
-            isPlayerInMinAgroRange = enemy.Core.CollisionSenses.PlayerInMinAgroRange;
+            isPlayerInMinAgroRange = CollisionSenses.PlayerInMinAgroRange;
         }
 
         public override void Enter()
         {
             base.Enter();
             
-            core.Movement.SetVelocityZero();
+            Movement.SetVelocityZero();
             isIdleTimeOver = false;
             RandomIdleTime();
         }
@@ -40,7 +40,7 @@ namespace Suhdo.Enemies
 
             if (flipAfterIdle)
             {
-                core.Movement.Flip();
+                Movement.Flip();
             }
         }
 
@@ -58,7 +58,7 @@ namespace Suhdo.Enemies
         {
             base.PhysicsUpdate();
             
-            core.Movement.SetVelocityZero();
+            Movement.SetVelocityZero();
         }
 
         public void SetFlipAfterIdle(bool isFlip)

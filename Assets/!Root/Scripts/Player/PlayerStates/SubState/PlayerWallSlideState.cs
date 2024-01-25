@@ -24,7 +24,7 @@ namespace Suhdo.Player
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
-            Core.Movement.SetVelocityY(-3f);
+            Movement.SetVelocityY(-3f);
         }
     }
 }

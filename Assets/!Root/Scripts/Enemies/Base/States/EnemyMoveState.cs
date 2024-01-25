@@ -30,14 +30,14 @@ namespace Suhdo.Enemies
         {
             base.Enter();
             RandomMoveTime();
-            core.Movement.SetVelocityX(stateData.MovementSpeed);
+            Movement.SetVelocityX(stateData.MovementSpeed);
         }
 
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
             
-            core.Movement.SetVelocityX(stateData.MovementSpeed);
+            Movement.SetVelocityX(stateData.MovementSpeed);
         }
 
         private void RandomMoveTime()

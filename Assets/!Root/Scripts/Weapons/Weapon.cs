@@ -9,10 +9,14 @@ namespace Suhdo.Weapons
     {
         [SerializeField] protected D_Weapon weaponData;
 
-        protected Core core;
         protected PlayerAttackState state;
         protected Animator anim;
         protected int attackCounter;
+
+        protected Movement Movement => _movement ??= core.GetCoreComponent<Movement>();
+
+        private Core core;
+        private Movement _movement;
         
         public void InitializeWeapon(PlayerAttackState state, Core core)
         {

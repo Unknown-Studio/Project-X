@@ -27,7 +27,7 @@ namespace Suhdo
                 Debug.LogError("Required Rigidbody2D in parent");
         }
 
-        public void LogicUpdate()
+        public override void LogicUpdate()
         {
             CurrentVelocity = RB.velocity;
         }

@@ -7,8 +7,6 @@ namespace Suhdo.Player
     public class PlayerController : Entity
     {
         [SerializeField] private PlayerData playerData;
-
-        public Core Core { get; private set; }
         
         public PlayerIdleState IdleState { get; private set; }
         public PlayerMoveState MoveState { get; private set; }
@@ -31,7 +29,6 @@ namespace Suhdo.Player
         {
             base.Awake();
             
-            Core = GetComponentInChildren<Core>();
             InputHandler = GetComponent<PlayerInputHandler>();
             Inventory = GetComponent<PlayerInventory>();
             

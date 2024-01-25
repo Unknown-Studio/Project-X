@@ -26,8 +26,8 @@ namespace Suhdo.Enemies
                 enemy.Core.CollisionSenses.AttackPlayerPosition.rotation);*/
             projectile = stateData.pool.Get();
             projectile.transform.SetPositionAndRotation(
-                enemy.Core.CollisionSenses.AttackPlayerPosition.position,
-                enemy.Core.CollisionSenses.AttackPlayerPosition.rotation
+                CollisionSenses.AttackPlayerPosition.position,
+                CollisionSenses.AttackPlayerPosition.rotation
                 );
             projectileScript = projectile.GetComponent<Projectile>();
             projectileScript.FireProjectile(stateData.projectileSpeed, stateData.projectileTravelDistance, stateData.projectileDamage);

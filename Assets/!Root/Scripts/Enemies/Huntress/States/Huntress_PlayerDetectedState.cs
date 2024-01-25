@@ -19,7 +19,7 @@ namespace Suhdo.Enemies.Huntress
             
             if (!isDetectingLedge)
             {
-                _huntress.Core.Movement.Flip();
+                Movement.Flip();
                 stateMachine.ChangeState(_huntress.MoveState);
                 return;
             }
