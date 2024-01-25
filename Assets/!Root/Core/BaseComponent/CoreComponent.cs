@@ -7,6 +7,14 @@ namespace Suhdo.CharacterCore
     {
         protected Core Core;
 
+        protected Movement Movement => _movement ??= Core.GetCoreComponent<Movement>();
+        protected Stats Stats => _stats ??= Core.GetCoreComponent<Stats>();
+        protected CollisionSenses CollisionSenses => _collisionSenses ??= Core.GetCoreComponent<CollisionSenses>();
+
+        private Movement _movement;
+        private CollisionSenses _collisionSenses;
+        private Stats _stats;
+
         protected virtual void Awake()
         {
             Core = transform.parent.GetComponent<Core>();

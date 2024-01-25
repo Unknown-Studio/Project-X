@@ -9,16 +9,26 @@ namespace Suhdo.StateMachineCore
         
         protected StateMachine stateMachine;
         protected Entity entity;
+        protected Core Core;
         
         protected string animBoolName;
         protected bool isAnimationFinished;
         protected bool isExitingState;
+
+        protected CollisionSenses CollisionSenses => _collisionSenses ??= Core.GetCoreComponent<CollisionSenses>();
+        protected Movement Movement => _movement ??= Core.GetCoreComponent<Movement>();
+        protected Stats Stats => _stats ??= Core.GetCoreComponent<Stats>();
+
+        private CollisionSenses _collisionSenses;
+        private Movement _movement;
+        private Stats _stats;
 
         protected CoreState(StateMachine stateMachine, Entity entity, string animBoolName)
         {
             this.stateMachine = stateMachine;
             this.entity = entity;
             this.animBoolName = animBoolName;
+            Core = entity.Core;
         }
 
         public virtual void Enter()

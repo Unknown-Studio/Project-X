@@ -88,25 +88,25 @@ namespace Suhdo.CharacterCore
 
         public bool Ceiling => Physics2D.OverlapCircle(ceilingCheck.position, ceilingCheckRadius, whatIsGround);
         
-        public bool WallFront => Physics2D.Raycast(wallCheck.position, Vector2.right * Core.Movement.FacingDirection,
+        public bool WallFront => Physics2D.Raycast(wallCheck.position, Vector2.right * Movement.FacingDirection,
             wallFrontCheckDistance, whatIsGround);
 
-        public bool WallBack => Physics2D.Raycast(wallCheck.position, Vector2.right * -Core.Movement.FacingDirection,
+        public bool WallBack => Physics2D.Raycast(wallCheck.position, Vector2.right * -Movement.FacingDirection,
             wallBackCheckDistance, whatIsGround);
         
         public bool Ledge => Physics2D.Raycast(ledgeCheck.position, Vector2.down,
             ledgeCheckDistance, whatIsGround);
         
         public bool PlayerInMaxAgroRange => Physics2D.Raycast(playerCheck.position,
-            Vector2.right * Core.Movement.FacingDirection,
+            Vector2.right * Movement.FacingDirection,
             maxAgroDistance, whatIsPlayer);
 	
         public bool PlayerInMinAgroRange => Physics2D.Raycast(playerCheck.position,
-            Vector2.right * Core.Movement.FacingDirection,
+            Vector2.right * Movement.FacingDirection,
             minAgroDistance, whatIsPlayer);
 
         public bool PlayerInCloseRangeAction => Physics2D.Raycast(playerCheck.position,
-            Vector2.right * Core.Movement.FacingDirection,
+            Vector2.right * Movement.FacingDirection,
             closeRangeActionDistance, whatIsPlayer);
 
         #endregion
@@ -118,16 +118,16 @@ namespace Suhdo.CharacterCore
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
             Gizmos.DrawWireSphere(ceilingCheck.position, ceilingCheckRadius);
             Gizmos.DrawLine(wallCheck.position,
-                wallCheck.position + (Vector3)(Vector2.right * Core.Movement.FacingDirection * wallFrontCheckDistance));
+                wallCheck.position + (Vector3)(Vector2.right * Movement.FacingDirection * wallFrontCheckDistance));
             Gizmos.DrawLine(wallCheck.position,
-                wallCheck.position + (Vector3)(Vector2.right * -Core.Movement.FacingDirection * wallBackCheckDistance));
+                wallCheck.position + (Vector3)(Vector2.right * -Movement.FacingDirection * wallBackCheckDistance));
             Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down * ledgeCheckDistance));
 
             if (enemy)
             {
-                Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * Core.Movement.FacingDirection * closeRangeActionDistance), .2f);
-                Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * Core.Movement.FacingDirection * minAgroDistance), .2f);
-                Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * Core.Movement.FacingDirection * maxAgroDistance), .2f);
+                Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * Movement.FacingDirection * closeRangeActionDistance), .2f);
+                Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * Movement.FacingDirection * minAgroDistance), .2f);
+                Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * Movement.FacingDirection * maxAgroDistance), .2f);
                 Gizmos.DrawWireSphere(attackPlayerPostion.position, attackRadius);
             }
         }

@@ -13,8 +13,8 @@ namespace Suhdo.Player
         private CollisionSenses collisionSenses;
         private Movement movement;
         
-        private CollisionSenses CollisionSenses => collisionSenses ??= Core.GetComponent<CollisionSenses>();
-        private Movement Movement => movement ??= Core.GetComponent<Movement>();
+        private CollisionSenses CollisionSenses => collisionSenses ??= Core.GetCoreComponent<CollisionSenses>();
+        private Movement Movement => movement ??= Core.GetCoreComponent<Movement>();
         
         public PlayerAbilityState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data) : base(stateMachine, entity, animBoolName, data)
         {

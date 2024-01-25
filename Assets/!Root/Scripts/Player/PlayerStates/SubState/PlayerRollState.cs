@@ -24,7 +24,7 @@ namespace Suhdo.Player
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
-            Core.Movement.SetVelocityX(playerData.RollVelocity);
+            Movement.SetVelocityX(playerData.RollVelocity);
         }
 
         public bool CheckCanRoll()

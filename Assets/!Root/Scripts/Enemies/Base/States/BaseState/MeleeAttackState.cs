@@ -19,8 +19,8 @@ namespace Suhdo.Enemies
             base.TriggerAttack();
             
             Collider2D[] detectedObjects = 
-                Physics2D.OverlapCircleAll(enemy.Core.CollisionSenses.AttackPlayerPosition.position,
-                    enemy.Core.CollisionSenses.AttackRadius, enemy.Core.CollisionSenses.WhatIsPlayer);
+                Physics2D.OverlapCircleAll(CollisionSenses.AttackPlayerPosition.position,
+                    CollisionSenses.AttackRadius, CollisionSenses.WhatIsPlayer);
 
             foreach (Collider2D collider in detectedObjects)
             {
@@ -31,7 +31,7 @@ namespace Suhdo.Enemies
                 
                 if (collider.TryGetComponent<IKnockbackable>(out var knockbackable))
                 {
-                    knockbackable.Knockback(stateData.KnockbackAngle, stateData.KnockbackStrength, enemy.Core.Movement.FacingDirection);
+                    knockbackable.Knockback(stateData.KnockbackAngle, stateData.KnockbackStrength, Movement.FacingDirection);
                 }
             }
         }

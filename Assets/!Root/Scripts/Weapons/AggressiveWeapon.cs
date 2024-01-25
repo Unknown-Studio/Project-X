@@ -41,7 +41,7 @@ namespace Suhdo.Weapons
 
             foreach (var item in detectedKnockbackable)
             {
-                item.Knockback(details.KnockbackAngle, details.KnockbackStrength, core.Movement.FacingDirection);
+                item.Knockback(details.KnockbackAngle, details.KnockbackStrength, Movement.FacingDirection);
             }
         }
         

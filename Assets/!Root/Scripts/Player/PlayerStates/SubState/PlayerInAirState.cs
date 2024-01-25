@@ -34,10 +34,10 @@ namespace Suhdo.Player
 
 			_oldIsTouchingWall = _isTouchingWall;
 			_oldIsTouchingWallBack = _isTouchingWallBack;
-			_isCeiling = Core.CollisionSenses.Ceiling;
-			_isGrounded = Core.CollisionSenses.Ground;
-			_isTouchingWall = Core.CollisionSenses.WallFront;
-			_isTouchingWallBack = Core.CollisionSenses.WallBack;
+			_isCeiling = CollisionSenses.Ceiling;
+			_isGrounded = CollisionSenses.Ground;
+			_isTouchingWall = CollisionSenses.WallFront;
+			_isTouchingWallBack = CollisionSenses.WallBack;
 			
 			CheckCoyoteTime();
 
@@ -72,9 +72,9 @@ namespace Suhdo.Player
 			}
 			else if (_jumpInput && player.JumpState.CanJump())
 				stateMachine.ChangeState(player.JumpState);
-			else if(_isGrounded && Core.Movement.CurrentVelocity.y < 0.01f && _yInput == -1)
+			else if(_isGrounded && Movement.CurrentVelocity.y < 0.01f && _yInput == -1)
 				stateMachine.ChangeState(player.CrouchIdleState);
-			else if (_isGrounded && Core.Movement.CurrentVelocity.y < 0.01f)
+			else if (_isGrounded && Movement.CurrentVelocity.y < 0.01f)
 				stateMachine.ChangeState(player.LandState);
 			else if ((_isTouchingWall && _xInput > 0) || (_isTouchingWall && _xInput < 0))
 			{
@@ -82,11 +82,11 @@ namespace Suhdo.Player
 			}
 			else
 			{
-                Core.Movement.CheckIfShouldFlip(_xInput);
-                Core.Movement.SetVelocityX(playerData.movementVelocity, _xInput);
+                Movement.CheckIfShouldFlip(_xInput);
+                Movement.SetVelocityX(playerData.movementVelocity, _xInput);
 
-                player.Anim.SetFloat("yVelocity", Core.Movement.CurrentVelocity.y);
-                player.Anim.SetFloat("xVelocity", Mathf.Abs(Core.Movement.CurrentVelocity.x));
+                player.Anim.SetFloat("yVelocity", Movement.CurrentVelocity.y);
+                player.Anim.SetFloat("xVelocity", Mathf.Abs(Movement.CurrentVelocity.x));
             }
         }
 
@@ -107,11 +107,11 @@ namespace Suhdo.Player
             if (!_isJumping) return;
             if (_jumpInputStop)
             {
-	            Core.Movement.SetVelocityY(Core.Movement.CurrentVelocity.y *
+	            Movement.SetVelocityY(Movement.CurrentVelocity.y *
 	                                       playerData.variableJumpHeightMultiplier);
                 _isJumping = false;
             }
-            else if (Core.Movement.CurrentVelocity.y <= 0f)
+            else if (Movement.CurrentVelocity.y <= 0f)
                 _isJumping = false;
         }
     }

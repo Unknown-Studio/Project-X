@@ -9,9 +9,6 @@ namespace Suhdo.Player
         protected int yInput;
         protected bool _isCeiling;
 
-        private CollisionSenses CollisionSenses => collisionSenses ??= Core.GetComponent<CollisionSenses>();
-        private CollisionSenses collisionSenses;
-
         private bool _jumpInput;
         protected bool primaryAttackInput;
         protected bool secondaryAttackInput;

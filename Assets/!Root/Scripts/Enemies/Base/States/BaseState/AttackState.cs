@@ -17,7 +17,7 @@ namespace Suhdo.Enemies
         {
             base.DoChecks();
 
-            isPlayerInMinAgroRange = enemy.Core.CollisionSenses.PlayerInMinAgroRange;
+            isPlayerInMinAgroRange = CollisionSenses.PlayerInMinAgroRange;
         }
 
         public override void Enter()
@@ -26,14 +26,14 @@ namespace Suhdo.Enemies
 
             enemy.AnimToStateMachine.AttackState = this;
             isAnimationFinished = false;
-            enemy.Core.Movement.SetVelocityZero();
+            Movement.SetVelocityZero();
         }
 
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
             
-            enemy.Core.Movement.SetVelocityZero();
+            Movement.SetVelocityZero();
         }
 
         public virtual void TriggerAttack()

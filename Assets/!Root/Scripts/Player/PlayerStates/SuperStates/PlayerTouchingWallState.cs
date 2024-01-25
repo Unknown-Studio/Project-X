@@ -15,10 +15,6 @@ namespace Suhdo.Player
 
         protected int xInput;
         protected int yInput;
-
-        private CollisionSenses _collisionSenses;
-            
-        private CollisionSenses CollisionSenses => _collisionSenses ??= Core.GetComponent<CollisionSenses>();
         
         public PlayerTouchingWallState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data) : base(stateMachine, entity, animBoolName, data)
         {
