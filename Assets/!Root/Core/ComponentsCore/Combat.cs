@@ -6,6 +6,7 @@ namespace Suhdo.Combat
     public class Combat : CoreComponent, IDamageable, IKnockbackable
     {
         [SerializeField] private float maxKnockbackTime = 0.2f;
+        [SerializeField] private GameObject hit_Particle;
         
         private bool _isKnockbackActive;
         private float _knockbackStartTime;
@@ -19,6 +20,7 @@ namespace Suhdo.Combat
         {
             UnityEngine.Debug.Log("Damage!!!!");
             Stats.DecreaseHealth(amount);
+            ParticlesManager.StartParticleWithRandomRotation(hit_Particle);
         }
 
         public void Knockback(Vector2 angle, float strength, int direction)
