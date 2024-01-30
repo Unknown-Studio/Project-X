@@ -21,5 +21,5 @@ MonoBehaviour:
   - AttackName: 
     MovementSpeed: 16
     DamageAmount: 20
-    KnockbackStrength: 20
+    KnockbackStrength: 10
     KnockbackAngle: {x: 1, y: 2}

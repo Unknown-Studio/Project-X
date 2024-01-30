@@ -86,7 +86,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 1044111111676158352}
-  groundCheckRadius: 0.4
+  groundCheckRadius: 0.49
   wallCheck: {fileID: 1740208237513622175}
   wallFrontCheckDistance: 0.55
   wallBackCheckDistance: 0.7
@@ -283,7 +283,7 @@ Transform:
   m_GameObject: {fileID: 4310648085548900331}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.023, y: -0.914, z: 0}
+  m_LocalPosition: {x: 0.001, y: -0.835, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
