@@ -1,8 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Pool;
-using UnityEngine.Serialization;
 
 namespace Suhdo.Ultils
 {
@@ -29,6 +27,16 @@ namespace Suhdo.Ultils
                 );
         }
 
+        private void OnDestroy()
+        {
+            ClearPool();
+        }
+
+        private void OnDisable()
+        {
+            ClearPool();
+        }
+        
         private PoolableMonoBehaviour CreatePoolObject()
         {
             PoolableMonoBehaviour obj = Instantiate(Prefab, DefaultSpawnLocation,
@@ -66,6 +74,12 @@ namespace Suhdo.Ultils
         {
             _objectPool.Release(obj);
         }
+
+        public void ClearPool()
+        {
+            if(_objectPool != null)
+                _objectPool.Clear();
+        }
     }
 
     public abstract class PoolableMonoBehaviour : MonoBehaviour
@@ -92,7 +106,7 @@ namespace Suhdo.Ultils
         
         public virtual void OnObjectPoolCreate(){}
         public virtual void OnObjectPoolTake(){}
-        public virtual void OnObjectPoolReturn(){}
+        public abstract void OnObjectPoolReturn();
         public virtual void OnObjectPoolDestroy(){}
         public virtual void OnPostGet(){}
     }

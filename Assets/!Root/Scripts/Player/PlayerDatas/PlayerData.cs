@@ -26,7 +26,7 @@ namespace Suhdo.Player
         public float RollCooldown = 0.5f;
 
         [Header("Wall Slide State")]
-        public float WallSlideVelocity = 20f;
+        public float WallSlideVelocity = -3f;
 
         /*[Header("Wall Jump State")]
         public float wallJumpVelocity = 20f;

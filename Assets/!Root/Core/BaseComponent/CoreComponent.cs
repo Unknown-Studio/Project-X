@@ -3,17 +3,19 @@ using UnityEngine;
 
 namespace Suhdo.CharacterCore
 {
-    public class CoreComponent : MonoBehaviour, ILogicUpdate
+    public abstract class CoreComponent : MonoBehaviour, ILogicUpdate
     {
         protected Core Core;
 
         protected Movement Movement => _movement ??= Core.GetCoreComponent<Movement>();
         protected Stats Stats => _stats ??= Core.GetCoreComponent<Stats>();
         protected CollisionSenses CollisionSenses => _collisionSenses ??= Core.GetCoreComponent<CollisionSenses>();
+        protected ParticlesManager ParticlesManager => _particlesManager ??= Core.GetCoreComponent<ParticlesManager>();
 
         private Movement _movement;
         private CollisionSenses _collisionSenses;
         private Stats _stats;
+        private ParticlesManager _particlesManager;
 
         protected virtual void Awake()
         {

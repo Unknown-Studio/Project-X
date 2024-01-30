@@ -88,7 +88,6 @@ namespace Suhdo.Items
 
         public override void OnObjectPoolReturn()
         {
-            base.OnObjectPoolReturn();
             isGravityOn = false;
             isFired = false;
             hasHitGround = false;

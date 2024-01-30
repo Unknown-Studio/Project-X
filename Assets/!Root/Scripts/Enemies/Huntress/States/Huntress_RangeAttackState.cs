@@ -14,6 +14,9 @@ namespace Suhdo.Enemies.Huntress
         public override void LogicUpdate()
         {
             base.LogicUpdate();
+            
+            if(!isDetectingGround)
+                stateMachine.ChangeState(_huntress.FallState);
 
             if (!isAnimationFinished) return;
             
