@@ -12,8 +12,9 @@ namespace Suhdo.Player
         {
             base.LogicUpdate();
             
-            if (xInput == 0 || !isTouchingWallFront)
+            if (xInput == 0 || xInput + Movement.FacingDirection == 0 || !isTouchingWallFront)
             {
+                Movement.Flip();
                 stateMachine.ChangeState(player.InAirState);
             }
             else if(isGrounded)
@@ -24,7 +25,7 @@ namespace Suhdo.Player
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
-            Movement.SetVelocityY(-3f);
+            Movement.SetVelocityY(playerData.WallSlideVelocity);
         }
     }
 }

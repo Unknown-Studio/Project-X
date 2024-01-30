@@ -39,10 +39,15 @@ namespace Suhdo.Player
             base.LogicUpdate();
 
             if (!isAbilityDone) return;
-            if(isGrounded && Movement.CurrentVelocity.y <= 0.01f)
-                stateMachine.ChangeState(player.IdleState);
-            else 
-                stateMachine.ChangeState(player.InAirState);
+            switch (isGrounded)
+            {
+                case true when Movement.CurrentVelocity.y <= 0.01f:
+                    stateMachine.ChangeState(player.IdleState);
+                    break;
+                case false:
+                    stateMachine.ChangeState(player.InAirState);
+                    break;
+            }
         }
     }
 }

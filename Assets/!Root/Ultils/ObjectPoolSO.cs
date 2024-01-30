@@ -17,7 +17,6 @@ namespace Suhdo.Ultils
 
         private void OnEnable()
         {
-            Debug.LogError("Create Pool");      
             _objectPool = new ObjectPool<PoolableMonoBehaviour>(
                 CreatePoolObject,
                 OnTakeFromPool,

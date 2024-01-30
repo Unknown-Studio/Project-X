@@ -19,3 +19,5 @@ MonoBehaviour:
   variableJumpHeightMultiplier: 0.5
   crouchMovementVelocity: 5
   RollVelocity: 20
+  RollCooldown: 0.5
+  WallSlideVelocity: -3
