@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -43,6 +44,11 @@ namespace Suhdo.Enemies.Huntress
             base.Start();
             
             StateMachine.Initiallize(IdleState);
+        }
+
+        private void OnDisable()
+        {
+            _rangeAttackData.pool.ClearPool();
         }
     }
 }

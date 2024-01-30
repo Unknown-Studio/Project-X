@@ -1,7 +1,9 @@
 using Suhdo.Items;
 using Suhdo.StateMachineCore;
 using Suhdo.Ultils;
+using Unity.VisualScripting;
 using UnityEngine;
+using StateMachine = Suhdo.StateMachineCore.StateMachine;
 
 namespace Suhdo.Enemies
 {

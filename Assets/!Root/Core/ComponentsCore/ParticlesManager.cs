@@ -1,4 +1,5 @@
 using Suhdo.Generics;
+using Suhdo.Ultils;
 using UnityEngine;
 
 namespace Suhdo.CharacterCore
@@ -25,10 +26,13 @@ namespace Suhdo.CharacterCore
             return Instantiate(particlePrefab, transform.position, Quaternion.identity);
         }
 
-        public GameObject StartParticleWithRandomRotation(GameObject particlePrefab)
+        public void StartParticleWithRandomRotation(PoolableMonoBehaviour particlePrefab)
         {
             var randomRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
-            return Instantiate(particlePrefab, transform.position, randomRotation, particleContainer);
+            var transform1 = particlePrefab.transform;
+            transform1.parent = particleContainer;
+            transform1.rotation = randomRotation;
+            transform1.position = transform.position;
         }
     }
 }

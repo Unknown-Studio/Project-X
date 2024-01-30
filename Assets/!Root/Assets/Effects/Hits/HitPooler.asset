@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f65706d976664af4090125c480868164, type: 3}
-  m_Name: Arrow
+  m_Name: HitPooler
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 4548127830479709031, guid: af887db4934c1064f93279a95d8d7862, type: 3}
-  DefaultCapacity: 5
+  Prefab: {fileID: 7219294598172339523, guid: 41af1d74ddf2a4346b84302b92ba03d8, type: 3}
+  DefaultCapacity: 10
   DefaultSpawnLocation: {x: 0, y: 0, z: 0}
   UseDefaultSpawnRotation: 0
   DefaultSpawnRotation: {x: 0, y: 0, z: 0, w: 0}

@@ -381,6 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxKnockbackTime: 0.2
   hit_Particle: {fileID: 6427457868930128577, guid: 41af1d74ddf2a4346b84302b92ba03d8, type: 3}
+  hitPool: {fileID: 11400000, guid: 27c617335a513e74abb6658ca4919fd0, type: 2}
 --- !u!61 &8281502529377263406
 BoxCollider2D:
   m_ObjectHideFlags: 0
