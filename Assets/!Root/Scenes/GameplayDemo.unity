@@ -17793,6 +17793,14 @@ PrefabInstance:
       propertyPath: particleContainer
       value: 
       objectReference: {fileID: 69106129}
+    - target: {fileID: 4909103388939670366, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909103388939670366, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7060496598666213500, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
       propertyPath: m_Name
       value: Player
