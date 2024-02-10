@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Suhdo.CharacterCore
 {
-    public class CollisionSenses : CoreComponent
+    public class CollisionSenses : BaseCollisionSenses
     {
         [SerializeField] private bool baseCharacter = true;
         [SerializeField] private bool player;
@@ -54,28 +54,20 @@ namespace Suhdo.CharacterCore
 
         #region Public variables
 
-        public LayerMask WhatIsGround => whatIsGround;
-        
+        public override LayerMask WhatIsGround => whatIsGround;
+
+        public override float WallFrontCheckDistance => wallFrontCheckDistance;
+        public override float LedgeCheckDistance { get; }
+
         public LayerMask WhatIsPlayer => whatIsPlayer;
 
-        public Transform GroundCheck
-        {
-            get => GenericNotImplementedError<Transform>.TryGet(groundCheck, Core.transform.parent.name);
-            private set => groundCheck = value;
-        }
+        public override Transform GroundCheck => GenericNotImplementedError<Transform>.TryGet(groundCheck, Core.transform.parent.name);
 
-        public Transform WallCheck
-        {
-            get => GenericNotImplementedError<Transform>.TryGet(wallCheck, Core.transform.parent.name);
-            private set => wallCheck = value;
-        }
+        public override Transform WallCheck => GenericNotImplementedError<Transform>.TryGet(wallCheck, Core.transform.parent.name);
 
-        public Transform CeilingCheck
-        {
-            get => GenericNotImplementedError<Transform>.TryGet(ceilingCheck, Core.transform.parent.name);
-            private set => ceilingCheck = value;
-        }
-        
+        public override Transform CeilingCheck => GenericNotImplementedError<Transform>.TryGet(ceilingCheck, Core.transform.parent.name);
+        public override Transform LedgeCheck { get; }
+
         public Transform AttackPlayerPosition
         {
             get => GenericNotImplementedError<Transform>.TryGet(attackPlayerPostion, Core.transform.parent.name);
@@ -84,17 +76,17 @@ namespace Suhdo.CharacterCore
         
         public float AttackRadius => attackRadius;
 
-        public bool Ground => Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+        public override bool Ground => Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
-        public bool Ceiling => Physics2D.OverlapCircle(ceilingCheck.position, ceilingCheckRadius, whatIsGround);
+        public override bool Ceiling => Physics2D.OverlapCircle(ceilingCheck.position, ceilingCheckRadius, whatIsGround);
         
-        public bool WallFront => Physics2D.Raycast(wallCheck.position, Vector2.right * Movement.FacingDirection,
+        public override bool WallFront => Physics2D.Raycast(wallCheck.position, Vector2.right * Movement.FacingDirection,
             wallFrontCheckDistance, whatIsGround);
 
-        public bool WallBack => Physics2D.Raycast(wallCheck.position, Vector2.right * -Movement.FacingDirection,
+        public override bool WallBack => Physics2D.Raycast(wallCheck.position, Vector2.right * -Movement.FacingDirection,
             wallBackCheckDistance, whatIsGround);
         
-        public bool Ledge => Physics2D.Raycast(ledgeCheck.position, Vector2.down,
+        public override bool Ledge => Physics2D.Raycast(ledgeCheck.position, Vector2.down,
             ledgeCheckDistance, whatIsGround);
         
         public bool PlayerInMaxAgroRange => Physics2D.Raycast(playerCheck.position,
