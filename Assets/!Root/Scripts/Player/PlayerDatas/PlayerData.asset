@@ -21,3 +21,5 @@ MonoBehaviour:
   RollVelocity: 20
   RollCooldown: 0.5
   WallSlideVelocity: -3
+  startOffset: {x: 0.15, y: 1}
+  stopOffset: {x: 0.5, y: 1}

@@ -17789,21 +17789,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1125000154348831381, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125000154348831381, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 2550898539332064526, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
       propertyPath: particleContainer
       value: 
       objectReference: {fileID: 69106129}
-    - target: {fileID: 4909103388939670366, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4909103388939670366, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7060496598666213500, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596937878598615292, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
+      propertyPath: ledgeCheckDistance
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8832075520159604685, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
       propertyPath: m_LocalPosition.x

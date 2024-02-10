@@ -9,11 +9,11 @@ namespace Suhdo.CharacterCore
 
         protected Movement Movement => _movement ??= Core.GetCoreComponent<Movement>();
         protected Stats Stats => _stats ??= Core.GetCoreComponent<Stats>();
-        protected CollisionSenses CollisionSenses => _collisionSenses ??= Core.GetCoreComponent<CollisionSenses>();
+        protected PlayerCollisionSenses CollisionSenses => _collisionSenses ??= Core.GetCoreComponent<PlayerCollisionSenses>();
         protected ParticlesManager ParticlesManager => _particlesManager ??= Core.GetCoreComponent<ParticlesManager>();
 
         private Movement _movement;
-        private CollisionSenses _collisionSenses;
+        private PlayerCollisionSenses _collisionSenses;
         private Stats _stats;
         private ParticlesManager _particlesManager;
 

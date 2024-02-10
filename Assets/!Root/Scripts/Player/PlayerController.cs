@@ -17,6 +17,7 @@ namespace Suhdo.Player
 		public PlayerCrouchMoveState CrouchMoveState { get; private set; }
         public PlayerRollState RollState { get; private set; }
         public PlayerWallSlideState WallSlideState { get; private set; }
+        public PlayerLedgeClimbState LedgeClimbState { get; private set; }
         public PlayerAttackState PrimaryAttackState { get; private set; }
         public PlayerAttackState SecondaryAttackState { get; private set; }
         
@@ -37,10 +38,11 @@ namespace Suhdo.Player
             JumpState = new PlayerJumpState(StateMachine, this, "inAir", playerData);
             InAirState = new PlayerInAirState(StateMachine, this, "inAir", playerData);
             LandState = new PlayerLandState(StateMachine, this, "land", playerData);
-			CrouchIdleState = new PlayerCrouchIdleState(StateMachine, this, "crouchidle", playerData);
-			CrouchMoveState = new PlayerCrouchMoveState(StateMachine, this, "crouchmove", playerData);
+			CrouchIdleState = new PlayerCrouchIdleState(StateMachine, this, "crouchIdle", playerData);
+			CrouchMoveState = new PlayerCrouchMoveState(StateMachine, this, "crouchMove", playerData);
 			RollState = new PlayerRollState(StateMachine, this, "roll", playerData);
-			WallSlideState = new PlayerWallSlideState(StateMachine, this, "wallslide", playerData);
+			WallSlideState = new PlayerWallSlideState(StateMachine, this, "wallSlide", playerData);
+			LedgeClimbState = new PlayerLedgeClimbState(StateMachine, this, "ledgeClimbState", playerData);
             PrimaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData);
             SecondaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData);
         }

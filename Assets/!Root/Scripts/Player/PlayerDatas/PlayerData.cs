@@ -27,6 +27,10 @@ namespace Suhdo.Player
 
         [Header("Wall Slide State")]
         public float WallSlideVelocity = -3f;
+        
+        [Header("Ledge Climb State")] 
+        public Vector2 startOffset;
+        public Vector2 stopOffset;
 
         /*[Header("Wall Jump State")]
         public float wallJumpVelocity = 20f;
@@ -39,9 +43,7 @@ namespace Suhdo.Player
         [Header("Wall Climb State")]
         public float wallClimbVelocity = 3f;
 
-        [Header("Ledge Climb State")] 
-        public Vector2 startOffset;
-        public Vector2 stopOffset;
+        
 
         [Header("Dash State")] 
         public float dashCooldown = 0.5f;

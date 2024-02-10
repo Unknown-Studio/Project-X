@@ -81,7 +81,7 @@ namespace Suhdo
         }
 
         #endregion
-
+        
         public void CheckIfShouldFlip(int xInput)
         {
             if(xInput != 0 && xInput != FacingDirection)
