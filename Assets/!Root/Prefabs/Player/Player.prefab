@@ -664,6 +664,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 5784674982647153561, guid: a35f5b9a366043f43887a279bcd4b4b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.197
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2597715403804426343, guid: a35f5b9a366043f43887a279bcd4b4b6, type: 3}
     m_RemovedGameObjects: []
@@ -709,7 +713,7 @@ MonoBehaviour:
   wallFrontCheckDistance: 0.55
   wallBackCheckDistance: 0.7
   ceilingCheck: {fileID: 1421151296965108353}
-  ceilingCheckRadius: 0.3
+  ceilingCheckDistance: 1.5
   ledgeCheck: {fileID: 1125000154348831381}
   ledgeCheckDistance: 0.5
 --- !u!4 &5585263065815564424 stripped

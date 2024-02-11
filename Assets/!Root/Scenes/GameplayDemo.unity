@@ -17751,14 +17751,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1421151296965108353, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.197
-      objectReference: {fileID: 0}
-    - target: {fileID: 2242207294132830081, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2550898539332064526, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
       propertyPath: particleContainer
       value: 
@@ -17767,14 +17759,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7596937878598615292, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
-      propertyPath: ceilingCheckDistance
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8693868344383718308, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
-      propertyPath: MovementCollider
-      value: 
-      objectReference: {fileID: 2073281241}
     - target: {fileID: 8832075520159604685, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -18136,11 +18120,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!61 &2073281241 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 2242207294132830081, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
-  m_PrefabInstance: {fileID: 1117298973}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &59684835855472730
 PrefabInstance:
   m_ObjectHideFlags: 0
