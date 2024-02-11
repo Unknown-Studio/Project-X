@@ -33,6 +33,9 @@ namespace Suhdo.Player
         [Header("Ledge Climb State")] 
         public Vector2 startOffset;
         public Vector2 stopOffset;
+        
+        [Header("Air Dash State")] 
+        public float airDashSpeed = 10f;
 
         /*[Header("Wall Jump State")]
         public float wallJumpVelocity = 20f;

@@ -7,6 +7,8 @@ namespace Suhdo.Player
     public class PlayerInputHandler : MonoBehaviour
     {
         [SerializeField] private float inputHoldTime;
+        [SerializeField]
+        private float doubleClickThreshold = 0.3f;
 
         private float _jumpInputStartTime;
 
@@ -16,6 +18,7 @@ namespace Suhdo.Player
         public int NormInputX { get; private set; }
         public int NormInputY { get; private set; }
         public bool JumpInput { get; private set; }
+        public bool DoubleJumpInput { get; private set; }
         public bool JumpInputStop { get; private set; }
         public bool RollInput { get; private set; }
         public bool[] AttackInputs { get; private set; }
@@ -70,8 +73,18 @@ namespace Suhdo.Player
         {
             if (context.started)
             {
-                JumpInput = true;
-                JumpInputStop = false;
+                if (Time.time - _jumpInputStartTime < doubleClickThreshold)
+                {
+                    // Double click detected
+                    Debug.Log("Double click detected");
+                    DoubleJumpInput = true;
+                }
+                else
+                {
+                    // Single click
+                    JumpInput = true;
+                    JumpInputStop = false;
+                }
                 _jumpInputStartTime = Time.time;
             }
             else if (context.canceled)
@@ -93,6 +106,7 @@ namespace Suhdo.Player
         }
 		
 		public void UserJumpInput() => JumpInput = false;
+		public void UserDoubleJumpInput() => DoubleJumpInput = false;
 
         public void CheckJumpInputHoldTime()
         {
