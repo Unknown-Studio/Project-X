@@ -220,13 +220,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8832075520159604685}
   - component: {fileID: 1634196400624551878}
-  - component: {fileID: 2609861108649771684}
   - component: {fileID: 4530406796624756752}
   - component: {fileID: 2035590806486353484}
   - component: {fileID: 8598572697390522293}
   - component: {fileID: 4715545223970000097}
   - component: {fileID: 8693868344383718308}
   - component: {fileID: 4477389360851366385}
+  - component: {fileID: 2242207294132830081}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -303,51 +303,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2609861108649771684
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7060496598666213500}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0006849468, y: -0.107342005}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.235}
-    oldSize: {x: 4.8, y: 4.2}
-    newSize: {x: 4.8, y: 4.2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.68808633, y: 1.7750382}
-  m_EdgeRadius: 0
 --- !u!50 &4530406796624756752
 Rigidbody2D:
   serializedVersion: 4
@@ -546,6 +501,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 1469467677973146814}
+--- !u!61 &2242207294132830081
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7060496598666213500}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0006849468, y: -0.107342005}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.235}
+    oldSize: {x: 4.8, y: 4.2}
+    newSize: {x: 4.8, y: 4.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.68808633, y: 1.7750382}
+  m_EdgeRadius: 0
 --- !u!1 &7570377606099154159
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,6 +656,14 @@ PrefabInstance:
       propertyPath: ceilingCheckRadius
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 5504374023109075853, guid: a35f5b9a366043f43887a279bcd4b4b6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504374023109075853, guid: a35f5b9a366043f43887a279bcd4b4b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2597715403804426343, guid: a35f5b9a366043f43887a279bcd4b4b6, type: 3}
     m_RemovedGameObjects: []
@@ -692,9 +700,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd6e84e3072462439ce08f75c4e59b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseCharacter: 1
-  player: 1
-  enemy: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -706,16 +711,7 @@ MonoBehaviour:
   ceilingCheck: {fileID: 1421151296965108353}
   ceilingCheckRadius: 0.3
   ledgeCheck: {fileID: 1125000154348831381}
-  ledgeCheckDistance: 0.1
-  attackPlayerPostion: {fileID: 0}
-  attackRadius: 0
-  playerCheck: {fileID: 0}
-  maxAgroDistance: 0
-  minAgroDistance: 0
-  closeRangeActionDistance: 0
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 0
+  ledgeCheckDistance: 0.5
 --- !u!4 &5585263065815564424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1044111111676158352, guid: a35f5b9a366043f43887a279bcd4b4b6, type: 3}

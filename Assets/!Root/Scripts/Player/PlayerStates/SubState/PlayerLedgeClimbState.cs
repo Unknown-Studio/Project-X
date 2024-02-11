@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Suhdo.StateMachineCore;
 using UnityEngine;
 
@@ -16,12 +17,13 @@ namespace Suhdo.Player
 
         private bool _isHanging;
         private bool _isClimbing;
+        private bool _isTouchingCeiling;
+        
         public PlayerLedgeClimbState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data)
             : base(stateMachine, entity, animBoolName, data)
         {
         }
-
-
+        
         public override void Enter()
         {
             base.Enter();
@@ -54,11 +56,11 @@ namespace Suhdo.Player
 
             _isHanging = false;
 
-            if (_isClimbing)
-            {
-                player.transform.position = _stopPos;
-                _isClimbing = false;
-            }
+            if (!_isClimbing) return;
+            if(_isTouchingCeiling)
+                player.SetColliderHeight(playerData.crouchColliderHeight);
+            player.transform.position = _stopPos;
+            _isClimbing = false;
 
         }
 
@@ -68,12 +70,23 @@ namespace Suhdo.Player
 
             if (isAnimationFinished)
             {
-                stateMachine.ChangeState(player.IdleState);
+                if (_isTouchingCeiling)
+                {
+                    Debug.Log("touching ceiling");
+                    player.SetColliderHeight(playerData.crouchColliderHeight);
+                    stateMachine.ChangeState(player.CrouchIdleState);
+                }
+                else
+                {
+                    stateMachine.ChangeState(player.IdleState);
+                }
+
                 return;
             }
             
             if (_xInput == Movement.FacingDirection && _isHanging && !_isClimbing)
             {
+                CheckForSpace();
                 _isClimbing = true;
                 player.Anim.SetBool("climbLedge", true);
             }
@@ -96,6 +109,14 @@ namespace Suhdo.Player
             base.AnimationFinishTrigger();
 
             player.Anim.SetBool("climbLedge", false);
+        }
+        
+        private void CheckForSpace()
+        {
+            _isTouchingCeiling =
+                Physics2D.Raycast(
+                    _cornerPos + (Vector2.up * 0.015f) + (Vector2.right * 0.015f * Movement.FacingDirection),
+                    Vector2.up, playerData.standColliderHeight, CollisionSenses.WhatIsGround);
         }
         
         private Vector2 DetermineCornerPosition()

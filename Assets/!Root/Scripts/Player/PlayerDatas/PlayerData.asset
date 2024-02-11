@@ -18,6 +18,8 @@ MonoBehaviour:
   coyoteTime: 0.2
   variableJumpHeightMultiplier: 0.5
   crouchMovementVelocity: 5
+  crouchColliderHeight: 0.8
+  standColliderHeight: 1.8
   RollVelocity: 20
   RollCooldown: 0.5
   WallSlideVelocity: -3

@@ -10,6 +10,19 @@ namespace Suhdo.Player
         public PlayerRollState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data) : base(stateMachine, entity, animBoolName, data)
         {
         }
+
+        public override void Enter()
+        {
+            base.Enter();
+            player.SetColliderHeight(playerData.crouchColliderHeight);
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            player.SetColliderHeight(playerData.standColliderHeight);
+        }
+
         public override void LogicUpdate()
         {
             base.LogicUpdate();

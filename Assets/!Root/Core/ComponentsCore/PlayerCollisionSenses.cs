@@ -1,6 +1,7 @@
 using Sirenix.OdinInspector;
 using Suhdo.Generics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Suhdo.CharacterCore
 {
@@ -25,7 +26,7 @@ namespace Suhdo.CharacterCore
         private Transform ceilingCheck;
         [FoldoutGroup("Ceiling Check")]
         [SerializeField]
-        private float ceilingCheckRadius;
+        private float ceilingCheckDistance;
         
         [FoldoutGroup("Ledge Check", expanded: false)] [SerializeField]
         private Transform ledgeCheck;
@@ -49,7 +50,7 @@ namespace Suhdo.CharacterCore
         
         public override bool Ground => Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
-        public override bool Ceiling => Physics2D.OverlapCircle(ceilingCheck.position, ceilingCheckRadius, whatIsGround);
+        public override bool Ceiling => Physics2D.Raycast(ceilingCheck.position, Vector2.up, ceilingCheckDistance, whatIsGround);
         
         public override bool WallFront => Physics2D.Raycast(wallCheck.position, Vector2.right * Movement.FacingDirection,
             wallFrontCheckDistance, whatIsGround);
@@ -67,7 +68,7 @@ namespace Suhdo.CharacterCore
         private void OnDrawGizmos()
         {
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
-            Gizmos.DrawWireSphere(ceilingCheck.position, ceilingCheckRadius);
+            Gizmos.DrawLine(ceilingCheck.position, ceilingCheck.position + (Vector3)(Vector2.up * ceilingCheckDistance));
             Gizmos.DrawLine(wallCheck.position,
                 wallCheck.position + (Vector3)(Vector2.right * Movement.FacingDirection * wallFrontCheckDistance));
             Gizmos.DrawLine(wallCheck.position,

@@ -18,9 +18,11 @@ namespace Suhdo.Player
 
         [Header("Crouch State")]
         public float crouchMovementVelocity = 5f;
+        public float crouchColliderHeight = 0.8f;
+        public float standColliderHeight = 1.6f;
 
         [Header("Roll State")]
-        public float RollVelocity = 20f;
+        public float RollVelocity = 20f;    
         
         [Header("Roll state")]
         public float RollCooldown = 0.5f;

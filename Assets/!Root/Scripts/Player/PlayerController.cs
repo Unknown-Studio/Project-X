@@ -24,8 +24,6 @@ namespace Suhdo.Player
         public PlayerInputHandler InputHandler { get; private set; }
         public PlayerInventory Inventory {get; private set; }
 
-        private Vector2 _workSpaceVector;
-
         protected override void Awake()
         {
             base.Awake();
@@ -64,5 +62,7 @@ namespace Suhdo.Player
 
         public void AnimationFinishedTrigger() => StateMachine.CurrentCoreState.AnimationFinishTrigger();
 
+        
+        
     }
 }

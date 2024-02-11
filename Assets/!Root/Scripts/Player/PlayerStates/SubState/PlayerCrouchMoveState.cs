@@ -1,6 +1,4 @@
-using Suhdo.Player;
 using Suhdo.StateMachineCore;
-using UnityEngine;
 
 namespace Suhdo.Player
 {
@@ -8,6 +6,13 @@ namespace Suhdo.Player
 	{
 		public PlayerCrouchMoveState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data) : base(stateMachine, entity, animBoolName, data)
 		{
+		}
+
+		public override void Enter()
+		{
+			base.Enter();
+			
+			player.SetColliderHeight(playerData.crouchColliderHeight);
 		}
 
 		public override void LogicUpdate()
@@ -29,5 +34,10 @@ namespace Suhdo.Player
 			Movement.SetVelocityX(playerData.crouchMovementVelocity);
 		}
 
+        public override void Exit()
+        {
+	        base.Exit();
+	        player.SetColliderHeight(playerData.standColliderHeight);
+        }
 	}
 }
