@@ -20,6 +20,8 @@ namespace Suhdo.Player
         public PlayerLedgeClimbState LedgeClimbState { get; private set; }
         public PlayerAttackState PrimaryAttackState { get; private set; }
         public PlayerAttackState SecondaryAttackState { get; private set; }
+        public PlayerAirDashState AirDashState { get; private set; }
+        public PlayerAirDashGroundState AirDashGroundState { get; private set; }
         
         public PlayerInputHandler InputHandler { get; private set; }
         public PlayerInventory Inventory {get; private set; }
@@ -43,6 +45,8 @@ namespace Suhdo.Player
             LedgeClimbState = new PlayerLedgeClimbState(StateMachine, this, "ledgeClimbState", playerData);
             PrimaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData);
             SecondaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData);
+            AirDashState = new PlayerAirDashState(StateMachine, this, "airDash", playerData);
+            AirDashGroundState = new PlayerAirDashGroundState(StateMachine, this, "airDashGround", playerData);
         }
 
         protected override void Start()
