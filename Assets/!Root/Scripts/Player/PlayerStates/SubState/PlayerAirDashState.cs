@@ -20,6 +20,11 @@ namespace Suhdo.Player
         public override void LogicUpdate()
         {
             base.LogicUpdate();
+            
+            if (CollisionSenses.Ground)
+            {
+                stateMachine.ChangeState(player.AirDashGroundState);
+            }
         }
 
         public override void PhysicsUpdate()

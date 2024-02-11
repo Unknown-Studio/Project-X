@@ -21,6 +21,7 @@ namespace Suhdo.Player
         public PlayerAttackState PrimaryAttackState { get; private set; }
         public PlayerAttackState SecondaryAttackState { get; private set; }
         public PlayerAirDashState AirDashState { get; private set; }
+        public PlayerAirDashGroundState AirDashGroundState { get; private set; }
         
         public PlayerInputHandler InputHandler { get; private set; }
         public PlayerInventory Inventory {get; private set; }
@@ -45,6 +46,7 @@ namespace Suhdo.Player
             PrimaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData);
             SecondaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData);
             AirDashState = new PlayerAirDashState(StateMachine, this, "airDash", playerData);
+            AirDashGroundState = new PlayerAirDashGroundState(StateMachine, this, "airDashGround", playerData);
         }
 
         protected override void Start()

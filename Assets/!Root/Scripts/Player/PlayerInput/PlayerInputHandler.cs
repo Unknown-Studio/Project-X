@@ -111,7 +111,10 @@ namespace Suhdo.Player
         public void CheckJumpInputHoldTime()
         {
             if (Time.time >= _jumpInputStartTime + inputHoldTime)
+            {
                 JumpInput = false;
+                DoubleJumpInput = false;
+            }
         }
     }
     
