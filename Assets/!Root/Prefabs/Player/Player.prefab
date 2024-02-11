@@ -710,7 +710,7 @@ MonoBehaviour:
   groundCheck: {fileID: 5585263065815564424}
   groundCheckRadius: 0.3
   wallCheck: {fileID: 6618545980516098951}
-  wallFrontCheckDistance: 0.55
+  wallFrontCheckDistance: 0.45
   wallBackCheckDistance: 0.7
   ceilingCheck: {fileID: 1421151296965108353}
   ceilingCheckDistance: 1.5
