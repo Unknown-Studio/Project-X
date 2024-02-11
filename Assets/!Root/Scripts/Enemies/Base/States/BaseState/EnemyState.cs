@@ -16,6 +16,14 @@ namespace Suhdo.Enemies
         protected bool isPlayerInMaxAgroRange;
         protected bool performCloseRangeAction;
         
+        protected CollisionSenses CollisionSenses => _collisionSenses ??= Core.GetCoreComponent<CollisionSenses>();
+        protected Movement Movement => _movement ??= Core.GetCoreComponent<Movement>();
+        protected Stats Stats => _stats ??= Core.GetCoreComponent<Stats>();
+
+        private CollisionSenses _collisionSenses;
+        private Movement _movement;
+        private Stats _stats;
+        
         public EnemyState(StateMachine stateMachine, Entity entity, string animBoolName)
             : base(stateMachine, entity, animBoolName)
         {

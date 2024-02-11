@@ -16,6 +16,7 @@ namespace Suhdo.Player
         private bool _isTouchingWallBack;
         private bool _oldIsTouchingWall;
         private bool _oldIsTouchingWallBack;
+        private bool _isTouchingLedge;
 
 		private bool _coyoteTime;
 		private bool _isJumping;
@@ -38,6 +39,7 @@ namespace Suhdo.Player
 			_isGrounded = CollisionSenses.Ground;
 			_isTouchingWall = CollisionSenses.WallFront;
 			_isTouchingWallBack = CollisionSenses.WallBack;
+			_isTouchingLedge = CollisionSenses.Ledge;
 			
 			CheckCoyoteTime();
 
@@ -63,7 +65,11 @@ namespace Suhdo.Player
         {
             base.LogicUpdate();
 
-			if (_primaryAttackInput && !_isCeiling)
+            if (_isTouchingWall && !_isTouchingLedge && !_isGrounded)
+            {
+				stateMachine.ChangeState(player.LedgeClimbState);
+            }
+			else if (_primaryAttackInput && !_isCeiling)
 			{
 				stateMachine.ChangeState(player.PrimaryAttackState);
 			}else if (_secondaryAttackInput && !_isCeiling)

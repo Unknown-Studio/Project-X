@@ -15,6 +15,8 @@ namespace Suhdo.StateMachineCore
         public AnimationToStateMachine AnimToStateMachine { get; private set; }
         
         public StateMachine StateMachine {get; private set; }
+
+        protected Vector2 _workSpaceVector;
         
         protected virtual void Awake()
         {
@@ -40,6 +42,17 @@ namespace Suhdo.StateMachineCore
         protected virtual void FixedUpdate()
         {
             StateMachine.CurrentCoreState.PhysicsUpdate();
+        }
+        
+        public void SetColliderHeight(float height)
+        {
+            Vector2 center = MovementCollider.offset;
+            _workSpaceVector.Set(MovementCollider.size.x, height);
+
+            center.y += (height - MovementCollider.size.y) / 2;
+
+            MovementCollider.size = _workSpaceVector;
+            MovementCollider.offset = center;
         }
     }
 }
