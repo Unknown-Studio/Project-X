@@ -1,4 +1,5 @@
-﻿using Suhdo.CharacterCore;
+﻿using System;
+using Suhdo.CharacterCore;
 using Suhdo.StateMachineCore;
 using UnityEngine;
 
@@ -62,6 +63,11 @@ namespace Suhdo.Player
         {
             Core.LogicUpdate();
             base.Update();
+        }
+
+        private void OnDestroy()
+        {
+            playerData.AfterImagesPool.ClearPool();
         }
 
         public void AnimationFinishedTrigger() => StateMachine.CurrentCoreState.AnimationFinishTrigger();

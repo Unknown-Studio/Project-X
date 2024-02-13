@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65706d976664af4090125c480868164, type: 3}
+  m_Name: AfterImagePool
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 4045678693221266371, guid: 9b2ef5e4524e9424e935e784e7eb9888, type: 3}
+  DefaultCapacity: 10
+  DefaultSpawnLocation: {x: 0, y: 0, z: 0}
+  UseDefaultSpawnRotation: 0
+  DefaultSpawnRotation: {x: 0, y: 0, z: 0, w: 0}
