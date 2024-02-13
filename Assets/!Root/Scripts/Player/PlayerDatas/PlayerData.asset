@@ -26,3 +26,5 @@ MonoBehaviour:
   startOffset: {x: 0.15, y: 1}
   stopOffset: {x: 0.5, y: 1}
   airDashSpeed: -50
+  DistBetweenAfterImages: 0.5
+  AfterImagesPool: {fileID: 11400000, guid: 5be2deb6427dc7c4abd1b5b520795344, type: 2}

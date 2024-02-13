@@ -1,3 +1,4 @@
+using Suhdo.Ultils;
 using UnityEngine;
 
 namespace Suhdo.Player
@@ -36,21 +37,24 @@ namespace Suhdo.Player
         
         [Header("Air Dash State")] 
         public float airDashSpeed = 10f;
+        public float DistBetweenAfterImages = 0.5f;
+
+        [Header("FX")] public ObjectPoolSO AfterImagesPool;
 
         /*[Header("Wall Jump State")]
         public float wallJumpVelocity = 20f;
         public float wallJumpTime = 0.4f;
         public Vector2 wallJumpAngle = new Vector2(1, 2);
-        
+
         [Header("Wall Slide State")]
         public float wallSlideVelocity = 3f;
 
         [Header("Wall Climb State")]
         public float wallClimbVelocity = 3f;
 
-        
 
-        [Header("Dash State")] 
+
+        [Header("Dash State")]
         public float dashCooldown = 0.5f;
         public float maxHoldTime = 1f;
         public float holdTimeScale = 0.25f;
@@ -60,7 +64,7 @@ namespace Suhdo.Player
         public float dashEndYMultiplier = 0.2f;
         public float distBetweenAfterImages = 0.5f;
 
-        [Header("Crouch State")] 
+        [Header("Crouch State")]
         public float crouchMovementVelocity = 5f;
         public float crouchColliderHeight = 0.8f;
         public float standColliderHeight = 1.6f;*/
