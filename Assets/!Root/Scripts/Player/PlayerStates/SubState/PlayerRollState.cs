@@ -1,3 +1,4 @@
+using Suhdo.FX;
 using Suhdo.StateMachineCore;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ namespace Suhdo.Player
     public class PlayerRollState : PlayerAbilityState
     {
         protected float lastRollTime;
+        
+        private Vector2 lastAIPos;
         
         public PlayerRollState(StateMachine stateMachine, Entity entity, string animBoolName, PlayerData data) : base(stateMachine, entity, animBoolName, data)
         {
@@ -26,6 +29,7 @@ namespace Suhdo.Player
         public override void LogicUpdate()
         {
             base.LogicUpdate();
+            CheckIfShouldPlaceAfterImage();
             if (!isAnimationFinished) return;
             if (!isCeiling)
             {
@@ -43,6 +47,22 @@ namespace Suhdo.Player
         public bool CheckCanRoll()
         {
             return Time.time >= lastRollTime + playerData.RollCooldown;
+        }
+        
+        private void CheckIfShouldPlaceAfterImage()
+        {
+            if (Vector2.Distance(player.transform.position, lastAIPos) >= playerData.DistBetweenAfterImages)
+            {
+                PlaceAfterImage();
+            }
+        }
+
+        private void PlaceAfterImage()
+        {
+            // get from pool
+            var _object = (AfterImageSprite) playerData.AfterImagesPool.Get();
+            _object?.StartAfterImage(player.transform);
+            lastAIPos = player.transform.position;
         }
     }
 }
