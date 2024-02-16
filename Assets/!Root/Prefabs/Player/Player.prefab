@@ -474,6 +474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputHoldTime: 0.2
+  doubleClickThreshold: 0.3
 --- !u!114 &8693868344383718308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,7 +534,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0006849468, y: -0.107342005}
+  m_Offset: {x: 0.0025599748, y: -0.107342005}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.235}
@@ -544,7 +545,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.68808633, y: 1.7750382}
+  m_Size: {x: 0.60354805, y: 1.7750382}
   m_EdgeRadius: 0
 --- !u!1 &7570377606099154159
 GameObject:
@@ -603,6 +604,10 @@ PrefabInstance:
     - target: {fileID: 1044111111676158352, guid: a35f5b9a366043f43887a279bcd4b4b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044111111676158352, guid: a35f5b9a366043f43887a279bcd4b4b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.957
       objectReference: {fileID: 0}
     - target: {fileID: 2084834840590754688, guid: a35f5b9a366043f43887a279bcd4b4b6, type: 3}
       propertyPath: m_Name
