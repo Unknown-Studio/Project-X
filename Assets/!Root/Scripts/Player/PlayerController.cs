@@ -25,14 +25,12 @@ namespace Suhdo.Player
         public PlayerAirDashGroundState AirDashGroundState { get; private set; }
         
         public PlayerInputHandler InputHandler { get; private set; }
-        public PlayerInventory Inventory {get; private set; }
 
         protected override void Awake()
         {
             base.Awake();
             
             InputHandler = GetComponent<PlayerInputHandler>();
-            Inventory = GetComponent<PlayerInventory>();
             
             IdleState = new PlayerIdleState(StateMachine, this, "idle", playerData);
             MoveState = new PlayerMoveState(StateMachine, this, "move", playerData);
@@ -54,8 +52,6 @@ namespace Suhdo.Player
         {
             base.Start();
             
-            
-            PrimaryAttackState.SetWeapon(Inventory.weapons[(int)CombatInputs.Primary]);
             StateMachine.Initiallize(IdleState);
         }
 
