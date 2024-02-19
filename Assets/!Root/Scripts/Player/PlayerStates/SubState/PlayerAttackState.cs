@@ -16,12 +16,20 @@ namespace Suhdo.Player
             ) : base(stateMachine, entity, animBoolName, data)
         {
             _weapon = weapon;
+
+            _weapon.OnExit += ExitHandler;
         }
 
         public override void Enter()
         {
             base.Enter();
             _weapon.Enter();
+        }
+
+        private void ExitHandler()
+        {
+            AnimationFinishTrigger();
+            isAbilityDone = true;
         }
     }
 }
