@@ -119,7 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881216e3a09d4a3fb919063894c723b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onAnimationFinished: {fileID: 11400000, guid: f136c634965957740b26a8b95223be75, type: 2}
 --- !u!1 &4595957402142991997
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,19 +164,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f13cc2d90642b99662ed4042ce51a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: f136c634965957740b26a8b95223be75, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7085440924921391652}
-        m_TargetAssemblyTypeName: Suhdo.Weapons.Weapon, Assembly-CSharp
-        m_MethodName: Exit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  numberOfAttack: 2
+  attackCounterResetCoolDown: 1
