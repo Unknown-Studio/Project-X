@@ -10,6 +10,7 @@ namespace Suhdo.Weapons
 		[SerializeField] private float attackCounterResetCoolDown;
 		
 		public event Action OnExit;
+		public event Action OnEnter;
 
 		public int CurrentAttackCounter
 		{
@@ -17,8 +18,10 @@ namespace Suhdo.Weapons
 			private set => _currentAttackCounter = value >= numberOfAttack ? 0 : value;
 		}
 		
+		public GameObject BaseGameObject { get; private set; }
+		public GameObject WeaponSpriteGameObject { get; private set; }
+		
 		private Animator _anim;
-		private GameObject _baseGameObject;
 		private AnimationEventHandler _eventHandler;
 		private int _currentAttackCounter;
 
@@ -26,9 +29,10 @@ namespace Suhdo.Weapons
 
 		private void Awake()
 		{
-			_baseGameObject = transform.Find("Base").gameObject;
-			_anim = _baseGameObject.GetComponent<Animator>();
-			_eventHandler = _baseGameObject.GetComponent<AnimationEventHandler>();
+			BaseGameObject = transform.Find("Base").gameObject;
+			WeaponSpriteGameObject = transform.Find("WeaponSprite").gameObject;
+			_anim = BaseGameObject.GetComponent<Animator>();
+			_eventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
 			_attackCounterResetTimer = new Timer(attackCounterResetCoolDown);
 		}
 
@@ -51,6 +55,8 @@ namespace Suhdo.Weapons
 			_attackCounterResetTimer.StopTimer();
 			_anim.SetBool("active", true);
 			_anim.SetInteger("counter", CurrentAttackCounter);
+
+			OnEnter?.Invoke();
 		}
 
 		private void Update()
