@@ -6,7 +6,7 @@ namespace Suhdo.Weapons
 {
 	public class Weapon : MonoBehaviour
 	{
-		[SerializeField] private int numberOfAttack;
+		[field:SerializeField] public WeaponDataSO Data{get; private set; }
 		[SerializeField] private float attackCounterResetCoolDown;
 		
 		public event Action OnExit;
@@ -15,7 +15,7 @@ namespace Suhdo.Weapons
 		public int CurrentAttackCounter
 		{
 			get => _currentAttackCounter;
-			private set => _currentAttackCounter = value >= numberOfAttack ? 0 : value;
+			private set => _currentAttackCounter = value >= Data.NumberOfAttack ? 0 : value;
 		}
 		
 		public GameObject BaseGameObject { get; private set; }
