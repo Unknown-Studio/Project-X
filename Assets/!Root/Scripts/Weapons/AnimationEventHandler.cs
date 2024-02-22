@@ -5,10 +5,14 @@ namespace Suhdo.Weapons
 {
 	public class AnimationEventHandler : MonoBehaviour
 	{
-		public event Action Exit;
-		public void AnimationFinishTrigger()
-		{
-			Exit?.Invoke();
-		}
+		public event Action OnFinish;
+		public event Action OnStartMovement;
+		public event Action OnStopMovement;
+		
+		private void AnimationFinishTrigger() => OnFinish?.Invoke();
+		
+		private void StartMovementTrigger() => OnStartMovement?.Invoke();
+
+		private void StopMovementTrigger() => OnStopMovement?.Invoke();
 	}
 }

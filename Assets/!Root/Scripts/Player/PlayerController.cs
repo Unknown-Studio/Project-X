@@ -36,7 +36,9 @@ namespace Suhdo.Player
             
             InputHandler = GetComponent<PlayerInputHandler>();
             _primaryWeapon = transform.Find("PrimaryWeapon").GetComponent<Weapon>();
+            _primaryWeapon.SetCore(Core);
             _secondaryWeapon = transform.Find("SecondaryWeapon").GetComponent<Weapon>();
+            _secondaryWeapon.SetCore(Core);
             
             IdleState = new PlayerIdleState(StateMachine, this, "idle", playerData);
             MoveState = new PlayerMoveState(StateMachine, this, "move", playerData);
@@ -73,8 +75,6 @@ namespace Suhdo.Player
         }
 
         public void AnimationFinishedTrigger() => StateMachine.CurrentCoreState.AnimationFinishTrigger();
-
-        
         
     }
 }

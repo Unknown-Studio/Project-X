@@ -1,4 +1,5 @@
 using System;
+using Suhdo.CharacterCore;
 using Suhdo.Ultils;
 using UnityEngine;
 
@@ -18,11 +19,12 @@ namespace Suhdo.Weapons
 			private set => _currentAttackCounter = value >= Data.NumberOfAttack ? 0 : value;
 		}
 		
+		public Core Core { get; private set; }
+		public AnimationEventHandler EventHandler { get; private set; }
 		public GameObject BaseGameObject { get; private set; }
 		public GameObject WeaponSpriteGameObject { get; private set; }
 		
 		private Animator _anim;
-		private AnimationEventHandler _eventHandler;
 		private int _currentAttackCounter;
 
 		private Timer _attackCounterResetTimer;
@@ -32,31 +34,34 @@ namespace Suhdo.Weapons
 			BaseGameObject = transform.Find("Base").gameObject;
 			WeaponSpriteGameObject = transform.Find("WeaponSprite").gameObject;
 			_anim = BaseGameObject.GetComponent<Animator>();
-			_eventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
+			EventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
 			_attackCounterResetTimer = new Timer(attackCounterResetCoolDown);
 		}
 
 		private void OnEnable()
 		{
-			_eventHandler.Exit += Exit;
+			EventHandler.OnFinish += OnFinish;
 			_attackCounterResetTimer.OnTimerDone += ResetAttackCounter;
 		}
 
 		private void OnDisable()
 		{
-			_eventHandler.Exit -= Exit;
+			EventHandler.OnFinish -= OnFinish;
 			_attackCounterResetTimer.OnTimerDone -= ResetAttackCounter;
 		}
 
 		public void Enter()
 		{
-			print($"{transform.name} enter");
-			
 			_attackCounterResetTimer.StopTimer();
 			_anim.SetBool("active", true);
 			_anim.SetInteger("counter", CurrentAttackCounter);
 
 			OnEnter?.Invoke();
+		}
+		
+		public void SetCore(Core core)
+		{
+			Core = core;
 		}
 
 		private void Update()
@@ -64,7 +69,7 @@ namespace Suhdo.Weapons
 			_attackCounterResetTimer.Tick();
 		}
 
-		private void Exit()
+		private void OnFinish()
 		{
 			CurrentAttackCounter++;
 			_anim.SetBool("active", false);

@@ -22,5 +22,7 @@ namespace Suhdo.Weapons
 	
 		[Button("Add Weapon Data")]
 		private void AddWeaponData() => ComponentData.Add(new WeaponSpriteData());
+		[Button("Add Movement Data")]
+		private void AddMovementData() => ComponentData.Add(new MovementData());
 	}
 }
