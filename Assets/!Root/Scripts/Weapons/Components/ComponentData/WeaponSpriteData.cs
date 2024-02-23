@@ -1,11 +1,6 @@
-using System;
-using Suhdo.Weapons.Components.ComponentData.AttackData;
-using UnityEngine;
-
-namespace Suhdo.Weapons.Components.ComponentData
+namespace Suhdo.Weapons.Components
 {
-	public class WeaponSpriteData : ComponentData
+	public class WeaponSpriteData : ComponentData<AttackSprites>
 	{
-		[field:SerializeField] public AttackSprites[] AttackData { get; private set; }
 	}
 }

@@ -1,13 +1,9 @@
-using System;
-using Suhdo.Weapons.Components.ComponentData;
 using UnityEngine;
 
 namespace Suhdo.Weapons.Components
 {
-	public class WeaponSprite : WeaponComponent
+	public class WeaponSprite : WeaponComponent<WeaponSpriteData, AttackSprites>
 	{
-		private WeaponSpriteData data;
-		
 		private SpriteRenderer _baseSpriteRenderer;
 		private SpriteRenderer _weaponSpriteRenderer;
 
@@ -19,7 +15,6 @@ namespace Suhdo.Weapons.Components
 
 			_baseSpriteRenderer = transform.Find("Base").GetComponent<SpriteRenderer>();
 			_weaponSpriteRenderer = transform.Find("WeaponSprite").GetComponent<SpriteRenderer>();
-			data = weapon.Data.GetData<WeaponSpriteData>();
 
 			// TODO: fix this when create weapon data
 			// _baseSpriteRenderer = weapon.BaseGameObject.GetComponent<SpriteRenderer>();
@@ -48,7 +43,7 @@ namespace Suhdo.Weapons.Components
 				return;
 			}
 
-			var currentAttackSprite = data.AttackData[weapon.CurrentAttackCounter].Sprites;
+			var currentAttackSprite = currentAttackData.Sprites;
 
 			if (_currentWeaponSpriteIndex >= currentAttackSprite.Length)
 			{

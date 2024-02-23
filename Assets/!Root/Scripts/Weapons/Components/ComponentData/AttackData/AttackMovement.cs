@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 
-namespace Suhdo.Weapons.Components.ComponentData.AttackData
+namespace Suhdo.Weapons.Components
 {
 	[Serializable]
-	public class AttackMovement
+	public class AttackMovement : AttackData
 	{
 		[field: SerializeField]
 		public Vector2 Direction { get; private set; }

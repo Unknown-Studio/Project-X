@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
-using Suhdo.Weapons.Components.ComponentData;
+using Suhdo.Weapons.Components;
 using UnityEngine;
 
 namespace Suhdo.Weapons

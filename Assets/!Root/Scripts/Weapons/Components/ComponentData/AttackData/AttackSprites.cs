@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 
-namespace Suhdo.Weapons.Components.ComponentData.AttackData
+namespace Suhdo.Weapons.Components
 {
 	[Serializable]
-	public class AttackSprites
+	public class AttackSprites : AttackData
 	{
 		[field:SerializeField] public Sprite[] Sprites { get; private set; }
 	}

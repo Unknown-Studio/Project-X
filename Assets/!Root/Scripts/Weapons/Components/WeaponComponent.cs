@@ -1,4 +1,3 @@
-using System;
 using Suhdo.CharacterCore;
 using UnityEngine;
 
@@ -39,6 +38,26 @@ namespace Suhdo.Weapons.Components
 		 {
 			 weapon.OnEnter -= EnterHandle;
 			 weapon.OnExit -= ExitHandle;
+		 }
+	 }
+
+	 public abstract class WeaponComponent<T1, T2> : WeaponComponent
+		 where T1 : ComponentData<T2>
+		 where T2 : AttackData
+	 {
+		 protected T1 data;
+		 protected T2 currentAttackData;
+
+		 protected override void EnterHandle()
+		 {
+			 base.EnterHandle();
+			 currentAttackData = data.AttackData[weapon.CurrentAttackCounter];
+		 }
+
+		 protected override void Awake()
+		 {
+			 base.Awake();
+			 data = weapon.Data.GetData<T1>();
 		 }
 	 }
 }

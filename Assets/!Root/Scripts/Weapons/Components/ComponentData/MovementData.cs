@@ -1,10 +1,6 @@
-using Suhdo.Weapons.Components.ComponentData.AttackData;
-using UnityEngine;
-
-namespace Suhdo.Weapons.Components.ComponentData
+namespace Suhdo.Weapons.Components
 {
-	public class MovementData : ComponentData
+	public class MovementData : ComponentData<AttackMovement>
 	{
-		[field: SerializeField] public AttackMovement[] AttackData { get; private set; }
 	}
 }
