@@ -19,6 +19,12 @@ namespace Suhdo.Weapons
 		{
 			return ComponentData.OfType<T>().FirstOrDefault();
 		}
+
+		public void AddData(ComponentData data)
+		{
+			if(ComponentData.FirstOrDefault(t => t.GetType() == data.GetType()) == null)
+				ComponentData.Add(data);
+		}
 	
 		[Button("Add Weapon Data")]
 		private void AddWeaponData() => ComponentData.Add(new WeaponSpriteData());
