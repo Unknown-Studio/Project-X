@@ -17,6 +17,8 @@ namespace Suhdo.Weapons.Components
 			 weapon = GetComponent<Weapon>();
 			 eventHandler = GetComponentInChildren<AnimationEventHandler>();
 		 }
+		 
+		 protected virtual void Start(){}
 
 		 protected virtual void EnterHandle()
 		 {

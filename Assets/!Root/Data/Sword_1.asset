@@ -16,9 +16,31 @@ MonoBehaviour:
   <ComponentData>k__BackingField:
   - rid: 8186513248756432899
   - rid: 8186513294197784576
+  - rid: 7778217984072089601
   references:
     version: 2
     RefIds:
+    - rid: 7778217984072089601
+      type: {class: ActionHitBoxData, ns: Suhdo.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        <AttackData>k__BackingField:
+        - Debug: 1
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: -1.94
+            y: -1.19
+            width: 3.81
+            height: 2.89
+        - Debug: 1
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: -0.66
+            y: 0.09
+            width: 2.59
+            height: 2.02
+        <DetectableLayer>k__BackingField:
+          serializedVersion: 2
+          m_Bits: 512
     - rid: 8186513248756432899
       type: {class: WeaponSpriteData, ns: Suhdo.Weapons.Components, asm: Assembly-CSharp}
       data:
