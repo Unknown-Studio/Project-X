@@ -12,21 +12,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ba35f26a8748c499639e0f5585c874, type: 3}
   m_Name: Sword_2
   m_EditorClassIdentifier: 
-  <NumberOfAttack>k__BackingField: 0
+  <NumberOfAttack>k__BackingField: 3
   <ComponentData>k__BackingField:
   - rid: 8186513407642435584
   - rid: 8186513407642435585
+  - rid: 7778217984072089603
   references:
     version: 2
     RefIds:
+    - rid: 7778217984072089603
+      type: {class: ActionHitBoxData, ns: Suhdo.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: ActionHitBoxData
+        attackData:
+        - name: Attack 1
+          Debug: 0
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0
+            y: 0
+            width: 0
+            height: 0
+        - name: Attack 2
+          Debug: 0
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0
+            y: 0
+            width: 0
+            height: 0
+        - name: Attack 3
+          Debug: 0
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0
+            y: 0
+            width: 0
+            height: 0
+        <DetectableLayer>k__BackingField:
+          serializedVersion: 2
+          m_Bits: 0
     - rid: 8186513407642435584
       type: {class: MovementData, ns: Suhdo.Weapons.Components, asm: Assembly-CSharp}
       data:
-        <AttackData>k__BackingField:
-        - <Direction>k__BackingField: {x: 0, y: 0}
+        name: MovementData
+        attackData:
+        - name: Attack 1
+          <Direction>k__BackingField: {x: 0, y: 0}
+          <Velocity>k__BackingField: 0
+        - name: Attack 2
+          <Direction>k__BackingField: {x: 0, y: 0}
+          <Velocity>k__BackingField: 0
+        - name: Attack 3
+          <Direction>k__BackingField: {x: 0, y: 0}
           <Velocity>k__BackingField: 0
     - rid: 8186513407642435585
       type: {class: WeaponSpriteData, ns: Suhdo.Weapons.Components, asm: Assembly-CSharp}
       data:
-        <AttackData>k__BackingField:
-        - <Sprites>k__BackingField: []
+        name: WeaponSpriteData
+        attackData:
+        - name: Attack 1
+          <Sprites>k__BackingField: []
+        - name: Attack 2
+          <Sprites>k__BackingField: []
+        - name: Attack 3
+          <Sprites>k__BackingField: []
