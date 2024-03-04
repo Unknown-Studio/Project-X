@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Suhdo.Combat;
+using Suhdo.CharacterCore;
 using Suhdo.Generics;
 using UnityEngine;
 

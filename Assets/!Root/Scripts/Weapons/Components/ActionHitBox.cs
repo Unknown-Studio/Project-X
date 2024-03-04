@@ -1,12 +1,13 @@
 using System;
 using Suhdo.Generics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Suhdo.Weapons.Components
 {
 	public class ActionHitBox : WeaponComponent<ActionHitBoxData, AttackActionHitBox>
 	{
-		public event Action<Collider2D[]> OnDetectedCollider2D; 
+		public event Action<Collider2D[]> OnDetectedCollider2D;
 		private CoreComp<Suhdo.Movement> _movement;
 		private Vector2 _offset;
 		private Collider2D[] _detected;
@@ -41,7 +42,7 @@ namespace Suhdo.Weapons.Components
 
 			_detected = Physics2D.OverlapBoxAll(_offset, currentAttackData.HitBox.size, 0f, data.DetectableLayer);
 
-			if (_detected.Length == 0) return;
+			if (_detected.Length <= 0) return;
 			
 			OnDetectedCollider2D?.Invoke(_detected);
 		}

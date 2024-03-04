@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Suhdo.Combat
+namespace Suhdo.CharacterCore
 {
     public interface IKnockbackable
     {

@@ -1,3 +1,4 @@
+using Suhdo.CharacterCore;
 using UnityEngine;
 
 namespace Suhdo.Weapons.Components
@@ -31,7 +32,10 @@ namespace Suhdo.Weapons.Components
 		{
 			foreach (var item in colliders)
 			{
-				print($"Detected item {item.name}");
+				if (item.TryGetComponent<IDamageable>(out var damageable))
+				{
+					damageable.Damage(currentAttackData.Amount);
+				}
 			}
 		}
 	}
