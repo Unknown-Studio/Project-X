@@ -6,7 +6,7 @@ namespace Suhdo.Weapons.Components
 {
 	public class ActionHitBox : WeaponComponent<ActionHitBoxData, AttackActionHitBox>
 	{
-		private event Action<Collider2D[]> OnDetectedCollider2D; 
+		public event Action<Collider2D[]> OnDetectedCollider2D; 
 		private CoreComp<Suhdo.Movement> _movement;
 		private Vector2 _offset;
 		private Collider2D[] _detected;
@@ -44,11 +44,6 @@ namespace Suhdo.Weapons.Components
 			if (_detected.Length == 0) return;
 			
 			OnDetectedCollider2D?.Invoke(_detected);
-
-			foreach (var item in _detected)
-			{
-				Debug.Log(item.name);
-			}
 		}
 
 		private void OnDrawGizmosSelected()
