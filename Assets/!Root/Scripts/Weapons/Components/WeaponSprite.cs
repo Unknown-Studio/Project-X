@@ -13,24 +13,21 @@ namespace Suhdo.Weapons.Components
 		{
 			base.Awake();
 
-			_baseSpriteRenderer = transform.Find("Base").GetComponent<SpriteRenderer>();
-			_weaponSpriteRenderer = transform.Find("WeaponSprite").GetComponent<SpriteRenderer>();
-
-			// TODO: fix this when create weapon data
-			// _baseSpriteRenderer = weapon.BaseGameObject.GetComponent<SpriteRenderer>();
-			// _weaponSpriteRenderer = weapon.WeaponSpriteGameObject.GetComponent<SpriteRenderer>();
+			
 		}
 
-		protected override void OnEnable()
+		protected override void Start()
 		{
-			base.OnEnable();
-
+			base.Start();
+			_baseSpriteRenderer = weapon.BaseGameObject.GetComponent<SpriteRenderer>();
+			_weaponSpriteRenderer = weapon.WeaponSpriteGameObject.GetComponent<SpriteRenderer>();
+			
 			_baseSpriteRenderer.RegisterSpriteChangeCallback(OnBaseSpriteChangeHandler);
 		}
 
-		protected override void OnDisable()
+		protected override void OnDestroy()
 		{
-			base.OnDisable();
+			base.OnDestroy();
 
 			_baseSpriteRenderer.UnregisterSpriteChangeCallback(OnBaseSpriteChangeHandler);
 		}

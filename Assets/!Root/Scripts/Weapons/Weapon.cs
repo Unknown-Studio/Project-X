@@ -7,8 +7,9 @@ namespace Suhdo.Weapons
 {
 	public class Weapon : MonoBehaviour
 	{
-		[field:SerializeField] public WeaponDataSO Data{get; private set; }
 		[SerializeField] private float attackCounterResetCoolDown;
+		
+		public WeaponDataSO Data{get; private set; }
 		
 		public event Action OnExit;
 		public event Action OnEnter;
@@ -62,6 +63,11 @@ namespace Suhdo.Weapons
 		public void SetCore(Core core)
 		{
 			Core = core;
+		}
+
+		public void SetData(WeaponDataSO data)
+		{
+			Data = data;
 		}
 
 		private void Update()

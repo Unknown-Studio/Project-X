@@ -7,23 +7,17 @@ namespace Suhdo.Weapons.Components
 	{
 		private ActionHitBox _hitBox;
 
-		protected override void Awake()
+		protected override void Start()
 		{
-			base.Awake();
+			base.Start();
 
 			_hitBox = GetComponent<ActionHitBox>();
-		}
-
-		protected override void OnEnable()
-		{
-			base.OnEnable();
-
 			_hitBox.OnDetectedCollider2D += HandleDetectedCollier2D;
 		}
 
-		protected override void OnDisable()
+		protected override void OnDestroy()
 		{
-			base.OnDisable();
+			base.OnDestroy();
 			
 			_hitBox.OnDetectedCollider2D -= HandleDetectedCollier2D;
 		}
