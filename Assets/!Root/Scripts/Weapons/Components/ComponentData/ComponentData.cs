@@ -13,6 +13,7 @@ namespace Suhdo.Weapons.Components
 		protected ComponentData()
 		{
 			SetComponentName();
+			SetComponentDependency();
 		}
 		
 		protected abstract void SetComponentDependency();

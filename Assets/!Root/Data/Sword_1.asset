@@ -18,6 +18,7 @@ MonoBehaviour:
   - rid: 8186513294197784576
   - rid: 7778217984072089601
   - rid: 7778218039198351360
+  - rid: 7778218174702157824
   references:
     version: 2
     RefIds:
@@ -27,7 +28,7 @@ MonoBehaviour:
         name: ActionHitBoxData
         attackData:
         - name: 
-          Debug: 1
+          Debug: 0
           <HitBox>k__BackingField:
             serializedVersion: 2
             x: -1.94
@@ -35,7 +36,7 @@ MonoBehaviour:
             width: 3.81
             height: 2.89
         - name: 
-          Debug: 1
+          Debug: 0
           <HitBox>k__BackingField:
             serializedVersion: 2
             x: -0.66
@@ -54,6 +55,17 @@ MonoBehaviour:
           <Amount>k__BackingField: 5
         - name: Attack 2
           <Amount>k__BackingField: 10
+    - rid: 7778218174702157824
+      type: {class: KnockBackData, ns: Suhdo.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: KnockBackData
+        attackData:
+        - name: Attack 1
+          <Angle>k__BackingField: {x: 1, y: 1}
+          <Strength>k__BackingField: 10
+        - name: Attack 2
+          <Angle>k__BackingField: {x: 1, y: 1}
+          <Strength>k__BackingField: 7
     - rid: 8186513248756432899
       type: {class: WeaponSpriteData, ns: Suhdo.Weapons.Components, asm: Assembly-CSharp}
       data:

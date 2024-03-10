@@ -9,13 +9,6 @@ namespace Suhdo.Weapons.Components
 
 		private int _currentWeaponSpriteIndex;
 
-		protected override void Awake()
-		{
-			base.Awake();
-
-			
-		}
-
 		protected override void Start()
 		{
 			base.Start();

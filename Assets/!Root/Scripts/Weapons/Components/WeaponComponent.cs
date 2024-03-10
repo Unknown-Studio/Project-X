@@ -12,6 +12,7 @@ namespace Suhdo.Weapons.Components
 
 		 public virtual void Init()
 		 {
+			 weapon = GetComponent<Weapon>();
 		 }
 
 		 protected virtual void Awake()
