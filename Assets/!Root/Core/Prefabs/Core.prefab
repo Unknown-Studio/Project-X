@@ -345,6 +345,7 @@ GameObject:
   - component: {fileID: 6082664438740363437}
   - component: {fileID: 6467338817819451812}
   - component: {fileID: 7743506418416028624}
+  - component: {fileID: 2958009393963883584}
   - component: {fileID: 8281502529377263406}
   m_Layer: 7
   m_Name: Combat
@@ -394,6 +395,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPool: {fileID: 11400000, guid: 27c617335a513e74abb6658ca4919fd0, type: 2}
+--- !u!114 &2958009393963883584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6495440544397471602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a205184fac0e4d6885e2528e76de5bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &8281502529377263406
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -483,4 +496,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a84b9c66df2eb11489e4faf7b062520c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  <Health>k__BackingField:
+    <MaxValue>k__BackingField: 50
+  <Poise>k__BackingField:
+    <MaxValue>k__BackingField: 25
+  poiseRecoveryRate: 5

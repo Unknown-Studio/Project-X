@@ -12,6 +12,8 @@ namespace Suhdo.StateMachineCore
         
         public Core Core { get; private set; }
 
+        protected Stats stats { get; private set; }
+        
         public AnimationToStateMachine AnimToStateMachine { get; private set; }
         
         public StateMachine StateMachine {get; private set; }
@@ -20,12 +22,15 @@ namespace Suhdo.StateMachineCore
         
         protected virtual void Awake()
         {
+            Core = GetComponentInChildren<Core>();
+            
             StateMachine = new StateMachine();
             Anim = GetComponent<Animator>();
             RB = GetComponent<Rigidbody2D>();
             MovementCollider = GetComponent<BoxCollider2D>();
             AnimToStateMachine = GetComponent<AnimationToStateMachine>();
-            Core = GetComponentInChildren<Core>();
+            
+            stats = Core.GetCoreComponent<Stats>();
         }
 
         protected virtual void Start()

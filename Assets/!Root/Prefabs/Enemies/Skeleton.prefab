@@ -88,6 +88,7 @@ MonoBehaviour:
   _chargeStateData: {fileID: 11400000, guid: 19ecc997b91b5fb4bb0c19d4e345ec0d, type: 2}
   _lookingForPlayerData: {fileID: 11400000, guid: 8eb45a72d0e2e1842aa979ea609c0ee1, type: 2}
   _meleeAttackData: {fileID: 11400000, guid: 9d85070b007818c4bbd2d44fd1d36b3d, type: 2}
+  _stunData: {fileID: 0}
 --- !u!212 &678711163349406651
 SpriteRenderer:
   m_ObjectHideFlags: 0

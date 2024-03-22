@@ -19,6 +19,7 @@ MonoBehaviour:
   - rid: 7778217984072089601
   - rid: 7778218039198351360
   - rid: 7778218174702157824
+  - rid: 7778218447038840832
   references:
     version: 2
     RefIds:
@@ -66,6 +67,15 @@ MonoBehaviour:
         - name: Attack 2
           <Angle>k__BackingField: {x: 1, y: 1}
           <Strength>k__BackingField: 7
+    - rid: 7778218447038840832
+      type: {class: PoiseDamageData, ns: Suhdo.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: PoiseDamageData
+        attackData:
+        - name: Attack 1
+          <Amount>k__BackingField: 10
+        - name: Attack 2
+          <Amount>k__BackingField: 10
     - rid: 8186513248756432899
       type: {class: WeaponSpriteData, ns: Suhdo.Weapons.Components, asm: Assembly-CSharp}
       data:

@@ -17824,6 +17824,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7352445519095128131, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
+      propertyPath: poiseRecoveryRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352445519095128131, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
+      propertyPath: <Poise>k__BackingField.<MaxValue>k__BackingField
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352445519095128131, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
+      propertyPath: <Health>k__BackingField.<MaxValue>k__BackingField
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8832075520159604685, guid: 3f91c21c665fd214491729e76d8ea264, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -18031,6 +18043,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 644111407093825644, guid: 5caf55f158a912e4a97d01f9f74f25f9, type: 3}
+      propertyPath: _stunData
+      value: 
+      objectReference: {fileID: 11400000, guid: 57e4941a8e6ff3e41a77b6876b6c49b4, type: 2}
     - target: {fileID: 2280647491335151771, guid: 5caf55f158a912e4a97d01f9f74f25f9, type: 3}
       propertyPath: m_Name
       value: Skeleton
@@ -18259,6 +18275,18 @@ PrefabInstance:
     - target: {fileID: 5040861535443458679, guid: 51e468dca1ac61f4fbee416a8f20f916, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812552399869875993, guid: 51e468dca1ac61f4fbee416a8f20f916, type: 3}
+      propertyPath: poiseRecoveryRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812552399869875993, guid: 51e468dca1ac61f4fbee416a8f20f916, type: 3}
+      propertyPath: <Poise>k__BackingField.<MaxValue>k__BackingField
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812552399869875993, guid: 51e468dca1ac61f4fbee416a8f20f916, type: 3}
+      propertyPath: <Health>k__BackingField.<MaxValue>k__BackingField
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

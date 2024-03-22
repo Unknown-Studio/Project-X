@@ -1,4 +1,3 @@
-using Suhdo.CharacterCore;
 using UnityEngine;
 
 namespace Suhdo.Enemies.Skeleton
@@ -11,6 +10,7 @@ namespace Suhdo.Enemies.Skeleton
         [SerializeField] private D_EnemyChargeState _chargeStateData;
         [SerializeField] private D_EnemyLookingForPlayer _lookingForPlayerData;
         [SerializeField] private D_EnemyMeleeAttack _meleeAttackData;
+        [SerializeField] private D_EnemyStunState _stunData;
         
         public Skeleton_IdleState IdleState { get; private set; }
         public Skeleton_MoveState MoveState { get; private set; }
@@ -19,6 +19,7 @@ namespace Suhdo.Enemies.Skeleton
         public Skeleton_ChargeState ChargeState { get; private set; }
         public Skeleton_LookingForPlayer LookingForPlayer {get; private set; }
         public Skeleton_MeleeAttackState MeleeAttackState { get; private set; }
+        public Skeleton_StunState StunState { get; private set; }
 
         protected override void Awake()
         {
@@ -33,6 +34,7 @@ namespace Suhdo.Enemies.Skeleton
             LookingForPlayer =
                 new Skeleton_LookingForPlayer(StateMachine, this, "lookingForPlayer", _lookingForPlayerData);
             MeleeAttackState = new Skeleton_MeleeAttackState(StateMachine, this, "meleeAttack", _meleeAttackData);
+            StunState = new Skeleton_StunState(StateMachine, this, "stun", _stunData);
             
         }
 
@@ -41,7 +43,17 @@ namespace Suhdo.Enemies.Skeleton
             base.Start();
             
             StateMachine.Initiallize(IdleState);
+            stats.Poise.OnCurrentValueZero += HandleOnPoiseZero;
         }
 
+        private void OnDestroy()
+        {
+            stats.Poise.OnCurrentValueZero -= HandleOnPoiseZero;
+        }
+
+        private void HandleOnPoiseZero()
+        {
+            StateMachine.ChangeState(StunState);
+        }
     }
 }
