@@ -14,8 +14,7 @@ namespace Suhdo.CharacterCore
 
 		public void Damage(float amount)
 		{
-			Debug.Log("Damage!!!!");
-			Stats.DecreaseHealth(amount);
+			Stats.Health.Decrease(amount);
 			ParticlesManager.StartParticleWithRandomRotation(hitPool.Get());
 		}
 	}

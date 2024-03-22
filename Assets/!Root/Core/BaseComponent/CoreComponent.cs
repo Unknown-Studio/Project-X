@@ -7,15 +7,15 @@ namespace Suhdo.CharacterCore
     {
         protected Core Core;
 
-        protected Movement Movement => _movement.Comp;
-        protected Stats Stats => _stats.Comp;
-        protected BaseCollisionSenses CollisionSenses => _collisionSenses.Comp;
-        protected ParticlesManager ParticlesManager => _particlesManager.Comp;
+        protected Movement Movement => _movement;
+        protected Stats Stats => _stats;
+        protected BaseCollisionSenses CollisionSenses => _collisionSenses;
+        protected ParticlesManager ParticlesManager => _particlesManager;
 
-        private CoreComp<Movement> _movement;
-        private CoreComp<BaseCollisionSenses> _collisionSenses;
-        private CoreComp<Stats> _stats;
-        private CoreComp<ParticlesManager> _particlesManager;
+        private Movement _movement;
+        private BaseCollisionSenses _collisionSenses;
+        private Stats _stats;
+        private ParticlesManager _particlesManager;
 
         protected virtual void Awake()
         {
@@ -23,10 +23,10 @@ namespace Suhdo.CharacterCore
             if(Core == null) Debug.LogError("There are no Core on the parent!");
             Core.AddComponent(this);
 
-            _movement = new CoreComp<Movement>(Core);
-            _collisionSenses = new CoreComp<BaseCollisionSenses>(Core);
-            _stats = new CoreComp<Stats>(Core);
-            _particlesManager = new CoreComp<ParticlesManager>(Core);
+            _movement = Core.GetCoreComponent<Movement>();
+            _collisionSenses = Core.GetCoreComponent<BaseCollisionSenses>();
+            _stats = Core.GetCoreComponent<Stats>();
+            _particlesManager = Core.GetCoreComponent<ParticlesManager>();
         }
 
         protected virtual void OnValidate()
@@ -35,10 +35,10 @@ namespace Suhdo.CharacterCore
             if (Core == null) Debug.LogError("There are no Core on the parent!");
             Core.AddComponent(this);
             
-            _movement = new CoreComp<Movement>(Core);
-            _collisionSenses = new CoreComp<BaseCollisionSenses>(Core);
-            _stats = new CoreComp<Stats>(Core);
-            _particlesManager = new CoreComp<ParticlesManager>(Core);
+            _movement = Core.GetCoreComponent<Movement>();
+            _collisionSenses = Core.GetCoreComponent<BaseCollisionSenses>();
+            _stats = Core.GetCoreComponent<Stats>();
+            _particlesManager = Core.GetCoreComponent<ParticlesManager>();
         }
 
         public virtual void LogicUpdate() { }
