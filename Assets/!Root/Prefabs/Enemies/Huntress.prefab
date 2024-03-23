@@ -89,6 +89,7 @@ MonoBehaviour:
   _rangeAttackData: {fileID: 11400000, guid: 5876d0173edb78747bc98b335e9204a4, type: 2}
   _dodgeData: {fileID: 11400000, guid: 8997d1ce09bc10f4b85bffc06da6cbba, type: 2}
   _teleStateData: {fileID: 11400000, guid: 3a79b1e7fb6e27c43b4c16b70fdd816b, type: 2}
+  _stunStateData: {fileID: 11400000, guid: 67c48a6859b1e8440b3aac7e29ba413c, type: 2}
 --- !u!114 &1092096612046406052
 MonoBehaviour:
   m_ObjectHideFlags: 0
