@@ -1,6 +1,7 @@
 ﻿using System;
 using Suhdo.CharacterCore;
 using Suhdo.StateMachineCore;
+using Suhdo.Weapons;
 using UnityEngine;
 
 namespace Suhdo.Player
@@ -25,14 +26,19 @@ namespace Suhdo.Player
         public PlayerAirDashGroundState AirDashGroundState { get; private set; }
         
         public PlayerInputHandler InputHandler { get; private set; }
-        public PlayerInventory Inventory {get; private set; }
 
+        private Weapon _primaryWeapon;
+        private Weapon _secondaryWeapon;
+        
         protected override void Awake()
         {
             base.Awake();
             
             InputHandler = GetComponent<PlayerInputHandler>();
-            Inventory = GetComponent<PlayerInventory>();
+            _primaryWeapon = transform.Find("PrimaryWeapon").GetComponent<Weapon>();
+            _primaryWeapon.SetCore(Core);
+            _secondaryWeapon = transform.Find("SecondaryWeapon").GetComponent<Weapon>();
+            _secondaryWeapon.SetCore(Core);
             
             IdleState = new PlayerIdleState(StateMachine, this, "idle", playerData);
             MoveState = new PlayerMoveState(StateMachine, this, "move", playerData);
@@ -44,8 +50,8 @@ namespace Suhdo.Player
             RollState = new PlayerRollState(StateMachine, this, "roll", playerData);
             WallSlideState = new PlayerWallSlideState(StateMachine, this, "wallSlide", playerData);
             LedgeClimbState = new PlayerLedgeClimbState(StateMachine, this, "ledgeClimbState", playerData);
-            PrimaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData);
-            SecondaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData);
+            PrimaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData, _primaryWeapon);
+            SecondaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData, _secondaryWeapon);
             AirDashState = new PlayerAirDashState(StateMachine, this, "airDash", playerData);
             AirDashGroundState = new PlayerAirDashGroundState(StateMachine, this, "airDashGround", playerData);
         }
@@ -54,8 +60,6 @@ namespace Suhdo.Player
         {
             base.Start();
             
-            
-            PrimaryAttackState.SetWeapon(Inventory.weapons[(int)CombatInputs.Primary]);
             StateMachine.Initiallize(IdleState);
         }
 
@@ -71,8 +75,6 @@ namespace Suhdo.Player
         }
 
         public void AnimationFinishedTrigger() => StateMachine.CurrentCoreState.AnimationFinishTrigger();
-
-        
         
     }
 }

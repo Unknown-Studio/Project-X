@@ -1,5 +1,4 @@
 using Suhdo.Ultils;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace Suhdo.Effects
@@ -18,7 +17,7 @@ namespace Suhdo.Effects
         public override void OnObjectPoolReturn()
         {
             transform.parent = null;
-            transform.localRotation = quaternion.identity;
+            transform.localRotation = Quaternion.identity;
             transform.position = Vector3.zero;
         }
         

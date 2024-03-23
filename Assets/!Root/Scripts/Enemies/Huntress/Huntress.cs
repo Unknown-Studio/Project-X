@@ -13,6 +13,7 @@ namespace Suhdo.Enemies.Huntress
         [SerializeField] private D_EnemyRangeAttackState _rangeAttackData;
         [SerializeField] private D_EnemyDodgeState _dodgeData;
         [SerializeField] private D_EnemyTeleState _teleStateData;
+        [SerializeField] private D_EnemyStunState _stunStateData;
         
         public Huntress_IdleState IdleState { get; private set; }
         public Huntress_MoveState MoveState { get; private set; }
@@ -22,6 +23,7 @@ namespace Suhdo.Enemies.Huntress
         public Huntress_RangeAttackState RangeAttackState { get; private set; }
         public Huntress_DodgeState DodgeState { get; private set; }
         public Huntress_TeleState TeleState { get; private set; }
+        public Huntress_StunState StunState { get; private set; }
 
         protected override void Awake()
         {
@@ -37,6 +39,7 @@ namespace Suhdo.Enemies.Huntress
             RangeAttackState = new Huntress_RangeAttackState(StateMachine, this, "rangeAttack", _rangeAttackData);
             DodgeState = new Huntress_DodgeState(StateMachine, this, "jump", _dodgeData);
             TeleState = new Huntress_TeleState(StateMachine, this, "tele", _teleStateData);
+            StunState = new Huntress_StunState(StateMachine, this, "stun", _stunStateData);
         }
 
         protected override void Start()
@@ -44,11 +47,23 @@ namespace Suhdo.Enemies.Huntress
             base.Start();
             
             StateMachine.Initiallize(IdleState);
+
+            stats.Poise.OnCurrentValueZero += HandleOnPoiseZero;
         }
 
         private void OnDisable()
         {
             _rangeAttackData.pool.ClearPool();
+        }
+
+        private void OnDestroy()
+        {
+            stats.Poise.OnCurrentValueZero -= HandleOnPoiseZero;
+        }
+
+        private void HandleOnPoiseZero()
+        {
+            StateMachine.ChangeState(StunState);
         }
     }
 }

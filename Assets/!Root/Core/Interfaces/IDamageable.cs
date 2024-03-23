@@ -1,4 +1,4 @@
-namespace Suhdo.Combat
+namespace Suhdo.CharacterCore
 {
     public interface IDamageable
     {

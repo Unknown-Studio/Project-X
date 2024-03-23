@@ -1,85 +1,88 @@
 using System;
 using Suhdo.CharacterCore;
-using Suhdo.Player;
+using Suhdo.Ultils;
 using UnityEngine;
 
 namespace Suhdo.Weapons
 {
-    public class Weapon : MonoBehaviour
-    {
-        [SerializeField] protected D_Weapon weaponData;
+	public class Weapon : MonoBehaviour
+	{
+		[SerializeField] private float attackCounterResetCoolDown;
+		
+		public WeaponDataSO Data{get; private set; }
+		
+		public event Action OnExit;
+		public event Action OnEnter;
 
-        protected PlayerAttackState state;
-        protected Animator anim;
-        protected int attackCounter;
+		public int CurrentAttackCounter
+		{
+			get => _currentAttackCounter;
+			private set => _currentAttackCounter = value >= Data.NumberOfAttack ? 0 : value;
+		}
+		
+		public Core Core { get; private set; }
+		public AnimationEventHandler EventHandler { get; private set; }
+		public GameObject BaseGameObject { get; private set; }
+		public GameObject WeaponSpriteGameObject { get; private set; }
+		
+		private Animator _anim;
+		private int _currentAttackCounter;
 
-        protected Movement Movement => _movement ??= core.GetCoreComponent<Movement>();
+		private Timer _attackCounterResetTimer;
 
-        private Core core;
-        private Movement _movement;
-        
-        public void InitializeWeapon(PlayerAttackState state, Core core)
-        {
-            this.state = state;
-            this.core = core;
-        }
-        
-        protected virtual void Awake()
-        {
-            anim = transform.Find("Base").GetComponent<Animator>();
-            
-            gameObject.SetActive(false);
-        }
+		private void Awake()
+		{
+			BaseGameObject = transform.Find("Base").gameObject;
+			WeaponSpriteGameObject = transform.Find("WeaponSprite").gameObject;
+			_anim = BaseGameObject.GetComponent<Animator>();
+			EventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
+			_attackCounterResetTimer = new Timer(attackCounterResetCoolDown);
+		}
 
-        public virtual void EnterWeapon()
-        {
-            gameObject.SetActive(true);
-            if (attackCounter >= weaponData.MovementSpeed.Length) attackCounter = 0;
-            
-            anim.SetBool("attack", true);
-            anim.SetInteger("attackCounter", attackCounter);
-        }
+		private void OnEnable()
+		{
+			EventHandler.OnFinish += OnFinish;
+			_attackCounterResetTimer.OnTimerDone += ResetAttackCounter;
+		}
 
-        public virtual void ExitWeapon()
-        {
-            anim.SetBool("attack", false);
+		private void OnDisable()
+		{
+			EventHandler.OnFinish -= OnFinish;
+			_attackCounterResetTimer.OnTimerDone -= ResetAttackCounter;
+		}
 
-            attackCounter++;
-            
-            gameObject.SetActive(false);
-        }
+		public void Enter()
+		{
+			_attackCounterResetTimer.StopTimer();
+			_anim.SetBool("active", true);
+			_anim.SetInteger("counter", CurrentAttackCounter);
 
-        #region Animation Trigger
+			OnEnter?.Invoke();
+		}
+		
+		public void SetCore(Core core)
+		{
+			Core = core;
+		}
 
-        public virtual void AnimationFinishTrigger()
-        {
-            state.AnimationFinishTrigger();
-        }
+		public void SetData(WeaponDataSO data)
+		{
+			Data = data;
+		}
 
-        public virtual void AnimationStartMovementTrigger()
-        {
-            state.SetPlayerVelocity(weaponData.MovementSpeed[attackCounter]);
-        }
+		private void Update()
+		{
+			_attackCounterResetTimer.Tick();
+		}
 
-        public virtual void AnimationStopMovementTrigger()
-        {
-            state.SetPlayerVelocity(0f);
-        }
+		private void OnFinish()
+		{
+			CurrentAttackCounter++;
+			_anim.SetBool("active", false);
+			OnExit?.Invoke();
+			_attackCounterResetTimer.StartTimer();
+		}
 
-        public virtual void AnimationTurnOffFlip()
-        {
-            state.SetFlipCheck(false);
-        }
-
-        public virtual void AnimationTurnOnFlip()
-        {
-            state.SetFlipCheck(true);
-        }
-
-        public virtual void AnimationActionTrigger()
-        {
-        }
-
-        #endregion
-    }
+		private void ResetAttackCounter() => CurrentAttackCounter = 0;
+	}
 }
