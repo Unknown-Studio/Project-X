@@ -15,9 +15,11 @@ namespace Suhdo.Weapons
 		private List<WeaponComponent> _componentsAlreadyOnWeapon = new();
 		private List<WeaponComponent> _componentsAddedToWeapon = new();
 		private List<Type> _componentsDependencies = new();
+		private Animator _anim;
 
 		private void Start()
 		{
+			_anim = GetComponentInChildren<Animator>();
 			GenerateWeapon(data);
 		}
 
@@ -61,6 +63,8 @@ namespace Suhdo.Weapons
 			{
 				Destroy(weaponComponent);
 			}
+
+			_anim.runtimeAnimatorController = data.AnimatorController;
 		}
 	}
 }

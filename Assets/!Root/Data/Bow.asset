@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ba35f26a8748c499639e0f5585c874, type: 3}
+  m_Name: Bow
+  m_EditorClassIdentifier: 
+  <AnimatorController>k__BackingField: {fileID: 9100000, guid: b62381e1955b1614c8993188ccaef39a, type: 2}
+  <NumberOfAttack>k__BackingField: 1
+  <ComponentData>k__BackingField:
+  - rid: 7778218447038840833
+  references:
+    version: 2
+    RefIds:
+    - rid: 7778218447038840833
+      type: {class: WeaponSpriteData, ns: Suhdo.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: WeaponSpriteData
+        attackData:
+        - name: Attack 1
+          <PhaseSprites>k__BackingField:
+          - <Phase>k__BackingField: 0
+            <Sprites>k__BackingField:
+            - {fileID: -1035581412, guid: 1ead21fe8772a524da377e3a671c2e33, type: 3}
+            - {fileID: 1412862061, guid: 1ead21fe8772a524da377e3a671c2e33, type: 3}
+            - {fileID: -2064509489, guid: 1ead21fe8772a524da377e3a671c2e33, type: 3}
+            - {fileID: 1366831855, guid: 1ead21fe8772a524da377e3a671c2e33, type: 3}
+            - {fileID: -301084081, guid: 1ead21fe8772a524da377e3a671c2e33, type: 3}
+            - {fileID: -424655499, guid: 1ead21fe8772a524da377e3a671c2e33, type: 3}
+          - <Phase>k__BackingField: 1
+            <Sprites>k__BackingField:
+            - {fileID: -1489734159, guid: 311b5adc1007ea844a1a6e5aa4f68ee9, type: 3}
+            - {fileID: -561373784, guid: 311b5adc1007ea844a1a6e5aa4f68ee9, type: 3}
+            - {fileID: 1797937714, guid: 311b5adc1007ea844a1a6e5aa4f68ee9, type: 3}
+          - <Phase>k__BackingField: 2
+            <Sprites>k__BackingField:
+            - {fileID: -1653376242, guid: 8c8bdf0c59d7bfe4fb5430b22a59727b, type: 3}
+            - {fileID: -749525626, guid: 8c8bdf0c59d7bfe4fb5430b22a59727b, type: 3}
+            - {fileID: -265310929, guid: 8c8bdf0c59d7bfe4fb5430b22a59727b, type: 3}
+            - {fileID: 1697495700, guid: 8c8bdf0c59d7bfe4fb5430b22a59727b, type: 3}
+            - {fileID: 878935231, guid: 8c8bdf0c59d7bfe4fb5430b22a59727b, type: 3}

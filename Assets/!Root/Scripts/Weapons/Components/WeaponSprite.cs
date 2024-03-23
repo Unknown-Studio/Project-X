@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 namespace Suhdo.Weapons.Components
@@ -9,6 +10,8 @@ namespace Suhdo.Weapons.Components
 
 		private int _currentWeaponSpriteIndex;
 
+		private Sprite[] _currentSPhaseSprites;
+
 		protected override void Start()
 		{
 			base.Start();
@@ -16,6 +19,8 @@ namespace Suhdo.Weapons.Components
 			_weaponSpriteRenderer = weapon.WeaponSpriteGameObject.GetComponent<SpriteRenderer>();
 			
 			_baseSpriteRenderer.RegisterSpriteChangeCallback(OnBaseSpriteChangeHandler);
+
+			eventHandler.OnEnterAttackPhase += HandleEnterAttackPhase;
 		}
 
 		protected override void OnDestroy()
@@ -23,6 +28,13 @@ namespace Suhdo.Weapons.Components
 			base.OnDestroy();
 
 			_baseSpriteRenderer.UnregisterSpriteChangeCallback(OnBaseSpriteChangeHandler);
+			eventHandler.OnEnterAttackPhase -= HandleEnterAttackPhase;
+		}
+
+		private void HandleEnterAttackPhase(AttackPhases phase)
+		{
+			_currentWeaponSpriteIndex = 0;
+			_currentSPhaseSprites = currentAttackData.PhaseSprites.FirstOrDefault(data => data.Phase == phase).Sprites;
 		}
 
 		private void OnBaseSpriteChangeHandler(SpriteRenderer sprite)
@@ -33,15 +45,13 @@ namespace Suhdo.Weapons.Components
 				return;
 			}
 
-			var currentAttackSprite = currentAttackData.Sprites;
-
-			if (_currentWeaponSpriteIndex >= currentAttackSprite.Length)
+			if (_currentWeaponSpriteIndex >= _currentSPhaseSprites.Length)
 			{
 				Debug.LogWarning($"{weapon.name} weapon sprite length mismatch");
 				return;
 			}
 			
-			_weaponSpriteRenderer.sprite = currentAttackSprite[_currentWeaponSpriteIndex];
+			_weaponSpriteRenderer.sprite = _currentSPhaseSprites[_currentWeaponSpriteIndex];
 			_currentWeaponSpriteIndex++;
 		}
 
