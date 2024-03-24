@@ -50,8 +50,8 @@ namespace Suhdo.Player
             RollState = new PlayerRollState(StateMachine, this, "roll", playerData);
             WallSlideState = new PlayerWallSlideState(StateMachine, this, "wallSlide", playerData);
             LedgeClimbState = new PlayerLedgeClimbState(StateMachine, this, "ledgeClimbState", playerData);
-            PrimaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData, _primaryWeapon);
-            SecondaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData, _secondaryWeapon);
+            PrimaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData, _primaryWeapon, CombatInputs.Primary);
+            SecondaryAttackState = new PlayerAttackState(StateMachine, this, "attack", playerData, _secondaryWeapon, CombatInputs.Secondary);
             AirDashState = new PlayerAirDashState(StateMachine, this, "airDash", playerData);
             AirDashGroundState = new PlayerAirDashGroundState(StateMachine, this, "airDashGround", playerData);
         }

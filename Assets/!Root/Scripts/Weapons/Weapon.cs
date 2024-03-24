@@ -13,11 +13,25 @@ namespace Suhdo.Weapons
 		
 		public event Action OnExit;
 		public event Action OnEnter;
+		public event Action<bool> OnCurrentInputChange; 
 
 		public int CurrentAttackCounter
 		{
 			get => _currentAttackCounter;
 			private set => _currentAttackCounter = value >= Data.NumberOfAttack ? 0 : value;
+		}
+
+		public bool CurrentInput
+		{
+			get => _currentInput;
+			set
+			{
+				if (_currentInput != value)
+				{
+					_currentInput = value;
+					OnCurrentInputChange?.Invoke(_currentInput);
+				}
+			}
 		}
 		
 		public Core Core { get; private set; }
@@ -25,9 +39,10 @@ namespace Suhdo.Weapons
 		public GameObject BaseGameObject { get; private set; }
 		public GameObject WeaponSpriteGameObject { get; private set; }
 		
-		private Animator _anim;
 		private int _currentAttackCounter;
-
+		private bool _currentInput;
+		
+		private Animator _anim;
 		private Timer _attackCounterResetTimer;
 
 		private void Awake()

@@ -10,11 +10,13 @@ namespace Suhdo.Weapons
 		public event Action OnStopMovement;
 		public event Action OnAttackAction;
 		public event Action<AttackPhases> OnEnterAttackPhase;
+		public event Action OnMinHoldPassed;
 		
 		private void AnimationFinishTrigger() => OnFinish?.Invoke();
 		private void StartMovementTrigger() => OnStartMovement?.Invoke();
 		private void StopMovementTrigger() => OnStopMovement?.Invoke();
 		private void AttackActionTrigger() => OnAttackAction?.Invoke();
 		private void EnterAttackPhaseTrigger(AttackPhases phase) => OnEnterAttackPhase?.Invoke(phase);
+		private void MinHoldPassedTrigger() => OnMinHoldPassed?.Invoke();
 	}
 }

@@ -16,6 +16,8 @@ MonoBehaviour:
   <NumberOfAttack>k__BackingField: 1
   <ComponentData>k__BackingField:
   - rid: 7778218447038840833
+  - rid: 7778218447038840834
+  - rid: 7778218447038840835
   references:
     version: 2
     RefIds:
@@ -46,3 +48,15 @@ MonoBehaviour:
             - {fileID: -265310929, guid: 8c8bdf0c59d7bfe4fb5430b22a59727b, type: 3}
             - {fileID: 1697495700, guid: 8c8bdf0c59d7bfe4fb5430b22a59727b, type: 3}
             - {fileID: 878935231, guid: 8c8bdf0c59d7bfe4fb5430b22a59727b, type: 3}
+    - rid: 7778218447038840834
+      type: {class: InputHoldData, ns: Suhdo.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: InputHoldData
+    - rid: 7778218447038840835
+      type: {class: MovementData, ns: Suhdo.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: MovementData
+        attackData:
+        - name: Attack 1
+          <Direction>k__BackingField: {x: 0, y: 0}
+          <Velocity>k__BackingField: 0
